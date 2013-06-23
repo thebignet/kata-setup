@@ -1,6 +1,10 @@
 package kata;
 
+import static kata.PasswordChecker.MIN_7_CHARS;
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.junit.Test;
 
@@ -11,13 +15,16 @@ public class PasswordTest {
     must_have_7_atleast_chars() {
         assertFalse(check("h"));
         assertFalse(check("helpme"));
+        assertThat(errorsFor("helpme")).contains(MIN_7_CHARS);
         assertTrue(check("helpme7"));
         assertTrue(check("helpme88"));
     }
 
+
     @Test public void 
     must_contain_atleast_one_digit() throws Exception {
         assertFalse(check("helpmenow"));
+        assertThat(errorsFor("helpmenow")).contains(PasswordChecker.ONE_DIGIT);
     }
     
     @Test public void 
@@ -56,11 +63,15 @@ public class PasswordTest {
     }
     
     private boolean checkAdmin(String password) {
-        return checker.checkAdmin(password);
+        return checker.checkAdmin(password).hasErrors();
     }
 
     private boolean check(String password) {
-        return checker.check(password);
+        return checker.check(password).hasErrors();
     }
     
+    private List<String> errorsFor(String password) {
+        return checker.check(password).errors();
+    }
+
 }
