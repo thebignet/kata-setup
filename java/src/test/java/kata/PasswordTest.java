@@ -1,6 +1,8 @@
 package kata;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.*;
+import junit.framework.Assert;
 
 import org.junit.Test;
 
@@ -53,6 +55,16 @@ public class PasswordTest {
         assertTrue(checkAdmin(".heyYouWom4n"));
         assertTrue(checkAdmin("hey!YouWom4n"));
         assertTrue(checkAdmin("hey?YouWom4n"));
+    }
+    
+    private void assertTrue(boolean condition) {
+        Assert.assertTrue(condition);
+        assertThat(checker.errors()).isEmpty();
+    }
+    
+    private void assertFalse(boolean condition) {
+        Assert.assertFalse(condition);
+        assertThat(checker.errors()).isNotEmpty();
     }
     
     private boolean checkAdmin(String password) {
