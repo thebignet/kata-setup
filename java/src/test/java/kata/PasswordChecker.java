@@ -8,4 +8,12 @@ public class PasswordChecker {
                 && password.matches(".*[a-zA-Z].*");
     }
 
+    public boolean checkAdmin(String password) {
+        return password.length() >= 10
+                && password.matches(".*\\d.*")
+                && password.matches(".*[a-zA-Z].*")
+                && password.matches(".*[\\.!?].*")
+                ;
+    }
+
 }
