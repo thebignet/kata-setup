@@ -4,16 +4,27 @@ public class PasswordChecker {
 
     public boolean check(String password) {
         return password.length() >= 7 
-                && password.matches(".*\\d.*")
-                && password.matches(".*[a-zA-Z].*");
+                && containsDigit(password)
+                && containsLetter(password);
     }
 
     public boolean checkAdmin(String password) {
         return password.length() >= 10
-                && password.matches(".*\\d.*")
-                && password.matches(".*[a-zA-Z].*")
-                && password.matches(".*[\\.!?].*")
+                && check(password)
+                && containsSpecialCharacter(password)
                 ;
+    }
+
+    private boolean containsSpecialCharacter(String password) {
+        return password.matches(".*[\\.!?].*");
+    }
+
+    private boolean containsLetter(String password) {
+        return password.matches(".*[a-zA-Z].*");
+    }
+
+    private boolean containsDigit(String password) {
+        return password.matches(".*\\d.*");
     }
 
 }
