@@ -9,7 +9,9 @@ public class Bowling {
 	    score += balls[i];
 	}
 	for (int i = 1; i < balls.length - 1; i+=2) {
-	    if (balls[i-1] + balls[i] == 10)
+	    if (balls[i-1] == 10)
+		score += balls[i+1] + balls[i+2];
+	    else if (balls[i-1] + balls[i] == 10)
 		score += balls[i+1];
 	}
 	return score;
