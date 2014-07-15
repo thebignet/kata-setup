@@ -4,7 +4,6 @@ import static java.util.Arrays.asList;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -18,6 +17,8 @@ public class BowlingTest {
 	assertThat(score(f(2, 3), f(1, 2))).isEqualTo(5 + 3);
 
 	assertThat(score(f(9, 1), f(2, 3))).isEqualTo(12 + 5);
+
+	assertThat(score(f(10, 0), f(2, 3))).isEqualTo(15 + 5);
     }
 
     private int score(Frame... frames) {
