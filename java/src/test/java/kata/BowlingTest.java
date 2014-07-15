@@ -16,9 +16,13 @@ public class BowlingTest {
         assertThat(bowling.score(5, 0, 1, 9)).isEqualTo(15); // spare but no more throws
         assertThat(bowling.score(5, 0, 1, 9, 9, 1)).isEqualTo(34);
         
-//        assertThat(bowling.score(10, 1, 5, 0)).isEqualTo(20); illegal
         assertThat(bowling.score(10, 0, 5, 1)).isEqualTo(22);
         
+        assertThat(bowling.score(10, 0, 10, 0, 2, 3)).isEqualTo(22+15+2+3);
+        assertThat(bowling.score(10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0)).isEqualTo(300);
+        assertThat(bowling.score(10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 9, 0)).isEqualTo(267);
+        
+//        assertThat(bowling.score(10, 1, 5, 0)).isEqualTo(20); illegal
 //        assertThat(bowling.score(8, 1, 9)).isEqualTo(18);
     }
 }

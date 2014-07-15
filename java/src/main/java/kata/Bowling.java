@@ -9,10 +9,18 @@ public class Bowling {
 	    score += balls[i];
 	}
 	for (int i = 1; i < balls.length - 1; i+=2) {
-	    if (balls[i-1] == 10)
-		score += balls[i+1] + balls[i+2];
-	    else if (balls[i-1] + balls[i] == 10)
-		score += balls[i+1];
+	    Integer firstBall = balls[i-1];
+	    Integer nextBall = balls[i+1];
+	    if (firstBall == 10) {
+		Integer secondNextBall ;
+		if (firstBall == 10 && balls.length> i+3)
+		    secondNextBall = balls[i+3];
+		else
+		    secondNextBall = balls[i+2];
+		
+		score += nextBall + secondNextBall;
+	    } else if (firstBall + balls[i] == 10)
+		score += nextBall;
 	}
 	return score;
     }
