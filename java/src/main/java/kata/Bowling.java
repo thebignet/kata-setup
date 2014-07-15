@@ -4,15 +4,20 @@ import java.util.List;
 
 public class Bowling {
     private static final Frame NULL_FRAME = new NormalFrame(0, 0);
+    private List<Frame> frames;
     
 
-    public int score(List<Frame> frames) {
-	padFrames(frames);
-	decorateWithSubsequentFrames(frames);
-	return calculateScore(frames);
+    public Bowling(List<Frame> frames) {
+	this.frames = frames;
+	padFrames();
+	decorateWithSubsequentFrames();
     }
 
-    protected int calculateScore(List<Frame> frames) {
+    public int score() {
+	return calculateScore();
+    }
+
+    private int calculateScore() {
 	int score = 0;
 	for (Frame frame : frames) {
 	    score += frame.score();
@@ -20,20 +25,20 @@ public class Bowling {
 	return score;
     }
 
-    protected void decorateWithSubsequentFrames(List<Frame> frames) {
-	for (int i = 0; i < actualFramesCount(frames); i++) {
+    private void decorateWithSubsequentFrames() {
+	for (int i = 0; i < actualFramesCount(); i++) {
 	    Frame frame = frames.get(i);
 	    Frame nextFrame = frames.get(i + 1);
 	    frame.setNext(nextFrame);
 	}
     }
 
-    protected void padFrames(List<Frame> frames) {
+    private void padFrames() {
 	frames.add(NULL_FRAME);
 	frames.add(NULL_FRAME);
     }
 
-    protected int actualFramesCount(List<Frame> frames) {
+    private int actualFramesCount() {
 	return frames.size() -2;
     }
 

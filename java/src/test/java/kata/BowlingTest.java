@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 public class BowlingTest {
-    Bowling bowling = new Bowling();
 
     @Test
     public void score() {
@@ -34,7 +33,8 @@ public class BowlingTest {
     }
 
     private int score(Frame... frames) {
-	return bowling.score(new ArrayList<Frame>(asList(frames)));
+	Bowling bowling = new Bowling(new ArrayList<Frame>(asList(frames)));
+	return bowling.score();
     }
 
     private Frame f(int first, int second) {
