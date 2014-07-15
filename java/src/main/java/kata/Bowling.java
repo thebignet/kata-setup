@@ -8,10 +8,10 @@ public class Bowling {
 	for (int i = 0; i < balls.length; i++) {
 	    score += balls[i];
 	}
-	if (balls.length > 1 && balls[0] + balls[1] == 10)
-	    score += balls[2];
-	if (balls.length > 4 && balls[2] + balls[3] == 10)
-	    score += balls[4];
+	for (int i = 1; i < balls.length - 1; i+=2) {
+	    if (balls[i-1] + balls[i] == 10)
+		score += balls[i+1];
+	}
 	return score;
     }
 
