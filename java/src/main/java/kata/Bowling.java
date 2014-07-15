@@ -1,6 +1,5 @@
 package kata;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class Bowling {
@@ -13,11 +12,6 @@ public class Bowling {
 	    Frame nextFrame = frames.get(i + 1);
 	    score += frame.score(nextFrame);
 	}
-	// for (Frame frame : frames) {
-	// // LinkedList<Frame> fs = new LinkedList<Frame>(frames);
-	// Frame nextFrame = frames.get(1);
-	// score += frame.score(nextFrame );
-	// }
 	return score;
     }
 
