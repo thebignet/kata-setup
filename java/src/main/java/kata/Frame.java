@@ -15,8 +15,7 @@ public interface Frame {
         }
 
 	@Override
-	public void setNext(Frame nextFrame, Frame secondFrame) {
-	}
+	public void setNext(Frame nextFrame) {}
 
 	@Override
 	public int nextTwoBalls() {
@@ -29,7 +28,7 @@ public interface Frame {
 
     int getFirst();
 
-    void setNext(Frame nextFrame, Frame secondFrame);
+    void setNext(Frame nextFrame);
     
     
 

@@ -12,7 +12,7 @@ public class Spare implements Frame {
     @Override
     public int score() {
         int nextFrameScore = 0;
-        nextFrameScore = this.nextFrame.getFirst();
+        nextFrameScore = nextFrame.getFirst();
         return nextFrameScore + 10;
     }
 
@@ -22,7 +22,7 @@ public class Spare implements Frame {
     }
 
     @Override
-    public void setNext(Frame nextFrame, Frame secondFrame) {
+    public void setNext(Frame nextFrame) {
 	this.nextFrame = nextFrame;
     }
 

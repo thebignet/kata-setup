@@ -21,7 +21,7 @@ public class NormalFrame implements Frame {
     }
 
     @Override
-    public void setNext(Frame nextFrame, Frame secondFrame) {
+    public void setNext(Frame nextFrame) {
     }
 
     @Override

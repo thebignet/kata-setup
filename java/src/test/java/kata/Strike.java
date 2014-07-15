@@ -3,12 +3,10 @@ package kata;
 public class Strike implements Frame {
 
     private Frame nextFrame;
-    private Frame secondFrame;
 
     @Override
     public int score() {
-	int nextTwoBalls = 0;
-	nextTwoBalls = this.nextFrame.nextTwoBalls();
+	int nextTwoBalls = nextFrame.nextTwoBalls();
 	return nextTwoBalls + 10;
     }
 
@@ -18,9 +16,8 @@ public class Strike implements Frame {
     }
 
     @Override
-    public void setNext(Frame nextFrame, Frame secondFrame) {
+    public void setNext(Frame nextFrame) {
 	this.nextFrame = nextFrame;
-	this.secondFrame = secondFrame;
 	
     }
 
