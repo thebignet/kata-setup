@@ -11,8 +11,17 @@ public class NormalFrame implements Frame {
     }
 
     @Override
-    public int score() {
-        return first + second;
+    public int score(Frame nextFrame) {
+	int nextFrameScore = 0;
+	if (first + second == 10) {
+	    nextFrameScore = nextFrame.getFirst();
+	}
+	return nextFrameScore + first + second;
+    }
+
+    @Override
+    public int getFirst() {
+ 	return first;
     }
 
 }
