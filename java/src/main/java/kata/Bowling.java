@@ -5,7 +5,6 @@ import java.util.List;
 public class Bowling {
     private static final Frame NULL_FRAME = new NormalFrame(0, 0);
     private List<Frame> frames;
-    
 
     public Bowling(List<Frame> frames) {
 	this.frames = frames;
@@ -15,10 +14,15 @@ public class Bowling {
 
     public int score() {
 	int score = 0;
-	for (Frame frame : frames) {
+	for (int i = 0; i < min(frames.size(), 10); i++) {
+	    Frame frame = frames.get(i);
 	    score += frame.score();
 	}
 	return score;
+    }
+
+    private int min(int i, int j) {
+	return i < j ? i : j;
     }
 
     private void decorateWithSubsequentFrames() {
@@ -35,7 +39,7 @@ public class Bowling {
     }
 
     private int actualFramesCount() {
-	return frames.size() -2;
+	return frames.size() - 2;
     }
 
 }
