@@ -7,9 +7,9 @@ public class Strike implements Frame {
 
     @Override
     public int score() {
-	int nextFrameScore = 0;
-	nextFrameScore = this.nextFrame.nonRecursiveScore();
-	return nextFrameScore + 10;
+	int nextTwoBalls = 0;
+	nextTwoBalls = this.nextFrame.nextTwoBalls();
+	return nextTwoBalls + 10;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Strike implements Frame {
     }
 
     @Override
-    public int nonRecursiveScore() {
+    public int nextTwoBalls() {
 	return 10 + nextFrame.getFirst();
     }
 

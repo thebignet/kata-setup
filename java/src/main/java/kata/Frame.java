@@ -19,13 +19,13 @@ public interface Frame {
 	}
 
 	@Override
-	public int nonRecursiveScore() {
+	public int nextTwoBalls() {
 	    return 0;
 	}
     };
 
     int score();
-    int nonRecursiveScore();
+    int nextTwoBalls();
 
     int getFirst();
 

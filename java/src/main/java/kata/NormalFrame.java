@@ -25,7 +25,7 @@ public class NormalFrame implements Frame {
     }
 
     @Override
-    public int nonRecursiveScore() {
+    public int nextTwoBalls() {
 	return score();
     }
 

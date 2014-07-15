@@ -27,7 +27,7 @@ public class Spare implements Frame {
     }
 
     @Override
-    public int nonRecursiveScore() {
+    public int nextTwoBalls() {
 	return 10;
     }
 
