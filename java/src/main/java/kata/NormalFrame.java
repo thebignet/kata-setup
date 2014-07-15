@@ -11,13 +11,22 @@ public class NormalFrame implements Frame {
     }
 
     @Override
-    public int score(Frame nextFrame) {
+    public int score() {
 	return first + second;
     }
 
     @Override
     public int getFirst() {
  	return first;
+    }
+
+    @Override
+    public void setNext(Frame nextFrame, Frame secondFrame) {
+    }
+
+    @Override
+    public int nonRecursiveScore() {
+	return score();
     }
 
 }
