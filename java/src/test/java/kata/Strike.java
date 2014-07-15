@@ -26,10 +26,7 @@ public class Strike implements Frame {
 
     @Override
     public int nonRecursiveScore() {
-	if (nextFrame instanceof Strike) {
-	    return 10 + nextFrame.getFirst();
-	}
-	return 10;
+	return 10 + nextFrame.getFirst();
     }
 
 }
