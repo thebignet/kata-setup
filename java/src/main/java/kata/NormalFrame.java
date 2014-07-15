@@ -16,9 +16,6 @@ public class NormalFrame implements Frame {
 	if (first == 10) {
 	    nextFrameScore = nextFrame.score(NULL_FRAME);
 	}
-	else if (first + second == 10) {
-	    nextFrameScore = nextFrame.getFirst();
-	}
 	return nextFrameScore + first + second;
     }
 
