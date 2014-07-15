@@ -14,10 +14,6 @@ public class Bowling {
     }
 
     public int score() {
-	return calculateScore();
-    }
-
-    private int calculateScore() {
 	int score = 0;
 	for (Frame frame : frames) {
 	    score += frame.score();
