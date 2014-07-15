@@ -3,6 +3,8 @@ package kata;
 import java.util.List;
 
 public class Bowling {
+    private static final Frame NULL_FRAME = new NormalFrame(0, 0);
+    
 
     public int score(List<Frame> frames) {
 	padFrames(frames);
@@ -27,8 +29,8 @@ public class Bowling {
     }
 
     protected void padFrames(List<Frame> frames) {
-	frames.add(Frame.NULL_FRAME);
-	frames.add(Frame.NULL_FRAME);
+	frames.add(NULL_FRAME);
+	frames.add(NULL_FRAME);
     }
 
     protected int actualFramesCount(List<Frame> frames) {
