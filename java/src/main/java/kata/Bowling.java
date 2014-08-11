@@ -1,12 +1,16 @@
 package kata;
 
+import static java.util.Arrays.asList;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bowling {
+    private static final int FRAMES_IN_A_GAME = 10;
     private static final Frame NULL_FRAME = new NormalFrame(0, 0);
     private List<Frame> frames;
 
-    public Bowling(List<Frame> frames) {
+    private Bowling(List<Frame> frames) {
 	this.frames = frames;
 	lastFrameMustHaveNextFrame();
 	makeFramesAwareOfTheirNextFrame();
@@ -14,15 +18,11 @@ public class Bowling {
 
     public int score() {
 	int score = 0;
-	for (int i = 0; i < min(frames.size(), 10); i++) {
+	for (int i = 0; i < FRAMES_IN_A_GAME; i++) {
 	    Frame frame = frames.get(i);
 	    score += frame.score();
 	}
 	return score;
-    }
-
-    private int min(int i, int j) {
-	return i < j ? i : j;
     }
 
     private void lastFrameMustHaveNextFrame() {
@@ -39,6 +39,14 @@ public class Bowling {
 
     private int actualFramesCount() {
 	return frames.size() - 1;
+    }
+
+    public static Bowling bowling(Frame... frames) {
+        ArrayList<Frame> listOfFrames = new ArrayList<Frame>(asList(frames));
+        for (int i = frames.length; i <= FRAMES_IN_A_GAME; i++) {
+            listOfFrames.add(NULL_FRAME);
+        }
+        return new Bowling(listOfFrames);
     }
 
 }
