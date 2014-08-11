@@ -1,6 +1,8 @@
 package kata;
 
-public class NormalFrame implements Frame {
+import kata.Frame.BaseFrame;
+
+public class NormalFrame extends BaseFrame {
 
     private int first;
     private int second;
@@ -21,7 +23,7 @@ public class NormalFrame implements Frame {
     }
 
     @Override
-    public void setNext(Frame nextFrame) {
+    public void setNext(BaseFrame nextFrame) {
     }
 
     @Override

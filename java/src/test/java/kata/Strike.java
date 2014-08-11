@@ -1,8 +1,10 @@
 package kata;
 
-public class Strike implements Frame {
+import kata.Frame.BaseFrame;
 
-    private Frame nextFrame;
+public class Strike extends BaseFrame {
+
+    private BaseFrame nextFrame;
 
     @Override
     public int score() {
@@ -16,7 +18,7 @@ public class Strike implements Frame {
     }
 
     @Override
-    public void setNext(Frame nextFrame) {
+    public void setNext(BaseFrame nextFrame) {
 	this.nextFrame = nextFrame;
 	
     }

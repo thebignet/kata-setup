@@ -5,12 +5,14 @@ import static java.util.Arrays.asList;
 import java.util.ArrayList;
 import java.util.List;
 
+import kata.Frame.BaseFrame;
+
 public class Bowling {
     private static final int FRAMES_IN_A_GAME = 10;
-    private static final Frame NULL_FRAME = new NormalFrame(0, 0);
-    private List<Frame> frames;
+    private static final BaseFrame NULL_FRAME = new NormalFrame(0, 0);
+    private List<BaseFrame> frames;
 
-    private Bowling(List<Frame> frames) {
+    private Bowling(List<BaseFrame> frames) {
 	this.frames = frames;
 	lastFrameMustHaveNextFrame();
 	makeFramesAwareOfTheirNextFrame();
@@ -31,8 +33,8 @@ public class Bowling {
 
     private void makeFramesAwareOfTheirNextFrame() {
 	for (int i = 0; i < actualFramesCount(); i++) {
-	    Frame frame = frames.get(i);
-	    Frame nextFrame = frames.get(i + 1);
+	    BaseFrame frame = frames.get(i);
+	    BaseFrame nextFrame = frames.get(i + 1);
 	    frame.setNext(nextFrame);
 	}
     }
@@ -41,8 +43,8 @@ public class Bowling {
 	return frames.size() - 1;
     }
 
-    public static Bowling bowling(Frame... frames) {
-        ArrayList<Frame> listOfFrames = new ArrayList<Frame>(asList(frames));
+    public static Bowling bowling(BaseFrame... frames) {
+        ArrayList<BaseFrame> listOfFrames = new ArrayList<BaseFrame>(asList(frames));
         for (int i = frames.length; i <= FRAMES_IN_A_GAME; i++) {
             listOfFrames.add(NULL_FRAME);
         }

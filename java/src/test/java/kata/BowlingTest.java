@@ -1,6 +1,7 @@
 package kata;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import kata.Frame.BaseFrame;
 
 import org.junit.Test;
 
@@ -29,20 +30,20 @@ public class BowlingTest {
 		strike(), strike(), strike());
     }
 
-    private Frame strike() {
+    private BaseFrame strike() {
 	return new Strike();
     }
 
-    private Frame spare(int first) {
+    private BaseFrame spare(int first) {
 	return new Spare(first);
     }
 
-    private int score(Frame...frames) {
+    private int score(BaseFrame...frames) {
 	Bowling bowling = Bowling.bowling(frames);
 	return bowling.score();
     }
 
-    private Frame f(int first, int second) {
+    private BaseFrame f(int first, int second) {
 	return new NormalFrame(first, second);
     }
 }
