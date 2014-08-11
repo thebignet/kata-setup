@@ -8,8 +8,8 @@ public class Bowling {
 
     public Bowling(List<Frame> frames) {
 	this.frames = frames;
-	padFrames();
-	decorateWithSubsequentFrames();
+	lastFrameMustHaveNextFrame();
+	makeFramesAwareOfTheirNextFrame();
     }
 
     public int score() {
@@ -25,7 +25,11 @@ public class Bowling {
 	return i < j ? i : j;
     }
 
-    private void decorateWithSubsequentFrames() {
+    private void lastFrameMustHaveNextFrame() {
+	frames.add(NULL_FRAME);
+    }
+
+    private void makeFramesAwareOfTheirNextFrame() {
 	for (int i = 0; i < actualFramesCount(); i++) {
 	    Frame frame = frames.get(i);
 	    Frame nextFrame = frames.get(i + 1);
@@ -33,13 +37,8 @@ public class Bowling {
 	}
     }
 
-    private void padFrames() {
-	frames.add(NULL_FRAME);
-	frames.add(NULL_FRAME);
-    }
-
     private int actualFramesCount() {
-	return frames.size() - 2;
+	return frames.size() - 1;
     }
 
 }

@@ -20,12 +20,16 @@ public class BowlingTest {
 	assertThat(score(strike(), f(2, 3))).isEqualTo(15 + 5);
 	assertThat(score(strike(), spare(7))).isEqualTo(20 + 10);
 	assertThat(score(strike(), strike(), strike())).isEqualTo(30 + 20 + 10);
-	assertThat(score(strike(), strike(), strike(), 
-		strike(), strike(), strike(),
-		strike(), strike(), strike(),
-		strike(), strike(), strike())).isEqualTo(300);
+	assertThat(scoreForPerfectGame()).isEqualTo(300); 
 	
 	assertThat(score(strike(), spare(8), f(2, 3))).isEqualTo(20 + 12 + 5);
+    }
+
+    protected int scoreForPerfectGame() {
+	return score(strike(), strike(), strike(), 
+		strike(), strike(), strike(),
+		strike(), strike(), strike(),
+		strike(), strike(), strike());
     }
 
     private Frame strike() {
