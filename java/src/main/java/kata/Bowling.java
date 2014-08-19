@@ -20,8 +20,7 @@ public class Bowling {
 
     public int score() {
 	int score = 0;
-	for (int i = 0; i < FRAMES_IN_A_GAME; i++) {
-	    Frame frame = frames.get(i);
+	for (Frame frame : frames) {
 	    score += frame.score();
 	}
 	return score;
@@ -32,19 +31,15 @@ public class Bowling {
     }
 
     private void makeFramesAwareOfTheirNextFrame() {
-	for (int i = 0; i < actualFramesCount(); i++) {
+	for (int i = 0; i < FRAMES_IN_A_GAME; i++) {
 	    BaseFrame frame = frames.get(i);
 	    BaseFrame nextFrame = frames.get(i + 1);
 	    frame.setNext(nextFrame);
 	}
     }
 
-    private int actualFramesCount() {
-	return frames.size() - 1;
-    }
-
     public static Bowling bowling(BaseFrame... frames) {
-        ArrayList<BaseFrame> listOfFrames = new ArrayList<BaseFrame>(asList(frames));
+        List<BaseFrame> listOfFrames = new ArrayList<BaseFrame>(asList(frames));
         for (int i = frames.length; i <= FRAMES_IN_A_GAME; i++) {
             listOfFrames.add(NULL_FRAME);
         }
