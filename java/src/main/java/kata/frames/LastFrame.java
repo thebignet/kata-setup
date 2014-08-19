@@ -1,6 +1,6 @@
 package kata.frames;
 
-public final class LastFrame extends BaseFrame {
+public final class LastFrame extends LinkedFrame {
     private final int second;
     private final int first;
     private final int third;

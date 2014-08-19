@@ -1,6 +1,6 @@
 package kata.frames;
 
-public class Spare extends BaseFrame {
+public class Spare extends LinkedFrame {
 
     private int first;
 

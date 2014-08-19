@@ -2,7 +2,7 @@ package kata;
 
 import static kata.Bowling.NULL_FRAME;
 import static org.fest.assertions.api.Assertions.assertThat;
-import kata.frames.BaseFrame;
+import kata.frames.LinkedFrame;
 import kata.frames.LastFrame;
 import kata.frames.NormalFrame;
 import kata.frames.Spare;
@@ -40,28 +40,28 @@ public class BowlingTest {
 		lastframe(10, 10, 10));
     }
 
-    private BaseFrame lastframe(int first, int second) {
+    private LinkedFrame lastframe(int first, int second) {
 	return new LastFrame(first, second);
     }
     
-    private BaseFrame lastframe(final int first, final int second, final int third) {
+    private LinkedFrame lastframe(final int first, final int second, final int third) {
 	return new LastFrame(first, second, third);
     }
 
-    private BaseFrame strike() {
+    private LinkedFrame strike() {
 	return new Strike();
     }
 
-    private BaseFrame spare(int first) {
+    private LinkedFrame spare(int first) {
 	return new Spare(first);
     }
 
-    private int score(BaseFrame...frames) {
+    private int score(LinkedFrame...frames) {
 	Bowling bowling = Bowling.bowling(frames);
 	return bowling.score();
     }
 
-    private BaseFrame f(int first, int second) {
+    private LinkedFrame f(int first, int second) {
 	return new NormalFrame(first, second);
     }
 }

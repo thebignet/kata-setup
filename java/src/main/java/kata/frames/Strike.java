@@ -1,6 +1,6 @@
 package kata.frames;
 
-public class Strike extends BaseFrame {
+public class Strike extends LinkedFrame {
 
     @Override
     public int score() {

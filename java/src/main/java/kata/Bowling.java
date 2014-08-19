@@ -5,15 +5,15 @@ import static java.util.Arrays.asList;
 import java.util.ArrayList;
 import java.util.List;
 
-import kata.frames.BaseFrame;
+import kata.frames.LinkedFrame;
 import kata.frames.NormalFrame;
 
 public class Bowling {
     private static final int FRAMES_IN_A_GAME = 10;
-    public static final BaseFrame NULL_FRAME = new NormalFrame(0, 0);
-    private List<BaseFrame> frames;
+    public static final LinkedFrame NULL_FRAME = new NormalFrame(0, 0);
+    private List<LinkedFrame> frames;
 
-    private Bowling(List<BaseFrame> frames) {
+    private Bowling(List<LinkedFrame> frames) {
 	this.frames = frames;
 	lastFrameMustHaveNextFrame();
 	makeFramesAwareOfTheirNextFrame();
@@ -33,14 +33,14 @@ public class Bowling {
 
     private void makeFramesAwareOfTheirNextFrame() {
 	for (int i = 0; i < FRAMES_IN_A_GAME; i++) {
-	    BaseFrame frame = frames.get(i);
-	    BaseFrame nextFrame = frames.get(i + 1);
+	    LinkedFrame frame = frames.get(i);
+	    LinkedFrame nextFrame = frames.get(i + 1);
 	    frame.setNext(nextFrame);
 	}
     }
 
-    public static Bowling bowling(BaseFrame... frames) {
-        List<BaseFrame> listOfFrames = new ArrayList<BaseFrame>(asList(frames));
+    public static Bowling bowling(LinkedFrame... frames) {
+        List<LinkedFrame> listOfFrames = new ArrayList<LinkedFrame>(asList(frames));
         for (int i = frames.length; i <= FRAMES_IN_A_GAME; i++) {
             listOfFrames.add(NULL_FRAME);
         }
