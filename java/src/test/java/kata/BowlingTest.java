@@ -2,7 +2,11 @@ package kata;
 
 import static kata.Bowling.NULL_FRAME;
 import static org.fest.assertions.api.Assertions.assertThat;
-import kata.Frame.BaseFrame;
+import kata.frames.BaseFrame;
+import kata.frames.LastFrame;
+import kata.frames.NormalFrame;
+import kata.frames.Spare;
+import kata.frames.Strike;
 
 import org.junit.Test;
 

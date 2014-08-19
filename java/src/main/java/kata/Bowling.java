@@ -5,7 +5,8 @@ import static java.util.Arrays.asList;
 import java.util.ArrayList;
 import java.util.List;
 
-import kata.Frame.BaseFrame;
+import kata.frames.BaseFrame;
+import kata.frames.NormalFrame;
 
 public class Bowling {
     private static final int FRAMES_IN_A_GAME = 10;

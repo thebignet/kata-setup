@@ -1,6 +1,6 @@
-package kata;
+package kata.frames;
 
-import kata.Frame.BaseFrame;
+import kata.Frame;
 
 public class NormalFrame extends BaseFrame {
 

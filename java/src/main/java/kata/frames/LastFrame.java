@@ -1,6 +1,6 @@
-package kata;
+package kata.frames;
 
-import kata.Frame.BaseFrame;
+import kata.Frame;
 
 public final class LastFrame extends BaseFrame {
     private final int second;
@@ -33,7 +33,7 @@ public final class LastFrame extends BaseFrame {
     }
 
     @Override
-    protected void setNext(BaseFrame nextFrame) {
+    public void setNext(BaseFrame nextFrame) {
         // none
     }
 }
