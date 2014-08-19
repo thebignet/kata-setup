@@ -1,11 +1,8 @@
 package kata.frames;
 
-import kata.Frame;
-
 public class Spare extends BaseFrame {
 
     private int first;
-    private BaseFrame nextFrame;
 
     public Spare(int first) {
         this.first = first;
@@ -21,11 +18,6 @@ public class Spare extends BaseFrame {
     @Override
     public int getFirst() {
         return first;
-    }
-
-    @Override
-    public void setNext(BaseFrame nextFrame) {
-	this.nextFrame = nextFrame;
     }
 
     @Override

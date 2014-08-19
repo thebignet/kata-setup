@@ -1,10 +1,6 @@
 package kata.frames;
 
-import kata.Frame;
-
 public class Strike extends BaseFrame {
-
-    private BaseFrame nextFrame;
 
     @Override
     public int score() {
@@ -15,12 +11,6 @@ public class Strike extends BaseFrame {
     @Override
     public int getFirst() {
 	return 10;
-    }
-
-    @Override
-    public void setNext(BaseFrame nextFrame) {
-	this.nextFrame = nextFrame;
-	
     }
 
     @Override
