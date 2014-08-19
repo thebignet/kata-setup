@@ -9,7 +9,7 @@ import kata.Frame.BaseFrame;
 
 public class Bowling {
     private static final int FRAMES_IN_A_GAME = 10;
-    private static final BaseFrame NULL_FRAME = new NormalFrame(0, 0);
+    public static final BaseFrame NULL_FRAME = new NormalFrame(0, 0);
     private List<BaseFrame> frames;
 
     private Bowling(List<BaseFrame> frames) {
