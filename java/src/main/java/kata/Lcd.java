@@ -4,7 +4,7 @@ public class Lcd {
 
     public String display(int i) {
 	// TODO Auto-generated method stub
-	return "";
+	return " | \n" + " | \n" + " | \n" ;
     }
 
 }
