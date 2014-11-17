@@ -9,6 +9,7 @@ public class Lcd {
     public Lcd() {
 	cases.put(7, new String[]{" _ ", "  |", "  |"});
 	cases.put(1, new String[]{"  |", "  |", "  |"});
+	cases.put(2, new String[]{" _ ", " _|", "|_ "});
     }
     public String display(int i) {
 	String nl = "\n";

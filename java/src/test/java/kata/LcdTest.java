@@ -23,6 +23,15 @@ public class LcdTest {
 		" _ \n" + 
 		"  |\n" + 
 		"  |\n" );
-	
+    }
+    
+    @Test
+    public void for_2() {
+	Lcd lcd = new Lcd();
+	String result = lcd.display(2);
+	Assertions.assertThat(result).isEqualTo(
+		" _ \n" + 
+		" _|\n" + 
+		"|_ \n" );
     }
 }
