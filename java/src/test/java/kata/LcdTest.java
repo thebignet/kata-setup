@@ -12,9 +12,9 @@ public class LcdTest {
         Lcd lcd = new Lcd();
         String result = lcd.display(1);
         Assertions.assertThat(result).isEqualTo(
-        	" | \n" + 
-        		" | \n" + 
-        		" | \n" );
+        		"  |\n" + 
+        		"  |\n" + 
+        		"  |\n" );
         	
     }
 }
