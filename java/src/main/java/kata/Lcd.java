@@ -4,18 +4,19 @@ public class Lcd {
 
     public String display(int i) {
 	String nl = "\n";
-	for (int j = 0; j < 3; j++) {
-	    
-	}
 	String result = "";
 	if (i == 7) {
-	    result +=" _ " + nl + 
-		    "  |" + nl + 
-		    "  |" + nl ;
+	    result +=" _ " + nl;
 	} else {
-	result +="  |" + nl + 
-		"  |" + nl + 
-		"  |" + nl ;
+	    result +="  |" + nl;
+	}
+	for (int j = 1; j < 3; j++) {
+	    if (i == 7) {
+		result +="  |" + nl ;
+	    } else {
+		result +="  |" + nl ;
+	    }
+	    
 	}
 	return result;
     }
