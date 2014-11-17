@@ -7,20 +7,23 @@ public class Lcd {
 	String nl = "\n";
 	String result = "";
 	if (i == 7) {
-	    result +=" _ " + nl;
+	    result +=" _ ";
 	} else {
-	    result +="  |" + nl;
+	    result +="  |";
 	}
+	result +=  nl;
 	if (i == 7) {
-	    result +="  |" + nl;
+	    result +="  |";
 	} else {
-	    result +="  |" + nl;
+	    result +="  |";
 	}
+	result +=  nl;
 	if (i == 7) {
-	    result +="  |" + nl;
+	    result +="  |";
 	} else {
-	    result +="  |" + nl;
+	    result +="  |";
 	}
+	result +=  nl;
 	return result;
     }
 
