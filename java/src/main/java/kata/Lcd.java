@@ -5,8 +5,11 @@ import java.util.Map;
 
 public class Lcd {
 
-    private Map<Integer, String> cases = new HashMap<Integer, String>();
-    
+    private Map<Integer, String[]> cases = new HashMap<Integer, String[]>();
+    public Lcd() {
+	cases.put(7, new String[]{" _ ", "  |", "  |"});
+	// TODO Auto-generated constructor stub
+    }
     public String display(int i) {
 	String nl = "\n";
 	String result = "";
