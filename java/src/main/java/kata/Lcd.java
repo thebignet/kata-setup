@@ -1,7 +1,11 @@
 package kata;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Lcd {
 
+    private Map<Integer, String> cases = new HashMap<Integer, String>();
     
     public String display(int i) {
 	String nl = "\n";
