@@ -3,14 +3,15 @@ package kata;
 public class Lcd {
 
     public String display(int i) {
+	String nl = "\n";
 	if (i == 7) {
-	    return  " _ \n" + 
-		    "  |\n" + 
-		    "  |\n" ;
+	    return  " _ " + nl + 
+		    "  |" + nl + 
+		    "  |" + nl ;
 	}
-	return  "  |\n" + 
-		"  |\n" + 
-		"  |\n" ;
+	return  "  |" + nl + 
+		"  |" + nl + 
+		"  |" + nl ;
     }
 
 }
