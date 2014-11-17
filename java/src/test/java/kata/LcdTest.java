@@ -1,7 +1,5 @@
 package kata;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
@@ -16,5 +14,15 @@ public class LcdTest {
         		"  |\n" + 
         		"  |\n" );
         	
+    }
+    @Test
+    public void for_7() {
+	Lcd lcd = new Lcd();
+	String result = lcd.display(7);
+	Assertions.assertThat(result).isEqualTo(
+		" _ \n" + 
+		"  |\n" + 
+		"  |\n" );
+	
     }
 }
