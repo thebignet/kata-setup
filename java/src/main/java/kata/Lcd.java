@@ -8,29 +8,15 @@ public class Lcd {
     private Map<Integer, String[]> cases = new HashMap<Integer, String[]>();
     public Lcd() {
 	cases.put(7, new String[]{" _ ", "  |", "  |"});
-	// TODO Auto-generated constructor stub
+	cases.put(1, new String[]{"  |", "  |", "  |"});
     }
     public String display(int i) {
 	String nl = "\n";
 	String result = "";
-	if (i == 7) {
-	    result +=" _ ";
-	} else {
-	    result +="  |";
+	for (int j = 0; j < 3; j++) {
+	    result += cases.get(i)[j];
+	    result +=  nl;
 	}
-	result +=  nl;
-	if (i == 7) {
-	    result +="  |";
-	} else {
-	    result +="  |";
-	}
-	result +=  nl;
-	if (i == 7) {
-	    result +="  |";
-	} else {
-	    result +="  |";
-	}
-	result +=  nl;
 	return result;
     }
 
