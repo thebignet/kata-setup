@@ -15,11 +15,7 @@ public class Lcd {
 	String nl = "\n";
 	String result = "";
 	for (int line = 0; line < 3; line++) {
-	    if (i == 22) {
-		result += appendDigit(i / 10, result, line);
-		result += appendDigit(i % 10, result, line);
-		
-	    } else if (i == 77) {
+	    if (i > 10) {
 		result += appendDigit(i / 10, result, line);
 		result += appendDigit(i % 10, result, line);
 		    
