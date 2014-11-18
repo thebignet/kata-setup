@@ -1,7 +1,5 @@
 package kata;
 
-import static java.lang.String.valueOf;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,9 +17,17 @@ public class Lcd {
     }
 
     public String display(int i) {
+	return display(String.valueOf(i));
+    }
+
+    protected String display(String number) {
+	return display(number.toCharArray());
+    }
+
+    protected String display(char[] digits) {
 	StringBuilder r = new StringBuilder();
 	for (int line : lines) {
-	    for (char digit : valueOf(i).toCharArray()) {
+	    for (char digit : digits) {
 		r.append(lcdDigit(digit, line));
 	    }
 	    r.append(NL);
