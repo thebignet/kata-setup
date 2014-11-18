@@ -17,8 +17,8 @@ public class Lcd {
 	String nl = "\n";
 	String cumulatitveResult = "";
 	for (int line = 0; line < 3; line++) {
-	    for (int pos = numberOfDigits(i); pos > 0; pos--) {
-	        int digitAtPos = i % pow(pos) / pow(pos-1);
+	    for (int pos = 0; pos < numberOfDigits(i); pos++) {
+	        int digitAtPos = i % pow(numberOfDigits(i) -pos) / pow(numberOfDigits(i) -pos-1);
 	        cumulatitveResult += appendDigit(digitAtPos, cumulatitveResult, line);
 	        
 	    }
