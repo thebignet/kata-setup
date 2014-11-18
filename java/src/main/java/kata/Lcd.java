@@ -17,7 +17,7 @@ public class Lcd {
 	for (int line = 0; line < 3; line++) {
 	    if (i > 10) {
 		result += appendDigit(i / 10, result, line);
-		result += appendDigit(i % 10, result, line);
+		result += appendDigit(i/10 / 1, result, line);
 		    
 	    } else {
 		result += appendDigit(i, result, line);
