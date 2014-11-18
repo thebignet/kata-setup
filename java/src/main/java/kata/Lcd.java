@@ -17,11 +17,14 @@ public class Lcd {
 	String nl = "\n";
 	String cumulatitveResult = "";
 	for (int line = 0; line < 3; line++) {
-	    for (int pos = 0; pos < numberOfDigits(i); pos++) {
-//	        int digitAtPos = i % pow(numberOfDigits(i) -pos) / pow(numberOfDigits(i) -pos-1);
-	        int digitAtPos = Integer.valueOf(String.valueOf(i).toCharArray()[pos] + "");
-	        cumulatitveResult += appendDigit(digitAtPos, cumulatitveResult, line);
-	        
+//	    for (int pos = 0; pos < numberOfDigits(i); pos++) {
+//	        int digitAtPos = Integer.valueOf(String.valueOf(i).toCharArray()[pos] + "");
+//	        cumulatitveResult += appendDigit(digitAtPos, cumulatitveResult, line);
+//	        
+//	    }
+	    for (char c : String.valueOf(i).toCharArray()) {
+		cumulatitveResult += appendDigit(Integer.valueOf(c + ""), cumulatitveResult, line);
+		
 	    }
 	    cumulatitveResult += nl;
 	}
