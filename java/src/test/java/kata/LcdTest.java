@@ -46,4 +46,9 @@ public class LcdTest {
 		"  |" + "  |" + NL );
     }
     
+//    @Test public void 
+//    div() throws Exception {
+//	assertT 
+//    }
+    
 }
