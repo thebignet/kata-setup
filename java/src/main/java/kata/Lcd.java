@@ -16,12 +16,12 @@ public class Lcd {
 	String result = "";
 	for (int line = 0; line < 3; line++) {
 	    if (i == 22) {
-		result += appendDigit(2, result, line);
-		result += appendDigit(2, result, line);
+		result += appendDigit(i / 10, result, line);
+		result += appendDigit(i % 10, result, line);
 		
 	    } else if (i == 77) {
-		result += appendDigit(7, result, line);
-		result += appendDigit(7, result, line);
+		result += appendDigit(i / 10, result, line);
+		result += appendDigit(i % 10, result, line);
 		    
 	    } else {
 		result += appendDigit(i, result, line);
