@@ -52,6 +52,10 @@ public class LcdTest {
     div() throws Exception {
 	assertThat(21 / 2).isEqualTo(10); 
 	assertThat(21 % 10).isEqualTo(1); 
+	assertThat(572 % 10).isEqualTo(2); 
+	assertThat(572 / 10).isEqualTo(57); 
+	assertThat(572 / 100).isEqualTo(5); 
+	assertThat(572 % 100).isEqualTo(72); 
     }
     
 }
