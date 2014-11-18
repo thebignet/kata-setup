@@ -20,15 +20,19 @@ public class Lcd {
 		result += cases.get(2)[j];
 		
 	    } else if (i == 77) {
-		    result += cases.get(7)[j];
-		    result += cases.get(7)[j];
+		result += cases.get(7)[j];
+		result += cases.get(7)[j];
 		    
 	    } else {
-		result += cases.get(i)[j];
+		result = appendDigit(i, result, j);
 		
 	    }
 	    result +=  nl;
 	}
+	return result;
+    }
+    protected String appendDigit(int i, String result, int line) {
+	result += cases.get(i)[line];
 	return result;
     }
 
