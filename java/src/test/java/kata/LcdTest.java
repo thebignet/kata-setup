@@ -49,13 +49,13 @@ public class LcdTest {
     }
     
     @Test
-    public void for_777() {
+    public void for_172() {
 	Lcd lcd = new Lcd();
-	String result = lcd.display(177);
+	String result = lcd.display(172);
 	Assertions.assertThat(result).isEqualTo(
 		"  |" + " _ " + " _ " + NL + 
-		"  |" + "  |" + "  |" + NL + 
-		"  |" + "  |" + "  |" + NL );
+		"  |" + "  |" + " _|" + NL + 
+		"  |" + "  |" + "|_ " + NL );
     }
     
     @Test public void 

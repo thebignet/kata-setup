@@ -7,9 +7,9 @@ public class Lcd {
 
     private Map<Integer, String[]> cases = new HashMap<Integer, String[]>();
     public Lcd() {
-	cases.put(7, new String[]{" _ ", "  |", "  |"});
 	cases.put(1, new String[]{"  |", "  |", "  |"});
 	cases.put(2, new String[]{" _ ", " _|", "|_ "});
+	cases.put(7, new String[]{" _ ", "  |", "  |"});
     }
     public String display(int i) {
 	String nl = "\n";
