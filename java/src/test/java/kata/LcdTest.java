@@ -5,6 +5,8 @@ import org.junit.Test;
 
 public class LcdTest {
 
+    private static final String NL = "\n";
+
     @Test
     public void for_one() {
         Lcd lcd = new Lcd();
@@ -20,9 +22,9 @@ public class LcdTest {
 	Lcd lcd = new Lcd();
 	String result = lcd.display(7);
 	Assertions.assertThat(result).isEqualTo(
-		" _ \n" + 
-		"  |\n" + 
-		"  |\n" );
+		" _ " + NL + 
+		"  |" + NL + 
+		"  |" + NL );
     }
     
     @Test
@@ -30,8 +32,8 @@ public class LcdTest {
 	Lcd lcd = new Lcd();
 	String result = lcd.display(22);
 	Assertions.assertThat(result).isEqualTo(
-		" _ " + " _ " + "\n" + 
-		" _|" + " _|" + "\n" + 
-		"|_ " + "|_ " + "\n" );
+		" _ " + " _ " + NL + 
+		" _|" + " _|" + NL + 
+		"|_ " + "|_ " + NL );
     }
 }
