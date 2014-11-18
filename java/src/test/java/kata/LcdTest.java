@@ -1,5 +1,7 @@
 package kata;
 
+import static org.fest.assertions.api.Assertions.assertThat;
+
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
@@ -46,9 +48,10 @@ public class LcdTest {
 		"  |" + "  |" + NL );
     }
     
-//    @Test public void 
-//    div() throws Exception {
-//	assertT 
-//    }
+    @Test public void 
+    div() throws Exception {
+	assertThat(21 / 2).isEqualTo(10); 
+	assertThat(21 % 10).isEqualTo(1); 
+    }
     
 }
