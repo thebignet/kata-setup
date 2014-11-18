@@ -9,6 +9,7 @@ public class Lcd {
 
     private static final int LCD_LINES = 3;
     private Map<Character, String[]> cases = new HashMap<>();
+    private static final Integer[] lines = {0, 1, 2};		
 
     public Lcd() {
 	cases.put('1', new String[] { "   ", "  |", "  |" });
@@ -19,7 +20,7 @@ public class Lcd {
     public String display(int i) {
 	String nl = "\n";
 	StringBuilder r = new StringBuilder();
-	for (int line = 0; line < LCD_LINES; line++) {
+	for (int line : lines) {
 	    for (char digit : valueOf(i).toCharArray()) {
 		r.append(lcdDigit(digit, line));
 	    }
