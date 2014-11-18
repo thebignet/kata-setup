@@ -48,6 +48,16 @@ public class LcdTest {
 		"  |" + "  |" + NL );
     }
     
+    @Test
+    public void for_777() {
+	Lcd lcd = new Lcd();
+	String result = lcd.display(777);
+	Assertions.assertThat(result).isEqualTo(
+		" _ " + " _ " + " _ " + NL + 
+		"  |" + "  |" + "  |" + NL + 
+		"  |" + "  |" + "  |" + NL );
+    }
+    
     @Test public void 
     div() throws Exception {
 	assertThat(21 / 2).isEqualTo(10); 
