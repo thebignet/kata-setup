@@ -15,16 +15,20 @@ public class Lcd {
 
     public String display(int i) {
 	String nl = "\n";
-	String result = "";
+	String cumulatitveResult = "";
 	for (int line = 0; line < 3; line++) {
-	    for (int pos = String.valueOf(i).length(); pos > 0; pos--) {
-	        int digit = i % pow(pos) / pow(pos-1);
-	        result += appendDigit(digit, result, line);
+	    for (int pos = numberOfDigits(i); pos > 0; pos--) {
+	        int digitAtPos = i % pow(pos) / pow(pos-1);
+	        cumulatitveResult += appendDigit(digitAtPos, cumulatitveResult, line);
 	        
 	    }
-	    result += nl;
+	    cumulatitveResult += nl;
 	}
-	return result;
+	return cumulatitveResult;
+    }
+
+    protected int numberOfDigits(int i) {
+	return String.valueOf(i).length();
     }
 
     protected int pow(int pos) {
