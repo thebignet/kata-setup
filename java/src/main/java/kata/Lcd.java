@@ -18,14 +18,14 @@ public class Lcd {
 	String cumulatitveResult = "";
 	for (int line = 0; line < 3; line++) {
 	    for (char c : String.valueOf(i).toCharArray()) {
-		cumulatitveResult += appendDigit(c, cumulatitveResult, line);
+		cumulatitveResult += lcdDigit(c, line);
 	    }
 	    cumulatitveResult += nl;
 	}
 	return cumulatitveResult;
     }
 
-    protected String appendDigit(char digit, String result, int line) {
+    protected String lcdDigit(char digit, int line) {
 	return cases.get(digit)[line];
     }
 
