@@ -36,4 +36,14 @@ public class LcdTest {
 		" _|" + " _|" + NL + 
 		"|_ " + "|_ " + NL );
     }
+    @Test
+    public void for_77() {
+	Lcd lcd = new Lcd();
+	String result = lcd.display(77);
+	Assertions.assertThat(result).isEqualTo(
+		" _ " + " _ " + NL + 
+		"  |" + "  |" + NL + 
+		"  |" + "  |" + NL );
+    }
+    
 }
