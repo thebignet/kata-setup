@@ -17,22 +17,18 @@ public class Lcd {
 	String nl = "\n";
 	String result = "";
 	for (int line = 0; line < 3; line++) {
-	    if (i > 100) {
-		for (int pos = String.valueOf(i).length(); pos > 0; pos--) {
-		    result += appendDigit(i % (int)Math.pow(10, pos) / (int)Math.pow(10, pos-1), result, line);
-		    
-		}
-	    } else if (i > 10) {
-		result += appendDigit(i % 100 / 10, result, line);
-		result += appendDigit(i % 10 / 1, result, line);
-
-	    } else {
-		result += appendDigit(i, result, line);
-
+	    for (int pos = String.valueOf(i).length(); pos > 0; pos--) {
+	        int digit = i % pow(pos) / pow(pos-1);
+	        result += appendDigit(digit, result, line);
+	        
 	    }
 	    result += nl;
 	}
 	return result;
+    }
+
+    protected int pow(int pos) {
+	return (int)Math.pow(10, pos);
     }
 
     protected String appendDigit(int digit, String result, int line) {
