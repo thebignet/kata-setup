@@ -66,6 +66,7 @@ public class LcdTest {
 	assertThat(572 / 10).isEqualTo(57); 
 	assertThat(572 / 100).isEqualTo(5); 
 	assertThat(572 % 100).isEqualTo(72); 
+	assertThat(Math.floor(Math.log10(12345))).isEqualTo(4);
     }
     
 }
