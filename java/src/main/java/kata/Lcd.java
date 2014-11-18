@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class Lcd {
 
-    private static final int LCD_LINES = 3;
     private Map<Character, String[]> cases = new HashMap<>();
     private static final Integer[] lines = {0, 1, 2};		
     private static final String NL = "\n";
@@ -25,14 +24,14 @@ public class Lcd {
     }
 
     protected String display(char[] digits) {
-	StringBuilder r = new StringBuilder();
+	StringBuilder s = new StringBuilder();
 	for (int line : lines) {
 	    for (char digit : digits) {
-		r.append(lcdDigit(digit, line));
+		s.append(lcdDigit(digit, line));
 	    }
-	    r.append(NL);
+	    s.append(NL);
 	}
-	return r.toString();
+	return s.toString();
     }
 
     protected String lcdDigit(char digit, int line) {

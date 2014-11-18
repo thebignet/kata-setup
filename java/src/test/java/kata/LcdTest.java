@@ -56,6 +56,7 @@ public class LcdTest {
 		"   " + " _ " + " _ " + NL + 
 		"  |" + "  |" + " _|" + NL + 
 		"  |" + "  |" + "|_ " + NL );
+	System.out.println(result);
     }
     
     @Test public void 
