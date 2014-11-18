@@ -15,7 +15,14 @@ public class Lcd {
 	String nl = "\n";
 	String result = "";
 	for (int j = 0; j < 3; j++) {
-	    result += cases.get(i)[j];
+	    if (i == 22) {
+		result += cases.get(2)[j];
+		result += cases.get(2)[j];
+		
+	    } else {
+		result += cases.get(i)[j];
+		
+	    }
 	    result +=  nl;
 	}
 	return result;
