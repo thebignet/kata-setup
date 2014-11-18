@@ -25,14 +25,6 @@ public class Lcd {
 	return cumulatitveResult;
     }
 
-    protected int numberOfDigits(int i) {
-	return String.valueOf(i).length();
-    }
-
-    protected int pow(int pos) {
-	return (int)Math.pow(10, pos);
-    }
-
     protected String appendDigit(char digit, String result, int line) {
 	return cases.get(digit)[line];
     }
