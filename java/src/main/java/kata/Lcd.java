@@ -7,7 +7,8 @@ import java.util.Map;
 
 public class Lcd {
 
-    private Map<Character, String[]> cases = new HashMap<Character, String[]>();
+    private static final int LCD_LINES = 3;
+    private Map<Character, String[]> cases = new HashMap<>();
 
     public Lcd() {
 	cases.put('1', new String[] { "   ", "  |", "  |" });
@@ -18,9 +19,9 @@ public class Lcd {
     public String display(int i) {
 	String nl = "\n";
 	StringBuilder r = new StringBuilder();
-	for (int line = 0; line < 3; line++) {
-	    for (char c : valueOf(i).toCharArray()) {
-		r.append(lcdDigit(c, line));
+	for (int line = 0; line < LCD_LINES; line++) {
+	    for (char digit : valueOf(i).toCharArray()) {
+		r.append(lcdDigit(digit, line));
 	    }
 	    r.append(nl);
 	}
