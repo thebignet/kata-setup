@@ -51,9 +51,9 @@ public class LcdTest {
     @Test
     public void for_777() {
 	Lcd lcd = new Lcd();
-	String result = lcd.display(777);
+	String result = lcd.display(177);
 	Assertions.assertThat(result).isEqualTo(
-		" _ " + " _ " + " _ " + NL + 
+		"  |" + " _ " + " _ " + NL + 
 		"  |" + "  |" + "  |" + NL + 
 		"  |" + "  |" + "  |" + NL );
     }
