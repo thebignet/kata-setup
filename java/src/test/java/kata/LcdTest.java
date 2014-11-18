@@ -14,7 +14,7 @@ public class LcdTest {
         Lcd lcd = new Lcd();
         String result = lcd.display(1);
         Assertions.assertThat(result).isEqualTo(
-        		"  |\n" + 
+        		"   \n" + 
         		"  |\n" + 
         		"  |\n" );
         	
@@ -53,7 +53,7 @@ public class LcdTest {
 	Lcd lcd = new Lcd();
 	String result = lcd.display(172);
 	Assertions.assertThat(result).isEqualTo(
-		"  |" + " _ " + " _ " + NL + 
+		"   " + " _ " + " _ " + NL + 
 		"  |" + "  |" + " _|" + NL + 
 		"  |" + "  |" + "|_ " + NL );
     }
