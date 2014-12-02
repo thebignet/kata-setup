@@ -12,14 +12,12 @@ public class PrimesTest {
     
     @Test
     public void forNumbersBelow2_noPrimes() {
-	int i = 1;
-	Assertions.assertThat(factorsOf(i)).isEmpty();
+	Assertions.assertThat(factorsOf(1)).isEmpty();
     }
 
     @Test public void 
     for2_listOf2s() throws Exception {
-	int i = 2;
-	Assertions.assertThat(factorsOf(i)).contains(2);
+	Assertions.assertThat(factorsOf(2)).contains(2);
     }
 
     private List<Integer> factorsOf(int number) {
