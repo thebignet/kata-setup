@@ -10,7 +10,7 @@ import org.junit.Test;
 public class PrimesTest {
 
     @Test
-    public void test() {
+    public void forNumbersBelow2_noPrimes() {
 	Primes primes = new Primes();
 	List<Integer> factors = primes.factorsOf(1);
 	Assertions.assertThat(factors).isEmpty();
