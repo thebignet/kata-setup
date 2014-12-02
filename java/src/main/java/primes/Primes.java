@@ -15,17 +15,20 @@ public class Primes {
 	    factors.add(potentialPrime);
 	    i = i/potentialPrime;
 	}
-	while (i / 3 >= 1 && i % 3 == 0) {
-	    factors.add(3);
-	    i = i/3;
+	potentialPrime++;
+	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
+	    factors.add(potentialPrime);
+	    i = i/potentialPrime;
 	}
-	while (i / 4 >= 1 && i % 4 == 0) {
-	    factors.add(4);
-	    i = i/4;
+	potentialPrime++;
+	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
+	    factors.add(potentialPrime);
+	    i = i/potentialPrime;
 	}
-	while (i / 5 >= 1 && i % 5 == 0) {
-	    factors.add(5);
-	    i = i/5;
+	potentialPrime++;
+	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
+	    factors.add(potentialPrime);
+	    i = i/potentialPrime;
 	}
 	return factors;
     }
