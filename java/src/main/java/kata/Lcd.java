@@ -5,15 +5,15 @@ import java.util.Map;
 
 public class Lcd {
 
-    private Map<Character, String[]> cases = new HashMap<>();
+    @SuppressWarnings("serial")
+    private Map<Character, String[]> cases = new HashMap<Character,String[]>() {{
+	put('1', new String[] { "   ", "  |", "  |" });
+	put('2', new String[] { " _ ", " _|", "|_ " });
+	put('7', new String[] { " _ ", "  |", "  |" });
+    }};
+    
     private static final Integer[] lines = {0, 1, 2};		
     private static final String NL = "\n";
-
-    public Lcd() {
-	cases.put('1', new String[] { "   ", "  |", "  |" });
-	cases.put('2', new String[] { " _ ", " _|", "|_ " });
-	cases.put('7', new String[] { " _ ", "  |", "  |" });
-    }
 
     public String display(int i) {
 	return display(String.valueOf(i));
