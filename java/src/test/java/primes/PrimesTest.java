@@ -34,7 +34,7 @@ public class PrimesTest {
     @Test public void 
     testname() throws Exception {
 	assertEquals(4, 8 / 2); 
-	assertEquals(0, 8 % 2); 
+	assertEquals(0, 6 % 2); 
 	assertEquals(3, 7 / 2); 
 	assertEquals(1, 7 % 2); 
     }
