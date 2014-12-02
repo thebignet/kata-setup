@@ -19,6 +19,7 @@ public class PrimesTest {
     for2_listOf2s() throws Exception {
 	Assertions.assertThat(factorsOf(2)).contains(2);
 	Assertions.assertThat(factorsOf(3)).contains(3);
+	Assertions.assertThat(factorsOf(5)).contains(5);
     }
 
     private List<Integer> factorsOf(int number) {
