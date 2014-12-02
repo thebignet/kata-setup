@@ -1,5 +1,7 @@
 package primes;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
@@ -12,14 +14,19 @@ public class PrimesTest {
     
     @Test
     public void forNumbersBelow2_noPrimes() {
-	Assertions.assertThat(factorsOf(1)).isEmpty();
+	assertThat(factorsOf(1)).isEmpty();
     }
 
     @Test public void 
-    for2_listOf2s() throws Exception {
-	Assertions.assertThat(factorsOf(2)).contains(2);
-	Assertions.assertThat(factorsOf(3)).contains(3);
-	Assertions.assertThat(factorsOf(5)).contains(5);
+    forPrimes_listOfOnePrime() throws Exception {
+	assertThat(factorsOf(2)).contains(2);
+	assertThat(factorsOf(3)).contains(3);
+	assertThat(factorsOf(5)).contains(5);
+    }
+    
+    @Test public void 
+    forMultiplesOfPrimes_thePrimeIsRepeated() throws Exception {
+	 
     }
 
     private List<Integer> factorsOf(int number) {
