@@ -10,25 +10,12 @@ public class Primes {
 
     public List<Integer> factorsOf(int i) {
 	List<Integer> factors = new ArrayList<Integer>();
-	int potentialPrime = 2;
-	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
-	    factors.add(potentialPrime);
-	    i = i/potentialPrime;
-	}
-	potentialPrime++;
-	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
-	    factors.add(potentialPrime);
-	    i = i/potentialPrime;
-	}
-	potentialPrime++;
-	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
-	    factors.add(potentialPrime);
-	    i = i/potentialPrime;
-	}
-	potentialPrime++;
-	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
-	    factors.add(potentialPrime);
-	    i = i/potentialPrime;
+	for (int potentialPrime = 2; potentialPrime <=i; potentialPrime++) {
+	    while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
+		factors.add(potentialPrime);
+		i = i/potentialPrime;
+	    }
+	    
 	}
 	return factors;
     }
