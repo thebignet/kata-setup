@@ -1,19 +1,22 @@
 package primes;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class PrimesTest {
 
+    // 0
+    
     @Test
     public void forNumbersBelow2_noPrimes() {
 	Primes primes = new Primes();
-	List<Integer> factors = primes.factorsOf(1);
-	Assertions.assertThat(factors).isEmpty();
+	Assertions.assertThat(primes.factorsOf(1)).isEmpty();
+    }
+    
+    @Test public void 
+    testname() throws Exception {
+	Primes primes = new Primes();
+	Assertions.assertThat(primes.factorsOf(2)).contains(2);
     }
 
 }
