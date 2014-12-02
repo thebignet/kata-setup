@@ -16,6 +16,12 @@ public class Primes {
 		i = i/2;
 	    }
 	}
+	if (i % 3 == 0) {
+	    while (i / 3 >= 1) {
+		factors.add(3);
+		i = i/3;
+	    }
+	}
 	if (i == 3) factors.add(3);
 	if (i == 5) factors.add(5);
 	return factors;

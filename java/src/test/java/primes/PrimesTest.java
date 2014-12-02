@@ -29,15 +29,9 @@ public class PrimesTest {
     forMultiplesOfPrimes_thePrimeIsRepeated() throws Exception {
 	 assertThat(factorsOf(4)).containsExactly(2, 2);
 	 assertThat(factorsOf(8)).containsExactly(2, 2, 2);
+	 assertThat(factorsOf(27)).containsExactly(3, 3, 3);
     }
     
-    @Test public void 
-    testname() throws Exception {
-	assertEquals(4, 8 / 2); 
-	assertEquals(0, 6 % 2); 
-	assertEquals(3, 7 / 2); 
-	assertEquals(1, 7 % 2); 
-    }
 
     private List<Integer> factorsOf(int number) {
 	return primes.factorsOf(number);
