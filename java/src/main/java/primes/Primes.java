@@ -10,9 +10,10 @@ public class Primes {
 
     public List<Integer> factorsOf(int i) {
 	List<Integer> factors = new ArrayList<Integer>();
-	while (i / 2 >= 1 && i % 2 == 0) {
-	    factors.add(2);
-	    i = i/2;
+	int potentialPrime = 2;
+	while (i / potentialPrime >= 1 && i % potentialPrime == 0) {
+	    factors.add(potentialPrime);
+	    i = i/potentialPrime;
 	}
 	while (i / 3 >= 1 && i % 3 == 0) {
 	    factors.add(3);
