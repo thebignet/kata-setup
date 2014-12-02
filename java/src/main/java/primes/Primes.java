@@ -18,7 +18,10 @@ public class Primes {
 	    factors.add(3);
 	    i = i/3;
 	}
-	if (i == 5) factors.add(5);
+	while (i / 5 >= 1 && i % 5 == 0) {
+	    factors.add(5);
+	    i = i/5;
+	}
 	return factors;
     }
 

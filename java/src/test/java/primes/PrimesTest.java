@@ -30,13 +30,13 @@ public class PrimesTest {
 	 assertThat(factorsOf(4)).containsExactly(2, 2);
 	 assertThat(factorsOf(8)).containsExactly(2, 2, 2);
 	 assertThat(factorsOf(27)).containsExactly(3, 3, 3);
+	 assertThat(factorsOf(25)).containsExactly(5, 5);
     }
     
     @Test public void 
     listsAllPrimesInNumber() throws Exception {
 	assertThat(factorsOf(6)).containsExactly(2, 3);
 	assertThat(factorsOf(15)).containsExactly(3, 5);
-	 
     }
     
 
