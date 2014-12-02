@@ -32,6 +32,12 @@ public class PrimesTest {
 	 assertThat(factorsOf(27)).containsExactly(3, 3, 3);
     }
     
+    @Test public void 
+    listsAllPrimesInNumber() throws Exception {
+	assertThat(factorsOf(6)).containsExactly(2, 3);
+	 
+    }
+    
 
     private List<Integer> factorsOf(int number) {
 	return primes.factorsOf(number);
