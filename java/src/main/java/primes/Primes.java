@@ -10,8 +10,8 @@ public class Primes {
 
     public List<Integer> factorsOf(int number) {
 	List<Integer> factors = new ArrayList<Integer>();
-	for (int potentialPrime = 2; potentialPrime <=number; potentialPrime++) {
-	    while (number >= potentialPrime && isDividableBy(number, potentialPrime)) {
+	for (int potentialPrime = 2; potentialPrime <= number; potentialPrime++) {
+	    while (number > 1 && isDividableBy(number, potentialPrime)) {
 		factors.add(potentialPrime);
 		number = number/potentialPrime;
 	    }
