@@ -35,6 +35,7 @@ public class PrimesTest {
     @Test public void 
     listsAllPrimesInNumber() throws Exception {
 	assertThat(factorsOf(6)).containsExactly(2, 3);
+	assertThat(factorsOf(15)).containsExactly(3, 5);
 	 
     }
     
