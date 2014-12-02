@@ -22,9 +22,6 @@ public class Primes {
 		factors.add(2);
 		i = i/2;
 	    }
-//	    factors.add(2 / 1);
-//	    factors.add(4/ 2);
-//	    factors.add(8/ 4);
 	}
 	if (i == 3) factors.add(3);
 	if (i == 5) factors.add(5);

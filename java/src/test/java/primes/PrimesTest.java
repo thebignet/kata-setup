@@ -19,14 +19,14 @@ public class PrimesTest {
 
     @Test public void 
     forPrimes_listOfOnePrime() throws Exception {
-	assertThat(factorsOf(2)).contains(2);
-	assertThat(factorsOf(3)).contains(3);
-	assertThat(factorsOf(5)).contains(5);
+	assertThat(factorsOf(2)).containsExactly(2);
+	assertThat(factorsOf(3)).containsExactly(3);
+	assertThat(factorsOf(5)).containsExactly(5);
     }
     
     @Test public void 
     forMultiplesOfPrimes_thePrimeIsRepeated() throws Exception {
-	 assertThat(factorsOf(4)).contains(2, 2);
+	 assertThat(factorsOf(4)).containsExactly(2, 2);
 	 assertThat(factorsOf(8)).containsExactly(2, 2, 2);
     }
 
