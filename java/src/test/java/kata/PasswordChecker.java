@@ -5,15 +5,46 @@ import java.util.List;
 
 public class PasswordChecker {
 
+    private final class LetterValidator implements Validator {
+	@Override
+	public void validate(String password, List<String> errors) {
+	if (!containsLetter(password))
+	    errors.add("Password must contain a letter");
+	}
+    }
+
+    public class DigitValidator implements Validator {
+
+	@Override
+	public void validate(String password, List<String> errors) {
+	    if (! password.matches(".*\\d.*"))
+		errors.add(ONE_DIGIT);
+	}
+
+    }
+
     static final String MIN_7_CHARS = "Password needs to be 7 chars long";
     static final String ONE_DIGIT = "Password needs to contain atleast one digit";
     private static final String MIN_10_CHARS = null;
 
+    
+    private final class LengthValidator implements Validator {
+	public void validate(String password, List<String> errors) {
+	if (password.length() < 7)
+	    errors.add(MIN_7_CHARS);
+	
+	}
+    }
+
+    interface Validator {
+	void validate(String password, List<String> errors);
+    }
+    
     public List<String> check(String password) {
         List<String> errors = emptyList();
-        addUnless(password.length() >= 7, MIN_7_CHARS, errors);
-        addUnless(containsDigit(password), ONE_DIGIT, errors);
-        addUnless(containsLetter(password), ONE_DIGIT, errors);
+        new LengthValidator().validate(password, errors);
+        new DigitValidator().validate(password, errors);
+        new LetterValidator().validate(password, errors);
         return errors;
     }
 
@@ -40,10 +71,6 @@ public class PasswordChecker {
 
     private boolean containsLetter(String password) {
         return password.matches(".*[a-zA-Z].*");
-    }
-
-    private boolean containsDigit(String password) {
-        return password.matches(".*\\d.*");
     }
 
 }
