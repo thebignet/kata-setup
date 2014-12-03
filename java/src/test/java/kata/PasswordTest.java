@@ -1,7 +1,5 @@
 package kata;
 
-import static kata.PasswordChecker.MIN_7_CHARS;
-import static kata.PasswordChecker.ONE_DIGIT;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
@@ -16,7 +14,7 @@ public class PasswordTest {
     must_have_7_atleast_chars() {
         assertFalse(check("h"));
         assertFalse(check("helpme"));
-        assertThat(errorsFor("helpme")).contains(MIN_7_CHARS);
+        assertThat(errorsFor("helpme")).contains("Password needs to be 7 chars long");
         assertTrue(check("helpme7"));
         assertTrue(check("helpme88"));
     }
@@ -25,7 +23,7 @@ public class PasswordTest {
     @Test public void 
     must_contain_atleast_one_digit() throws Exception {
         assertFalse(check("helpmenow"));
-        assertThat(errorsFor("helpmenow")).contains(ONE_DIGIT);
+        assertThat(errorsFor("helpmenow")).contains("Password needs to contain atleast one digit");
     }
     
     @Test public void 
