@@ -41,17 +41,13 @@ public class TennisSpec {
     
     @Test
     public void playerBScoresTrice() {
-	tennis.playerBScores();
-	tennis.playerBScores();
-	tennis.playerBScores();
+	scoreATimes(3);
 	assertThat(tennis.score()).isEqualTo("love-forty");
     }
     
     @Test
     public void playerBWinsGame() {
-	tennis.playerBScores();
-	tennis.playerBScores();
-	tennis.playerBScores();
+	scoreATimes(3);
 	tennis.playerBScores();
 	assertThat(tennis.score()).isEqualTo("game-B");
     }
@@ -66,9 +62,7 @@ public class TennisSpec {
     
     @Test
     public void deuce() {
-	tennis.playerBScores();
-	tennis.playerBScores();
-	tennis.playerBScores();
+	scoreATimes(3);
 	tennis.playerAScores();
 	tennis.playerAScores();
 	tennis.playerAScores();
@@ -77,9 +71,7 @@ public class TennisSpec {
     
     @Test
     public void advantageA() {
-	tennis.playerBScores();
-	tennis.playerBScores();
-	tennis.playerBScores();
+	scoreATimes(3);
 
 	tennis.playerAScores();
 	tennis.playerAScores();
@@ -87,6 +79,13 @@ public class TennisSpec {
 	tennis.playerAScores();
 	
 	assertThat(tennis.score()).isEqualTo("advantage-A");
+    }
+
+    private void scoreATimes(int times) {
+	for (int i = 0; i < times; i++) {
+	    
+	    tennis.playerBScores();
+	}
     }
 
 
