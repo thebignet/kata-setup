@@ -88,10 +88,6 @@ public class TennisSpec {
 	playerBScores();
 	assertScoreIs("advantage-B");
     }
-
-    private void playerAScores() {
-	tennis.playerAScores();
-    }
     
     @Test
     public void deuceAfterMorePlay() {
@@ -107,10 +103,6 @@ public class TennisSpec {
 	playerAScores();
 	playerBScores();
 	assertScoreIs("deuce");
-    }
-
-    private void playerBScores() {
-	tennis.playerBScores();
     }
     
     @Test public void 
@@ -139,6 +131,14 @@ public class TennisSpec {
     }
 
 
+    private void playerAScores() {
+	tennis = tennis.playerAScores();
+    }
+    
+    private void playerBScores() {
+	tennis = tennis.playerBScores();
+    }
+    
     private void assertScoreIs(String expectedScore) {
 	assertThat(tennis.score()).isEqualTo(expectedScore);
     }

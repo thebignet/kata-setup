@@ -7,12 +7,14 @@ public class Tennis {
     public Tennis() {
     }
 
-    void playerBScores() {
+    Tennis playerBScores() {
 	playerBBalls++;
+	return this;
     }
 
-    void playerAScores() {
+    Tennis playerAScores() {
 	playerABalls++;
+	return this;
     }
 
     String score() {
