@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class TennisSpec {
 
-    private int playerOneBalls;
+    private int playerABalls;
     private int playerBBalls;
 
     @Test
@@ -26,10 +26,6 @@ public class TennisSpec {
 	assertThat(score()).isEqualTo("love-fifteen");
     }
     
-    private void playerBScores() {
-	playerBBalls++;
-    }
-
     @Test
     public void playAScoresTwice() {
 	playerAScores();
@@ -37,16 +33,22 @@ public class TennisSpec {
 	assertThat(score()).isEqualTo("thirteen-love");
     }
 
-    private void playerAScores() {
-	playerOneBalls++;
-    }
-
     private String score() {
 	if (playerBBalls == 1) return "love-fifteen";
-	if (playerOneBalls == 2) return "thirteen-love";
-	if (playerOneBalls == 1) return "fifteen-love";
-	if (playerOneBalls == 0) return "love-love";
+	if (playerABalls == 2) return "thirteen-love";
+	if (playerABalls == 1) return "fifteen-love";
+	if (playerABalls == 0) return "love-love";
 	else throw new RuntimeException("not implemented");
     }
+    
+    private void playerBScores() {
+	playerBBalls++;
+    }
+
+    private void playerAScores() {
+	playerABalls++;
+    }
+
+
 
 }
