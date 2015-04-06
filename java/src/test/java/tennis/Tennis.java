@@ -1,14 +1,15 @@
 package tennis;
 
 public class Tennis {
-    private int playerABalls;
-    private int playerBBalls;
+    protected int playerABalls;
+    protected int playerBBalls;
 
     public Tennis() {
     }
 
     Tennis playerBScores() {
 	playerBBalls++;
+	if (!inBeginningOfGame()) return new TieBreak(this);
 	return this;
     }
 
