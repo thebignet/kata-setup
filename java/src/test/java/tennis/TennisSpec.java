@@ -80,13 +80,17 @@ public class TennisSpec {
 	scoreATimes(3);
 	scoreBTimes(4);
 	assertScoreIs("advantage-B");
-	tennis.playerAScores();
+	playerAScores();
 	assertScoreIs("deuce");
-	tennis.playerBScores();
+	playerBScores();
 	assertScoreIs("advantage-B");
+	playerAScores();
+	playerBScores();
+	assertScoreIs("advantage-B");
+    }
+
+    private void playerAScores() {
 	tennis.playerAScores();
-	tennis.playerBScores();
-	assertScoreIs("advantage-B");
     }
     
     @Test
@@ -94,15 +98,19 @@ public class TennisSpec {
 	scoreATimes(3);
 	scoreBTimes(3);
 	assertScoreIs("deuce");
-	tennis.playerAScores();
-	tennis.playerBScores();
+	playerAScores();
+	playerBScores();
 	assertScoreIs("deuce");
-	tennis.playerAScores();
-	tennis.playerBScores();
+	playerAScores();
+	playerBScores();
 	assertScoreIs("deuce");
-	tennis.playerAScores();
-	tennis.playerBScores();
+	playerAScores();
+	playerBScores();
 	assertScoreIs("deuce");
+    }
+
+    private void playerBScores() {
+	tennis.playerBScores();
     }
     
     @Test public void 
@@ -110,23 +118,23 @@ public class TennisSpec {
 	 scoreBTimes(3);
 	 scoreATimes(4);
 	 
-	 tennis.playerBScores();
-	 tennis.playerAScores();
+	 playerBScores();
+	 playerAScores();
 	 assertScoreIs("advantage-A");
 
-	 tennis.playerBScores();
-	 tennis.playerAScores();
+	 playerBScores();
+	 playerAScores();
 	 assertScoreIs("advantage-A");
     }
 
     private void scoreBTimes(int times) {
 	for (int i = 0; i < times; i++) {
-	    tennis.playerBScores();
+	    playerBScores();
 	}
     }
     private void scoreATimes(int times) {
 	for (int i = 0; i < times; i++) {
-	    tennis.playerAScores();
+	    playerAScores();
 	}
     }
 
