@@ -28,9 +28,6 @@ public class Tennis {
 
     private String format(int score) {
 	String[] scores = {"love", "fifteen", "thirty", "forty"};
-	if (score == 3) return "forty" ;
-	if (score == 2) return "thirty" ;
-	if (score == 1) return "fifteen" ;
-	return "love";
+	return scores[score];
     }
 }
