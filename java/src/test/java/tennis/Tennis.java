@@ -21,6 +21,7 @@ public class Tennis {
 
     private String format(int aScore, int bScore) {
 	if (bScore == 4) return "game-B";
+	if (bScore == 3 && aScore == 3) return "deuce";
 	return format(aScore) + "-" + format(bScore);
     }
 
