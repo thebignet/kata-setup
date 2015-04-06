@@ -7,35 +7,19 @@ public class Tennis {
     public Tennis() {
     }
 
-    public int getPlayerABalls() {
-	return playerABalls;
-    }
-
-    public void setPlayerABalls(int playerABalls) {
-	this.playerABalls = playerABalls;
-    }
-
-    public int getPlayerBBalls() {
-	return playerBBalls;
-    }
-
-    public void setPlayerBBalls(int playerBBalls) {
-	this.playerBBalls = playerBBalls;
-    }
-
     void playerBScores() {
-        setPlayerBBalls(getPlayerBBalls() + 1);
+        playerBBalls++;
     }
 
     void playerAScores() {
-        setPlayerABalls(getPlayerABalls() + 1);
+        playerABalls++;
     }
 
     String score() {
-        if (getPlayerBBalls() == 1) return "love-fifteen";
-        if (getPlayerABalls() == 2) return "thirteen-love";
-        if (getPlayerABalls() == 1) return "fifteen-love";
-        if (getPlayerABalls() == 0) return "love-love";
+        if (playerBBalls == 1) return "love-fifteen";
+        if (playerABalls == 2) return "thirteen-love";
+        if (playerABalls == 1) return "fifteen-love";
+        if (playerABalls == 0) return "love-love";
         else throw new RuntimeException("not implemented");
     }
 }
