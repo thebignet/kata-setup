@@ -74,6 +74,14 @@ public class TennisSpec {
 	scoreBTimes(4);
 	assertScoreIs("advantage-B");
     }
+    
+    @Test
+    public void advantageBAfterMorePlay() {
+	scoreATimes(3);
+	scoreBTimes(4);
+	tennis.playerAScores();
+	assertScoreIs("deuce");
+    }
 
     private void scoreBTimes(int times) {
 	for (int i = 0; i < times; i++) {
