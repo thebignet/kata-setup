@@ -89,6 +89,22 @@ public class TennisSpec {
 	assertScoreIs("advantage-B");
     }
     
+    @Test
+    public void deuceAfterMorePlay() {
+	scoreATimes(3);
+	scoreBTimes(3);
+	assertScoreIs("deuce");
+	tennis.playerAScores();
+	tennis.playerBScores();
+	assertScoreIs("deuce");
+	tennis.playerAScores();
+	tennis.playerBScores();
+	assertScoreIs("deuce");
+	tennis.playerAScores();
+	tennis.playerBScores();
+	assertScoreIs("deuce");
+    }
+    
     @Test public void 
     advantageAAfterMorePlay() throws Exception {
 	 scoreBTimes(3);
