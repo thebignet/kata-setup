@@ -19,23 +19,23 @@ public class Tennis {
 	return format(playerABalls, playerBBalls);
     }
 
-    private String format(int aScore, int bScore) {
-	if (inBeginningOfGame(aScore, bScore)) {
-	    if (aScore == 4)
+    private String format(int unused, int unused2) {
+	if (inBeginningOfGame()) {
+	    if (playerABalls == 4)
 		return "game-A";
-	    if (bScore == 4)
+	    if (playerBBalls == 4)
 		return "game-B";
-	    return format(aScore) + "-" + format(bScore);
+	    return format(playerABalls) + "-" + format(playerBBalls);
 	} else {
-	    if (aScore - bScore == -2)
+	    if (playerABalls - playerBBalls == -2)
 		return "game-B";
-	    if (aScore - bScore == -1)
+	    if (playerABalls - playerBBalls == -1)
 		return "advantage-B";
-	    if (aScore - bScore == 1)
+	    if (playerABalls - playerBBalls == 1)
 		return "advantage-A";
-	    if (aScore - bScore == 0)
+	    if (playerABalls - playerBBalls == 0)
 		return "deuce";
-	    if (aScore - bScore == 2)
+	    if (playerABalls - playerBBalls == 2)
 		return "game-A";
 	    else
 		throw new RuntimeException("cant happen");
@@ -43,8 +43,8 @@ public class Tennis {
 
     }
 
-    private boolean inBeginningOfGame(int aScore, int bScore) {
-	return aScore + bScore < 6;
+    private boolean inBeginningOfGame() {
+	return playerABalls + playerBBalls < 6;
     }
 
     private String format(int score) {
