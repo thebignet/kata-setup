@@ -16,9 +16,9 @@ public class Tennis {
     }
 
     String score() {
-	if (playerBBalls == 2) return "love-thirteen";
+	if (playerBBalls == 2) return "love-thirty";
         if (playerBBalls == 1) return "love-fifteen";
-        if (playerABalls == 2) return "thirteen-love";
+        if (playerABalls == 2) return "thirty-love";
         if (playerABalls == 1) return "fifteen-love";
         if (playerABalls == 0) return "love-love";
         else throw new RuntimeException("not implemented");

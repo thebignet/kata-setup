@@ -29,14 +29,14 @@ public class TennisSpec {
     public void playAScoresTwice() {
 	tennis.playerAScores();
 	tennis.playerAScores();
-	assertThat(tennis.score()).isEqualTo("thirteen-love");
+	assertThat(tennis.score()).isEqualTo("thirty-love");
     }
     
     @Test
     public void playerBScoresTwice() {
 	tennis.playerBScores();
 	tennis.playerBScores();
-	assertThat(tennis.score()).isEqualTo("love-thirteen");
+	assertThat(tennis.score()).isEqualTo("love-thirty");
     }
 
 
