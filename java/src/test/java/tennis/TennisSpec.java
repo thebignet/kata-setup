@@ -38,6 +38,14 @@ public class TennisSpec {
 	tennis.playerBScores();
 	assertThat(tennis.score()).isEqualTo("love-thirty");
     }
+    
+    @Test
+    public void playerBScoresTrice() {
+	tennis.playerBScores();
+	tennis.playerBScores();
+	tennis.playerBScores();
+	assertThat(tennis.score()).isEqualTo("love-forty");
+    }
 
 
 
