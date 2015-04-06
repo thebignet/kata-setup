@@ -4,39 +4,34 @@ public class Tennis {
     protected int playerABalls;
     protected int playerBBalls;
 
-    public Tennis() {
-    }
-
-    Tennis playerBScores() {
+    public Tennis playerBScores() {
 	playerBBalls++;
-	if (!inBeginningOfGame()) return new TieBreak(this);
-	return this;
+	return appropriateState();
     }
 
-    Tennis playerAScores() {
+    public Tennis playerAScores() {
 	playerABalls++;
-	if (!inBeginningOfGame()) return new TieBreak(this);
-	return this;
+	return appropriateState();
     }
 
-    String score() {
-	return format();
-    }
-
-    protected String format() {
+    public String score() {
 	if (playerABalls == 4)
 	    return "game-A";
 	if (playerBBalls == 4)
 	    return "game-B";
-	return format(playerABalls) + "-" + format(playerBBalls);
-
+	return numericScore(playerABalls) + "-" + numericScore(playerBBalls);
+    }
+    
+    private Tennis appropriateState() {
+	if (inTieBreak()) return new TieBreak(this);
+	return this;
+    }
+    
+    private boolean inTieBreak() {
+	return playerABalls + playerBBalls >= 6;
     }
 
-    private boolean inBeginningOfGame() {
-	return playerABalls + playerBBalls < 6;
-    }
-
-    protected String format(int score) {
+    private String numericScore(int score) {
 	String[] scores = { "love", "fifteen", "thirty", "forty" };
 	return scores[score];
     }

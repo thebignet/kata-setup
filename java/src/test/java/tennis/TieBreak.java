@@ -8,7 +8,7 @@ public class TieBreak extends Tennis {
     }
 
     @Override
-    protected String format() {
+    public String score() {
 	if (playerABalls - playerBBalls == -2)
 	    return "game-B";
 	if (playerABalls - playerBBalls == -1)
