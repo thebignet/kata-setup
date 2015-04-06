@@ -27,6 +27,10 @@ public class Tennis {
     }
 
     private String format(int aScore, int bScore) {
-	return "love-love";
+	return format(0) + "-" + format(0);
+    }
+
+    private String format(int score) {
+	return "love";
     }
 }
