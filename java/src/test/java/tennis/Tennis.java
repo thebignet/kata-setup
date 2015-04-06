@@ -21,9 +21,6 @@ public class Tennis {
 
     private String format(int aScore, int bScore) {
 	if (aScore >= 3 && bScore-aScore == 1) return "advantage-B";
-	if (aScore == 3 && bScore == 4) return "advantage-B";
-	if (aScore == 4 && bScore == 5) return "advantage-B";
-	if (aScore == 5 && bScore == 6) return "advantage-B";
 
 	if (aScore == 4 && bScore == 3) return "advantage-A";
 	if (aScore == 4 && bScore == 4) return "deuce";
