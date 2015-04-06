@@ -16,6 +16,7 @@ public class Tennis {
     }
 
     String score() {
+	if (playerBBalls == 2) return "love-thirteen";
         if (playerBBalls == 1) return "love-fifteen";
         if (playerABalls == 2) return "thirteen-love";
         if (playerABalls == 1) return "fifteen-love";

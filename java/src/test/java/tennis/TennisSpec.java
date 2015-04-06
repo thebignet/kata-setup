@@ -8,7 +8,6 @@ public class TennisSpec {
 
     private Tennis tennis = new Tennis();
 
-
     @Test
     public void scoreStartsAs_loveLove() {
 	assertThat(tennis.score()).isEqualTo("love-love");
@@ -31,6 +30,13 @@ public class TennisSpec {
 	tennis.playerAScores();
 	tennis.playerAScores();
 	assertThat(tennis.score()).isEqualTo("thirteen-love");
+    }
+    
+    @Test
+    public void playerBScoresTwice() {
+	tennis.playerBScores();
+	tennis.playerBScores();
+	assertThat(tennis.score()).isEqualTo("love-thirteen");
     }
 
 
