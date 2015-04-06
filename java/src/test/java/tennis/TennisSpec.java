@@ -1,17 +1,12 @@
 package tennis;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
-import java.math.BigDecimal;
-
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class TennisSpec {
 
-    private boolean a;
-    private int i;
+    private int playerOneBalls;
 
     @Test
     public void scoreStartsAs_loveLove() {
@@ -32,14 +27,14 @@ public class TennisSpec {
     }
 
     private void playerAScores() {
-	a = true;
-	i++;
+	playerOneBalls++;
     }
 
     private String score() {
-	if (i == 2) return "thirteen-love";
-	if (a) return "fifteen-love";
-	return "love-love";
+	if (playerOneBalls == 2) return "thirteen-love";
+	if (playerOneBalls == 1) return "fifteen-love";
+	if (playerOneBalls == 0) return "love-love";
+	else throw new RuntimeException("not implemented");
     }
 
 }
