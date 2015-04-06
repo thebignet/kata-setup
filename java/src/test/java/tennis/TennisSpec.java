@@ -95,6 +95,8 @@ public class TennisSpec {
 	 scoreATimes(4);
 	 
 	 tennis.playerBScores();
+	 tennis.playerAScores();
+	 assertScoreIs("advantage-A");
     }
 
     private void scoreBTimes(int times) {
