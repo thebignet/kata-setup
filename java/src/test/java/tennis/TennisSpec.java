@@ -1,5 +1,6 @@
 package tennis;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
@@ -10,25 +11,33 @@ import org.junit.Test;
 public class TennisSpec {
 
     private boolean a;
+    private int i;
 
     @Test
     public void scoreStartsAs_loveLove() {
-	Assertions.assertThat(score()).isEqualTo("love-love");
+	assertThat(score()).isEqualTo("love-love");
     }
     
     @Test
     public void playAScoresOnce() {
 	playerAScores();
-	Assertions.assertThat(score()).isEqualTo("fifteen-love");
+	assertThat(score()).isEqualTo("fifteen-love");
+    }
+    
+    @Test
+    public void playAScoresTwice() {
+	playerAScores();
+	playerAScores();
+	assertThat(score()).isEqualTo("thirteen-love");
     }
 
     private void playerAScores() {
 	a = true;
-	// TODO Auto-generated method stub
-	
+	i++;
     }
 
     private String score() {
+	if (i == 2) return "thirteen-love";
 	if (a) return "fifteen-love";
 	return "love-love";
     }
