@@ -15,14 +15,15 @@ public class Tennis {
 
     Tennis playerAScores() {
 	playerABalls++;
+	if (!inBeginningOfGame()) return new TieBreak(this);
 	return this;
     }
 
     String score() {
-	return format(playerABalls, playerBBalls);
+	return format();
     }
 
-    private String format(int unused, int unused2) {
+    protected String format() {
 	if (inBeginningOfGame()) {
 	    if (playerABalls == 4)
 		return "game-A";
