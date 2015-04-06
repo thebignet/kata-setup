@@ -67,6 +67,13 @@ public class TennisSpec {
 	scoreATimes(4);
 	assertScoreIs("advantage-A");
     }
+    
+    @Test
+    public void advantageB() {
+	scoreATimes(3);
+	scoreBTimes(4);
+	assertScoreIs("advantage-B");
+    }
 
     private void scoreBTimes(int times) {
 	for (int i = 0; i < times; i++) {
