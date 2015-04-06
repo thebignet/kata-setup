@@ -56,6 +56,15 @@ public class TennisSpec {
 	assertThat(tennis.score()).isEqualTo("game-B");
     }
     @Test
+    public void playerAWinsGame() {
+	tennis.playerAScores();
+	tennis.playerAScores();
+	tennis.playerAScores();
+	tennis.playerAScores();
+	assertThat(tennis.score()).isEqualTo("game-A");
+    }
+    
+    @Test
     public void deuce() {
 	tennis.playerBScores();
 	tennis.playerBScores();
