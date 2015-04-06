@@ -10,62 +10,62 @@ public class TennisSpec {
 
     @Test
     public void scoreStartsAs_loveLove() {
-	assertThat(tennis.score()).isEqualTo("love-love");
+	assertScoreIs("love-love");
     }
     
     @Test
     public void playAScoresOnce() {
 	scoreATimes(1);
-	assertThat(tennis.score()).isEqualTo("fifteen-love");
+	assertScoreIs("fifteen-love");
     }
     
     @Test
     public void playerBScoresOnce() {
 	scoreBTimes(1);
-	assertThat(tennis.score()).isEqualTo("love-fifteen");
+	assertScoreIs("love-fifteen");
     }
     
     @Test
     public void playAScoresTwice() {
 	scoreATimes(2);
-	assertThat(tennis.score()).isEqualTo("thirty-love");
+	assertScoreIs("thirty-love");
     }
     
     @Test
     public void playerBScoresTwice() {
 	scoreBTimes(2);
-	assertThat(tennis.score()).isEqualTo("love-thirty");
+	assertScoreIs("love-thirty");
     }
     
     @Test
     public void playerBScoresTrice() {
 	scoreBTimes(3);
-	assertThat(tennis.score()).isEqualTo("love-forty");
+	assertScoreIs("love-forty");
     }
     
     @Test
     public void playerBWinsGame() {
 	scoreBTimes(4);
-	assertThat(tennis.score()).isEqualTo("game-B");
+	assertScoreIs("game-B");
     }
     @Test
     public void playerAWinsGame() {
 	scoreATimes(4);
-	assertThat(tennis.score()).isEqualTo("game-A");
+	assertScoreIs("game-A");
     }
     
     @Test
     public void deuce() {
 	scoreBTimes(3);
 	scoreATimes(3);
-	assertThat(tennis.score()).isEqualTo("deuce");
+	assertScoreIs("deuce");
     }
     
     @Test
     public void advantageA() {
 	scoreBTimes(3);
 	scoreATimes(4);
-	assertThat(tennis.score()).isEqualTo("advantage-A");
+	assertScoreIs("advantage-A");
     }
 
     private void scoreBTimes(int times) {
@@ -79,6 +79,10 @@ public class TennisSpec {
 	}
     }
 
+
+    private void assertScoreIs(String expectedScore) {
+	assertThat(tennis.score()).isEqualTo(expectedScore);
+    }
 
 
 }
