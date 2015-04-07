@@ -45,10 +45,13 @@ public class TennisGameSpec {
     }
 
     private String score() {
-	if (aBalls == 3) return "forty-love" ;
-	if (aBalls == 2) return "thirty-love" ;
-	if (aBalls == 1) return "fifteen-love";
-	return "love-love";
+	String love = "love";
+	if (aBalls == 3) {
+	    return "forty-" + love ;
+	}
+	if (aBalls == 2) return "thirty-" + love;
+	if (aBalls == 1) return "fifteen-" + love;
+	return love + "-" + love;
     }
 
 }
