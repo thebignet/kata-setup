@@ -46,11 +46,9 @@ public class TennisGameSpec {
 
     private String score() {
 	String love = "love";
-	if (aBalls == 3) {
-	    return "forty-" + love ;
-	}
-	if (aBalls == 2) return "thirty-" + love;
-	if (aBalls == 1) return "fifteen-" + love;
+	if (aBalls == 3) return "forty" + "-" + love ;
+	if (aBalls == 2) return "thirty" + "-" + love;
+	if (aBalls == 1) return "fifteen" + "-" + love;
 	return love + "-" + love;
     }
 
