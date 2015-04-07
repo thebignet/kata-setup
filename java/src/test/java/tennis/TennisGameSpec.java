@@ -10,7 +10,6 @@ import org.junit.Test;
 
 public class TennisGameSpec {
 
-    private boolean aScored;
     private int aBalls;
 
     @Test
@@ -31,16 +30,24 @@ public class TennisGameSpec {
 	assertThat(score()).isEqualTo("thirty-love");
     }
     
+    @Test
+    public void scoreIsFortyLove_whenPlayerAScoresTrice() {
+	playerAScores();
+	playerAScores();
+	playerAScores();
+	assertThat(score()).isEqualTo("forty-love");
+    }
+    
     
 
     private void playerAScores() {
-	aScored = true;
 	aBalls++;
     }
 
     private String score() {
+	if (aBalls == 3) return "forty-love" ;
 	if (aBalls == 2) return "thirty-love" ;
-	if (aScored) return "fifteen-love";
+	if (aBalls == 1) return "fifteen-love";
 	return "love-love";
     }
 
