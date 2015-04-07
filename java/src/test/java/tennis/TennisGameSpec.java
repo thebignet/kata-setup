@@ -45,12 +45,7 @@ public class TennisGameSpec {
     }
 
     private String score() {
-	String love = "love";
-	if (aBalls == 3) return format(3) + "-" + format(0) ;
-	if (aBalls == 2) return format(2) + "-" + format(0);
-	if (aBalls == 1) return format(1) + "-" + format(0);
-	if (aBalls == 0) return format(0) + "-" + format(0);
-	return love + "-" + love;
+	return format(aBalls) + "-" + format(0) ;
     }
 
     private String format(int score) {
