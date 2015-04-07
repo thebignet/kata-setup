@@ -11,6 +11,7 @@ import org.junit.Test;
 public class TennisGameSpec {
 
     private boolean aScored;
+    private int aBalls;
 
     @Test
     public void scoreIsLoveLove_toStartWith() {
@@ -23,14 +24,22 @@ public class TennisGameSpec {
 	assertThat(score()).isEqualTo("fifteen-love");
     }
     
+    @Test
+    public void scoreIsThirtyLove_whenPlayerAScoresTwice() {
+	playerAScores();
+	playerAScores();
+	assertThat(score()).isEqualTo("thirty-love");
+    }
+    
     
 
     private void playerAScores() {
 	aScored = true;
-	
+	aBalls++;
     }
 
     private String score() {
+	if (aBalls == 2) return "thirty-love" ;
 	if (aScored) return "fifteen-love";
 	return "love-love";
     }
