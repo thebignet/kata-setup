@@ -15,75 +15,76 @@ public class TennisSpec {
     
     @Test
     public void playAScoresOnce() {
-	scoreATimes(1);
+	playerAScoresTimes(1);
 	assertScoreIs("fifteen-love");
     }
     
     @Test
     public void playerBScoresOnce() {
-	scoreBTimes(1);
+	playerBScoresTimes(1);
 	assertScoreIs("love-fifteen");
     }
     
     @Test
     public void playAScoresTwice() {
-	scoreATimes(2);
+	playerAScoresTimes(2);
 	assertScoreIs("thirty-love");
     }
     
     @Test
     public void playerBScoresTwice() {
-	scoreBTimes(2);
+	playerBScoresTimes(2);
 	assertScoreIs("love-thirty");
     }
     
     @Test
     public void playerBScoresTrice() {
-	scoreBTimes(3);
+	playerBScoresTimes(3);
 	assertScoreIs("love-forty");
     }
     
     @Test
     public void playerBWinsGame() {
-	scoreBTimes(4);
+	playerBScoresTimes(4);
 	assertScoreIs("game-B");
     }
     @Test
     public void playerAWinsGame() {
-	scoreATimes(4);
+	playerAScoresTimes(4);
 	assertScoreIs("game-A");
     }
     
     @Test
     public void deuce() {
-	scoreBTimes(3);
-	scoreATimes(3);
+	playerBScoresTimes(3);
+	playerAScoresTimes(3);
 	assertScoreIs("deuce");
     }
     
     @Test
     public void advantageA() {
-	scoreBTimes(3);
-	scoreATimes(4);
+	playerBScoresTimes(3);
+	playerAScoresTimes(4);
 	assertScoreIs("advantage-A");
     }
     
     @Test
     public void advantageB() {
-	scoreATimes(3);
-	scoreBTimes(4);
+	playerAScoresTimes(3);
+	playerBScoresTimes(4);
 	assertScoreIs("advantage-B");
     }
     
     @Test
     public void advantageBAfterMorePlay() {
-	scoreATimes(3);
-	scoreBTimes(4);
+	playerAScoresTimes(3);
+	playerBScoresTimes(4);
 	assertScoreIs("advantage-B");
+	
 	playerAScores();
-	assertScoreIs("deuce");
 	playerBScores();
 	assertScoreIs("advantage-B");
+	
 	playerAScores();
 	playerBScores();
 	assertScoreIs("advantage-B");
@@ -91,24 +92,23 @@ public class TennisSpec {
     
     @Test
     public void deuceAfterMorePlay() {
-	scoreATimes(3);
-	scoreBTimes(3);
+	playerAScoresTimes(3);
+	playerBScoresTimes(3);
 	assertScoreIs("deuce");
+	
 	playerAScores();
 	playerBScores();
 	assertScoreIs("deuce");
-	playerAScores();
-	playerBScores();
-	assertScoreIs("deuce");
+	
 	playerAScores();
 	playerBScores();
 	assertScoreIs("deuce");
     }
     
-    @Test public void 
-    advantageAAfterMorePlay() throws Exception {
-	 scoreBTimes(3);
-	 scoreATimes(4);
+    @Test 
+    public void advantageAAfterMorePlay() throws Exception {
+	 playerBScoresTimes(3);
+	 playerAScoresTimes(4);
 	 
 	 playerBScores();
 	 playerAScores();
@@ -117,14 +117,18 @@ public class TennisSpec {
 	 playerBScores();
 	 playerAScores();
 	 assertScoreIs("advantage-A");
+
+	 playerBScores();
+	 playerAScores();
+	 assertScoreIs("advantage-A");
     }
 
-    private void scoreBTimes(int times) {
+    private void playerBScoresTimes(int times) {
 	for (int i = 0; i < times; i++) {
 	    playerBScores();
 	}
     }
-    private void scoreATimes(int times) {
+    private void playerAScoresTimes(int times) {
 	for (int i = 0; i < times; i++) {
 	    playerAScores();
 	}
