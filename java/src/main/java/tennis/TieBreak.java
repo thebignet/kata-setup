@@ -7,8 +7,7 @@ import com.google.common.collect.ImmutableMap;
 public class TieBreak extends Tennis {
 
     public TieBreak(Tennis tennis) {
-	this.playerABalls = tennis.playerABalls;
-	this.playerBBalls = tennis.playerBBalls;
+	super(tennis.getPlayerAWonBalls(), tennis.getPlayerBWonBalls());
     }
 
     @Override
@@ -20,7 +19,7 @@ public class TieBreak extends Tennis {
 		 1, "advantage-A",
 		 2, "game-A"
 		);
-	    int scoreDifference = playerABalls - playerBBalls;
+	    int scoreDifference = getPlayerAWonBalls() - getPlayerBWonBalls();
 	    return relativeScore.get(scoreDifference);
     }
 

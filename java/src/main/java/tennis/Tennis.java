@@ -1,25 +1,33 @@
 package tennis;
 
 public class Tennis {
-    protected int playerABalls;
-    protected int playerBBalls;
+    private int playerAWonBalls;
+    private int playerBWonBalls;
+
+    public Tennis(int playerAWonBalls, int playerBWonBalls) {
+	setPlayerAWonBalls(playerAWonBalls);
+	setPlayerBWonBalls(playerBWonBalls);
+    }
+    
+    public Tennis() {
+    }
 
     public Tennis playerBScores() {
-	playerBBalls++;
+	setPlayerBWonBalls(getPlayerBWonBalls() + 1);
 	return appropriateState();
     }
 
     public Tennis playerAScores() {
-	playerABalls++;
+	setPlayerAWonBalls(getPlayerAWonBalls() + 1);
 	return appropriateState();
     }
 
     public String score() {
-	if (playerABalls == 4)
+	if (getPlayerAWonBalls() == 4)
 	    return "game-A";
-	if (playerBBalls == 4)
+	if (getPlayerBWonBalls() == 4)
 	    return "game-B";
-	return numericScore(playerABalls) + "-" + numericScore(playerBBalls);
+	return numericScore(getPlayerAWonBalls()) + "-" + numericScore(getPlayerBWonBalls());
     }
     
     private Tennis appropriateState() {
@@ -27,11 +35,27 @@ public class Tennis {
     }
     
     private boolean inTieBreak() {
-	return playerABalls + playerBBalls >= 6;
+	return getPlayerAWonBalls() + getPlayerBWonBalls() >= 6;
     }
 
     private String numericScore(int score) {
 	String[] scores = { "love", "fifteen", "thirty", "forty" };
 	return scores[score];
+    }
+
+    public int getPlayerAWonBalls() {
+	return playerAWonBalls;
+    }
+
+    public void setPlayerAWonBalls(int playerAWonBalls) {
+	this.playerAWonBalls = playerAWonBalls;
+    }
+
+    public int getPlayerBWonBalls() {
+	return playerBWonBalls;
+    }
+
+    public void setPlayerBWonBalls(int playerBWonBalls) {
+	this.playerBWonBalls = playerBWonBalls;
     }
 }
