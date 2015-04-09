@@ -1,8 +1,8 @@
 package tennis;
 
 public class Tennis {
-    protected Score scoreA = new Score();
-    protected Score scoreB = new Score();
+    protected Score scoreA = new Score("A");
+    protected Score scoreB = new Score("B");
 
     public Tennis(int playerAWonBalls, int playerBWonBalls) {
 	scoreA.setPlayerAWonBalls(playerAWonBalls);
@@ -24,29 +24,10 @@ public class Tennis {
 
     public String score() {
 	if (scoreA.wonGameBeforeTieBreak())
-	    return "game-A";
+	    return scoreA.wonGame();
 	if (scoreB.wonGameBeforeTieBreak())
-	    return "game-B";
-	return formatScore();
-    }
-
-    private String formatScore() {
-	/*
-	 * [playerAScore, diff ]
-	 * 
-	 * [scoreA, scoreB]
-	 * [0, 1], "love-fifteen"
-	 * [4, 0], "game-A"
-	 * [3, 3], "deuce"
-	 * 
-	 * [3, 3], "deuce"
-	 * [4, 3], "advantage-A"
-	 * 
-	 * [4, 4], "deuce"
-	 * [123, 122], "advantage-A"
-	 */
-	return numericScore(scoreA) + 
-		"-" + numericScore(scoreB);
+	    return scoreB.wonGame();
+	return pronounce();
     }
 
     private Tennis appropriateState() {
@@ -57,8 +38,8 @@ public class Tennis {
 	return scoreA.getWonBalls() + scoreB.getWonBalls() >= 6;
     }
 
-    private String numericScore(Score score) {
-	String[] scores = { "love", "fifteen", "thirty", "forty" };
-	return scores[score.getWonBalls()];
+    private String pronounce() {
+        return scoreA.pronounce() + 
+        	"-" + scoreB.pronounce();
     }
 }
