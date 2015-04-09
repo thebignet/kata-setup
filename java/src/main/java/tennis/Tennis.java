@@ -2,7 +2,7 @@ package tennis;
 
 public class Tennis {
     private Score scoreA = new Score();
-    private int playerBWonBalls;
+    private Score scoreB = new Score();
 
     public Tennis(int playerAWonBalls, int playerBWonBalls) {
 	setPlayerAWonBalls(playerAWonBalls);
@@ -48,14 +48,14 @@ public class Tennis {
     }
 
     public void setPlayerAWonBalls(int playerAWonBalls) {
-	this.scoreA.setPlayerAWonBalls(playerAWonBalls);
+	scoreA.setPlayerAWonBalls(playerAWonBalls);
     }
 
     public int getPlayerBWonBalls() {
-	return playerBWonBalls;
+	return scoreB.getPlayerAWonBalls();
     }
 
     public void setPlayerBWonBalls(int playerBWonBalls) {
-	this.playerBWonBalls = playerBWonBalls;
+	scoreB.setPlayerAWonBalls(playerBWonBalls);
     }
 }
