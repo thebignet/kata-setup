@@ -1,0 +1,14 @@
+Hans
+- solve tennis kata by myself
+- could I use the same thing as rock scissors paper
+- maybe I should code
+- maps are nice!
+- nice discussion about OOP, similar vision
+- is the Tiebreak
+
+Johan
+- pseudo code could be interesting, but a single coder is not problematic
+- I learned some things about my design, more domain names would probably have helped
+- your version of the gilded rose has all the update strategies at the same time, 
+same thing that I explored with remy
+- maybe hack away on our own and look at both solutions in the end
