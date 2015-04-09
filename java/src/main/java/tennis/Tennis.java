@@ -12,24 +12,24 @@ public class Tennis {
     public Tennis() {
     }
 
-    public Tennis playerBScores() {
-	scoreB.setPlayerAWonBalls(scoreB.getPlayerAWonBalls() + 1);
+    public Tennis playerAScores() {
+	scoreA.scoreOneBall();
 	return appropriateState();
     }
-
-    public Tennis playerAScores() {
-	scoreA.setPlayerAWonBalls(scoreA.getPlayerAWonBalls() + 1);
+    
+    public Tennis playerBScores() {
+	scoreB.scoreOneBall();
 	return appropriateState();
     }
 
     public String score() {
-	if (scoreA.getPlayerAWonBalls() == 4)
+	if (scoreA.wonGameBeforeTieBreak())
 	    return "game-A";
-	if (scoreB.getPlayerAWonBalls() == 4)
+	if (scoreB.wonGameBeforeTieBreak())
 	    return "game-B";
 	return numericScore(scoreA.getPlayerAWonBalls()) + "-" + numericScore(scoreB.getPlayerAWonBalls());
     }
-    
+
     private Tennis appropriateState() {
 	return inTieBreak() ? new TieBreak(this) : this;
     }
