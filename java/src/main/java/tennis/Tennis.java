@@ -1,24 +1,24 @@
 package tennis;
 
 public class Tennis {
-    protected Score scoreA = new Score("A");
+    protected Score scoreA = new Score.Love("A");
     protected Score scoreB = new Score("B");
 
-    public Tennis(int playerAWonBalls, int playerBWonBalls) {
-	scoreA.setPlayerAWonBalls(playerAWonBalls);
-	scoreB.setPlayerAWonBalls(playerBWonBalls);
+    public Tennis(Score playerAWonBalls, Score playerBWonBalls) {
+	scoreA = playerAWonBalls;
+	scoreB = playerBWonBalls;
     }
     
     public Tennis() {
     }
 
     public Tennis playerAScores() {
-	scoreA.scoreOneBall();
+	scoreA = scoreA.scoreOneBall();
 	return appropriateState();
     }
     
     public Tennis playerBScores() {
-	scoreB.scoreOneBall();
+	scoreB = scoreB.scoreOneBall();
 	return appropriateState();
     }
 
