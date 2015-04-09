@@ -1,33 +1,33 @@
 package tennis;
 
 public class Tennis {
-    private Score scoreA = new Score();
-    private Score scoreB = new Score();
+    protected Score scoreA = new Score();
+    protected Score scoreB = new Score();
 
     public Tennis(int playerAWonBalls, int playerBWonBalls) {
-	setPlayerAWonBalls(playerAWonBalls);
-	setPlayerBWonBalls(playerBWonBalls);
+	scoreA.setPlayerAWonBalls(playerAWonBalls);
+	scoreB.setPlayerAWonBalls(playerBWonBalls);
     }
     
     public Tennis() {
     }
 
     public Tennis playerBScores() {
-	setPlayerBWonBalls(getPlayerBWonBalls() + 1);
+	scoreB.setPlayerAWonBalls(scoreB.getPlayerAWonBalls() + 1);
 	return appropriateState();
     }
 
     public Tennis playerAScores() {
-	setPlayerAWonBalls(getPlayerAWonBalls() + 1);
+	scoreA.setPlayerAWonBalls(scoreA.getPlayerAWonBalls() + 1);
 	return appropriateState();
     }
 
     public String score() {
-	if (getPlayerAWonBalls() == 4)
+	if (scoreA.getPlayerAWonBalls() == 4)
 	    return "game-A";
-	if (getPlayerBWonBalls() == 4)
+	if (scoreB.getPlayerAWonBalls() == 4)
 	    return "game-B";
-	return numericScore(getPlayerAWonBalls()) + "-" + numericScore(getPlayerBWonBalls());
+	return numericScore(scoreA.getPlayerAWonBalls()) + "-" + numericScore(scoreB.getPlayerAWonBalls());
     }
     
     private Tennis appropriateState() {
@@ -35,27 +35,11 @@ public class Tennis {
     }
     
     private boolean inTieBreak() {
-	return getPlayerAWonBalls() + getPlayerBWonBalls() >= 6;
+	return scoreA.getPlayerAWonBalls() + scoreB.getPlayerAWonBalls() >= 6;
     }
 
     private String numericScore(int score) {
 	String[] scores = { "love", "fifteen", "thirty", "forty" };
 	return scores[score];
-    }
-
-    public int getPlayerAWonBalls() {
-	return scoreA.getPlayerAWonBalls();
-    }
-
-    public void setPlayerAWonBalls(int playerAWonBalls) {
-	scoreA.setPlayerAWonBalls(playerAWonBalls);
-    }
-
-    public int getPlayerBWonBalls() {
-	return scoreB.getPlayerAWonBalls();
-    }
-
-    public void setPlayerBWonBalls(int playerBWonBalls) {
-	scoreB.setPlayerAWonBalls(playerBWonBalls);
     }
 }
