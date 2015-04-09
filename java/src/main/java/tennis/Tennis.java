@@ -23,9 +23,7 @@ public class Tennis {
     }
     
     private Tennis appropriateState() {
-	if (inTieBreak()) 
-	    return new TieBreak(this);
-	return this;
+	return inTieBreak() ? new TieBreak(this) : this;
     }
     
     private boolean inTieBreak() {
