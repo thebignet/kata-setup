@@ -27,7 +27,26 @@ public class Tennis {
 	    return "game-A";
 	if (scoreB.wonGameBeforeTieBreak())
 	    return "game-B";
-	return numericScore(scoreA.getPlayerAWonBalls()) + "-" + numericScore(scoreB.getPlayerAWonBalls());
+	return formatScore();
+    }
+
+    private String formatScore() {
+	/*
+	 * [playerAScore, diff ]
+	 * 
+	 * [scoreA, scoreB]
+	 * [0, 1], "love-fifteen"
+	 * [4, 0], "game-A"
+	 * [3, 3], "deuce"
+	 * 
+	 * [3, 3], "deuce"
+	 * [4, 3], "advantage-A"
+	 * 
+	 * [4, 4], "deuce"
+	 * [123, 122], "advantage-A"
+	 */
+	return numericScore(scoreA) + 
+		"-" + numericScore(scoreB);
     }
 
     private Tennis appropriateState() {
@@ -35,11 +54,11 @@ public class Tennis {
     }
     
     private boolean inTieBreak() {
-	return scoreA.getPlayerAWonBalls() + scoreB.getPlayerAWonBalls() >= 6;
+	return scoreA.getWonBalls() + scoreB.getWonBalls() >= 6;
     }
 
-    private String numericScore(int score) {
+    private String numericScore(Score score) {
 	String[] scores = { "love", "fifteen", "thirty", "forty" };
-	return scores[score];
+	return scores[score.getWonBalls()];
     }
 }

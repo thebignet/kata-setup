@@ -6,7 +6,7 @@ public class Score {
     public Score() {
     }
 
-    public int getPlayerAWonBalls() {
+    public int getWonBalls() {
 	return playerAWonBalls;
     }
 
@@ -15,10 +15,10 @@ public class Score {
     }
 
     void scoreOneBall() {
-        setPlayerAWonBalls(getPlayerAWonBalls() + 1);
+        setPlayerAWonBalls(getWonBalls() + 1);
     }
 
     boolean wonGameBeforeTieBreak() {
-        return getPlayerAWonBalls() == 4;
+        return getWonBalls() == 4;
     }
 }
