@@ -2,7 +2,7 @@ package tennis;
 
 public class Tennis {
     private PlayerScore playerAScore = new Love();
-    private PlayerScore playerBScore = new PlayerScore();
+    private PlayerScore playerBScore = new PlayerScore(0);
 
     public Tennis() {
     }
@@ -44,9 +44,19 @@ public class Tennis {
     }
 
     private static class Love extends PlayerScore {
-//        @Override
-//        String format() {
-//            return "love";
-//        }
+        private Love() {
+            super(0);
+        }
+
+        @Override
+        String format() {
+            return "love";
+        }
+
+        @Override
+        PlayerScore playerScores() {
+            return new PlayerScore(1);
+        }
     }
+
 }

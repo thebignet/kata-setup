@@ -3,7 +3,8 @@ package tennis;
 public class PlayerScore {
     private int wonBalls;
 
-    public PlayerScore() {
+    public PlayerScore(int wonBalls) {
+        this.wonBalls = wonBalls;
     }
 
     PlayerScore playerScores() {
