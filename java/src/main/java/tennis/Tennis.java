@@ -75,11 +75,16 @@ public class Tennis {
     private static class Game extends PlayerScore {
 
         public Game(String name) {
-            super(4, name);
+            super(name);
         }
 
         @Override
         String pronounceScore(PlayerScore playerBScore) {
+            return "game-" + name;
+        }
+
+        @Override
+        String pronounceScoreGivenFirstPlayersScoreIs(String format) {
             return "game-" + name;
         }
     }

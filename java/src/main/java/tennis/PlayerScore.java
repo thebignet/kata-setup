@@ -40,9 +40,11 @@ public class PlayerScore {
     }
 
     String pronounceScore(PlayerScore playerBScore) {
-        if (playerBScore.getWonBalls() == 4)
-            return "game-B";
-        return format() + "-" + playerBScore.format();
+        return playerBScore.pronounceScoreGivenFirstPlayersScoreIs(format());
+    }
+
+    String pronounceScoreGivenFirstPlayersScoreIs(String format) {
+        return format + "-" + format();
     }
 
     public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
