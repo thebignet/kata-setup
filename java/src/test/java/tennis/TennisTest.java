@@ -65,7 +65,9 @@ public class TennisTest {
     @Test
     public void tieBreak_advantageA() {
         playerBScoresTimes(3);
-        playerAScoresTimes(4);
+        playerAScoresTimes(2);
+        playerAScores();
+        playerAScores();
         assertScoreIs("advantage-A");
     }
 

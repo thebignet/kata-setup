@@ -30,32 +30,24 @@ public class PlayerScore {
     }
 
     String pronounceScore(PlayerScore playerBScore) {
-        if (inTieBreak(playerBScore)) {
-            if (getWonBalls() - playerBScore.getWonBalls() == -2)
-                return "game-B";
-            if (getWonBalls() - playerBScore.getWonBalls() == -1)
-                return "advantage-B";
-            if (getWonBalls() - playerBScore.getWonBalls() == 1)
-                return "advantage-A";
-            if (getWonBalls() - playerBScore.getWonBalls() == 0)
-                return "deuce";
-            if (getWonBalls() - playerBScore.getWonBalls() == 2)
-                return "game-A";
-            else
-                throw new RuntimeException("cant happen");
-        } else {
-            if (getWonBalls() == 4)
-                return "game-A";
-            if (playerBScore.getWonBalls() == 4)
-                return "game-B";
-            return format() + "-" + playerBScore.format();
-        }
+        if (getWonBalls() == 4)
+            return "game-A";
+        if (playerBScore.getWonBalls() == 4)
+            return "game-B";
+        return format() + "-" + playerBScore.format();
     }
 
-    private static class TieBreakScore extends PlayerScore {
+    public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
+        if (otherPlayerScore.inTieBreak(this))
+            return new TieBreakScore();
+        return this;
+
+    }
+
+    public static class TieBreakScore extends PlayerScore {
 
         public TieBreakScore() {
-            super(4);
+            super(3);
         }
 
         @Override
@@ -67,6 +59,11 @@ public class PlayerScore {
         @Override
         PlayerScore winsOneBallOver(PlayerScore otherScore) {
             wonBalls++;
+            return this;
+        }
+
+        @Override
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
             return this;
         }
 

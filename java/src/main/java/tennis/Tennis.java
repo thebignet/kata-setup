@@ -9,10 +9,12 @@ public class Tennis {
 
     void playerBScores() {
         playerBScore = playerBScore.winsOneBallOver(playerAScore);
+        playerAScore = playerAScore.losesOneBallTo(playerBScore);
     }
 
     void playerAScores() {
         playerAScore = playerAScore.winsOneBallOver(playerBScore);
+        playerBScore = playerBScore.losesOneBallTo(playerAScore);
     }
 
     String score() {
@@ -31,7 +33,15 @@ public class Tennis {
     }
     private static class Thirty extends PlayerScore {
         String format() { return "thirty"; }
-        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new PlayerScore(3); }
+        PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
+            if (inTieBreak(otherPlayerScore))
+                return new TieBreakScore();
+            return new PlayerScore(3); }
+
+        @Override
+        boolean inTieBreak(PlayerScore otherScore) {
+            return otherScore.wonBalls == 3;
+        }
     }
 
 }
