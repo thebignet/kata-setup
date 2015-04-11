@@ -124,6 +124,19 @@ public class TennisSpec {
         assertScoreIs("advantage-A");
     }
 
+    @Test
+    public void tieBreak_playerWins() throws Exception {
+        playerBScoresTimes(3);
+        playerAScoresTimes(4);
+
+        playerBScores();
+        playerAScores();
+        assertScoreIs("advantage-A");
+
+        playerAScores();
+        assertScoreIs("game-A");
+    }
+
     private void playerBScoresTimes(int times) {
         for (int i = 0; i < times; i++) {
             playerBScores();
