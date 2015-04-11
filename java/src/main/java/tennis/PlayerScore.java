@@ -16,11 +16,14 @@ public class PlayerScore {
     }
 
     String format() {
-        String[] scores = {"not used", "fifteen", "thirty", "forty"};
-        return scores[wonBalls];
+        return "forty";
     }
 
     public int getWonBalls() {
         return wonBalls;
+    }
+
+    boolean inTieBreak(PlayerScore otherScore) {
+        return getWonBalls() + otherScore.getWonBalls() >= 6;
     }
 }

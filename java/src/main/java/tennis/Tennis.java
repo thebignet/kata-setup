@@ -16,13 +16,7 @@ public class Tennis {
     }
 
     String score() {
-        if (inBeginningOfGame()) {
-            if (playerAScore.getWonBalls() == 4)
-                return "game-A";
-            if (playerBScore.getWonBalls() == 4)
-                return "game-B";
-            return playerAScore.format() + "-" + playerBScore.format();
-        } else {
+        if (playerAScore.inTieBreak(playerBScore)) {
             if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == -2)
                 return "game-B";
             if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == -1)
@@ -35,12 +29,14 @@ public class Tennis {
                 return "game-A";
             else
                 throw new RuntimeException("cant happen");
+        } else {
+            if (playerAScore.getWonBalls() == 4)
+                return "game-A";
+            if (playerBScore.getWonBalls() == 4)
+                return "game-B";
+            return playerAScore.format() + "-" + playerBScore.format();
         }
 
-    }
-
-    private boolean inBeginningOfGame() {
-        return playerAScore.getWonBalls() + playerBScore.getWonBalls() < 6;
     }
 
     private static class Love extends PlayerScore {
@@ -50,7 +46,11 @@ public class Tennis {
 
     private static class Fifteen extends PlayerScore {
         String format() { return "fifteen"; }
-        PlayerScore playerScores() { return new PlayerScore(2); }
+        PlayerScore playerScores() { return new Thirty(); }
+    }
+    private static class Thirty extends PlayerScore {
+        String format() { return "thirty"; }
+        PlayerScore playerScores() { return new PlayerScore(3); }
     }
 
 }
