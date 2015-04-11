@@ -7,6 +7,9 @@ public class PlayerScore {
         this.wonBalls = wonBalls;
     }
 
+    public PlayerScore() {
+    }
+
     PlayerScore playerScores() {
         wonBalls++;
         return this;
