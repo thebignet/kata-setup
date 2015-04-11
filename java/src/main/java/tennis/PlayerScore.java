@@ -23,7 +23,7 @@ public class PlayerScore {
     PlayerScore winsOneBallOver(PlayerScore otherScore) {
         wonBalls++;
         if (enteringTieBreak(otherScore))
-            return new TieBreakScore();
+            return new TieBreakScore(name);
         return this;
     }
 
@@ -47,15 +47,15 @@ public class PlayerScore {
 
     public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
         if (otherPlayerScore.enteringTieBreak(this))
-            return new TieBreakScore();
+            return new TieBreakScore(name);
         return this;
 
     }
 
     public static class TieBreakScore extends PlayerScore {
 
-        public TieBreakScore() {
-            super(3);
+        public TieBreakScore(String name) {
+            super(3, name);
         }
 
         @Override

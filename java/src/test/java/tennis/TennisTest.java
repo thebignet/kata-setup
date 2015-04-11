@@ -45,7 +45,8 @@ public class TennisTest {
 
     @Test
     public void playerBWinsGame() {
-        playerBScoresTimes(4);
+        playerBScoresTimes(3);
+        playerBScores();
         assertScoreIs("game-B");
     }
 

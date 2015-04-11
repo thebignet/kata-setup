@@ -48,7 +48,7 @@ public class Tennis {
         PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
             wonBalls++;
             if (enteringTieBreak(otherPlayerScore))
-                return new TieBreakScore();
+                return new TieBreakScore(name);
             return new Forty(name);
         }
 
@@ -67,7 +67,7 @@ public class Tennis {
         @Override
         public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
             if (enteringTieBreak(otherPlayerScore))
-                return new TieBreakScore();
+                return new TieBreakScore(name);
             return this;
         }
 
