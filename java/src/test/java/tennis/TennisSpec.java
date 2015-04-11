@@ -10,137 +10,143 @@ public class TennisSpec {
 
     @Test
     public void scoreStartsAs_loveLove() {
-	assertScoreIs("love-love");
+        assertScoreIs("love-love");
     }
-    
+
     @Test
     public void playAScoresOnce() {
-	scoreATimes(1);
-	assertScoreIs("fifteen-love");
+        playerAScoresTimes(1);
+        assertScoreIs("fifteen-love");
     }
-    
+
     @Test
     public void playerBScoresOnce() {
-	scoreBTimes(1);
-	assertScoreIs("love-fifteen");
+        playerBScoresTimes(1);
+        assertScoreIs("love-fifteen");
     }
-    
+
     @Test
     public void playAScoresTwice() {
-	scoreATimes(2);
-	assertScoreIs("thirty-love");
+        playerAScoresTimes(2);
+        assertScoreIs("thirty-love");
     }
-    
+
     @Test
     public void playerBScoresTwice() {
-	scoreBTimes(2);
-	assertScoreIs("love-thirty");
+        playerBScoresTimes(2);
+        assertScoreIs("love-thirty");
     }
-    
+
     @Test
     public void playerBScoresTrice() {
-	scoreBTimes(3);
-	assertScoreIs("love-forty");
+        playerBScoresTimes(3);
+        assertScoreIs("love-forty");
     }
-    
+
     @Test
     public void playerBWinsGame() {
-	scoreBTimes(4);
-	assertScoreIs("game-B");
+        playerBScoresTimes(4);
+        assertScoreIs("game-B");
     }
+
     @Test
     public void playerAWinsGame() {
-	scoreATimes(4);
-	assertScoreIs("game-A");
-    }
-    
-    @Test
-    public void deuce() {
-	scoreBTimes(3);
-	scoreATimes(3);
-	assertScoreIs("deuce");
-    }
-    
-    @Test
-    public void advantageA() {
-	scoreBTimes(3);
-	scoreATimes(4);
-	assertScoreIs("advantage-A");
-    }
-    
-    @Test
-    public void advantageB() {
-	scoreATimes(3);
-	scoreBTimes(4);
-	assertScoreIs("advantage-B");
-    }
-    
-    @Test
-    public void advantageBAfterMorePlay() {
-	scoreATimes(3);
-	scoreBTimes(4);
-	assertScoreIs("advantage-B");
-	playerAScores();
-	assertScoreIs("deuce");
-	playerBScores();
-	assertScoreIs("advantage-B");
-	playerAScores();
-	playerBScores();
-	assertScoreIs("advantage-B");
-    }
-    
-    @Test
-    public void deuceAfterMorePlay() {
-	scoreATimes(3);
-	scoreBTimes(3);
-	assertScoreIs("deuce");
-	playerAScores();
-	playerBScores();
-	assertScoreIs("deuce");
-	playerAScores();
-	playerBScores();
-	assertScoreIs("deuce");
-	playerAScores();
-	playerBScores();
-	assertScoreIs("deuce");
-    }
-    
-    @Test public void 
-    advantageAAfterMorePlay() throws Exception {
-	 scoreBTimes(3);
-	 scoreATimes(4);
-	 
-	 playerBScores();
-	 playerAScores();
-	 assertScoreIs("advantage-A");
-
-	 playerBScores();
-	 playerAScores();
-	 assertScoreIs("advantage-A");
+        playerAScoresTimes(4);
+        assertScoreIs("game-A");
     }
 
-    private void scoreBTimes(int times) {
-	for (int i = 0; i < times; i++) {
-	    playerBScores();
-	}
+    @Test
+    public void tieBreak_deuce() {
+        playerBScoresTimes(3);
+        playerAScoresTimes(3);
+        assertScoreIs("deuce");
     }
-    private void scoreATimes(int times) {
-	for (int i = 0; i < times; i++) {
-	    playerAScores();
-	}
+
+    @Test
+    public void tieBreak_advantageA() {
+        playerBScoresTimes(3);
+        playerAScoresTimes(4);
+        assertScoreIs("advantage-A");
+    }
+
+    @Test
+    public void tieBreak_advantageB() {
+        playerAScoresTimes(3);
+        playerBScoresTimes(4);
+        assertScoreIs("advantage-B");
+    }
+
+    @Test
+    public void tieBreak_advantageBAfterMorePlay() {
+        playerAScoresTimes(3);
+        playerBScoresTimes(4);
+        assertScoreIs("advantage-B");
+
+        playerAScores();
+        playerBScores();
+        assertScoreIs("advantage-B");
+
+        playerAScores();
+        playerBScores();
+        assertScoreIs("advantage-B");
+    }
+
+    @Test
+    public void tieBreak_deuceAfterMorePlay() {
+        playerAScoresTimes(3);
+        playerBScoresTimes(3);
+        assertScoreIs("deuce");
+
+        playerAScores();
+        playerBScores();
+        assertScoreIs("deuce");
+
+        playerAScores();
+        playerBScores();
+        assertScoreIs("deuce");
+
+        playerAScores();
+        playerBScores();
+        assertScoreIs("deuce");
+    }
+
+    @Test
+    public void tieBreak_advantageAAfterMorePlay() throws Exception {
+        playerBScoresTimes(3);
+        playerAScoresTimes(4);
+
+        playerBScores();
+        playerAScores();
+        assertScoreIs("advantage-A");
+
+        playerBScores();
+        playerAScores();
+        assertScoreIs("advantage-A");
+    }
+
+    private void playerBScoresTimes(int times) {
+        for (int i = 0; i < times; i++) {
+            playerBScores();
+        }
+    }
+
+    private void playerAScoresTimes(int times) {
+        for (int i = 0; i < times; i++) {
+            playerAScores();
+        }
     }
 
 
     private void playerAScores() {
-	tennis = tennis.playerAScores();
+        tennis = tennis.playerAScores();
     }
-    
+
     private void playerBScores() {
-	tennis = tennis.playerBScores();
+        tennis = tennis.playerBScores();
     }
-    
+
     private void assertScoreIs(String expectedScore) {
-	assertThat(tennis.score()).isEqualTo(expectedScore);
+        assertThat(tennis.score()).isEqualTo(expectedScore);
     }
 
 
