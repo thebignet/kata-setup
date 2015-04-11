@@ -13,7 +13,8 @@ public class Tennis {
     }
 
     Tennis playerAScores() {
-        return playerAScore.playerScores();
+        playerAScore.playerScores();
+        return this;
     }
 
     String score() {

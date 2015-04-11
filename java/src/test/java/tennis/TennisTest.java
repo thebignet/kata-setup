@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class TennisSpec {
+public class TennisTest {
 
     private Tennis tennis = new Tennis();
 
