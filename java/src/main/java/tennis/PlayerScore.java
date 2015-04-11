@@ -16,7 +16,7 @@ public class PlayerScore {
     }
 
     String format() {
-        String[] scores = {"love", "fifteen", "thirty", "forty"};
+        String[] scores = {"not used", "fifteen", "thirty", "forty"};
         return scores[wonBalls];
     }
 

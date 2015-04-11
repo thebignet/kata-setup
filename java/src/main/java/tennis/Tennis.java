@@ -44,16 +44,13 @@ public class Tennis {
     }
 
     private static class Love extends PlayerScore {
+        String format() { return "love"; }
+        PlayerScore playerScores() { return new Fifteen(); }
+    }
 
-        @Override
-        String format() {
-            return "love";
-        }
-
-        @Override
-        PlayerScore playerScores() {
-            return new PlayerScore(1);
-        }
+    private static class Fifteen extends PlayerScore {
+        String format() { return "fifteen"; }
+        PlayerScore playerScores() { return new PlayerScore(2); }
     }
 
 }
