@@ -6,9 +6,9 @@ public class PlayerScore {
     public PlayerScore() {
     }
 
-    Tennis playerScores() {
+    PlayerScore playerScores() {
         wonBalls++;
-        return null;
+        return this;
     }
 
     String format() {

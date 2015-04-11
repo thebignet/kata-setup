@@ -1,18 +1,18 @@
 package tennis;
 
 public class Tennis {
-    private PlayerScore playerAScore = new PlayerScore();
+    private PlayerScore playerAScore = new Love();
     private PlayerScore playerBScore = new PlayerScore();
 
     public Tennis() {
     }
 
     void playerBScores() {
-        playerBScore.playerScores();
+        playerBScore = playerBScore.playerScores();
     }
 
     void playerAScores() {
-        playerAScore.playerScores();
+        playerAScore = playerAScore.playerScores();
     }
 
     String score() {
@@ -43,4 +43,10 @@ public class Tennis {
         return playerAScore.getWonBalls() + playerBScore.getWonBalls() < 6;
     }
 
+    private static class Love extends PlayerScore {
+//        @Override
+//        String format() {
+//            return "love";
+//        }
+    }
 }
