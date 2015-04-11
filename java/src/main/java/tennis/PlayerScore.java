@@ -1,18 +1,22 @@
 package tennis;
 
 public class PlayerScore {
-    int playerABalls;
+    private int wonBalls;
 
     public PlayerScore() {
     }
 
     Tennis playerScores() {
-        playerABalls++;
+        wonBalls++;
         return null;
     }
 
-    String format(int score) {
+    String format() {
         String[] scores = {"love", "fifteen", "thirty", "forty"};
-        return scores[score];
+        return scores[wonBalls];
+    }
+
+    public int getWonBalls() {
+        return wonBalls;
     }
 }

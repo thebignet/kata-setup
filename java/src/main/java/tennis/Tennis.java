@@ -2,13 +2,13 @@ package tennis;
 
 public class Tennis {
     private PlayerScore playerAScore = new PlayerScore();
-    private PlayerScore playerBBalls = new PlayerScore();
+    private PlayerScore playerBScore = new PlayerScore();
 
     public Tennis() {
     }
 
     void playerBScores() {
-        playerBBalls.playerScores();
+        playerBScore.playerScores();
     }
 
     void playerAScores() {
@@ -16,26 +16,22 @@ public class Tennis {
     }
 
     String score() {
-        return format(playerAScore.playerABalls, playerBBalls.playerABalls);
-    }
-
-    private String format(int unused, int unused2) {
         if (inBeginningOfGame()) {
-            if (playerAScore.playerABalls == 4)
+            if (playerAScore.getWonBalls() == 4)
                 return "game-A";
-            if (playerBBalls.playerABalls == 4)
+            if (playerBScore.getWonBalls() == 4)
                 return "game-B";
-            return playerAScore.format(playerAScore.playerABalls) + "-" + playerAScore.format(playerBBalls.playerABalls);
+            return playerAScore.format() + "-" + playerBScore.format();
         } else {
-            if (playerAScore.playerABalls - playerBBalls.playerABalls == -2)
+            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == -2)
                 return "game-B";
-            if (playerAScore.playerABalls - playerBBalls.playerABalls == -1)
+            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == -1)
                 return "advantage-B";
-            if (playerAScore.playerABalls - playerBBalls.playerABalls == 1)
+            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == 1)
                 return "advantage-A";
-            if (playerAScore.playerABalls - playerBBalls.playerABalls == 0)
+            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == 0)
                 return "deuce";
-            if (playerAScore.playerABalls - playerBBalls.playerABalls == 2)
+            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == 2)
                 return "game-A";
             else
                 throw new RuntimeException("cant happen");
@@ -44,7 +40,7 @@ public class Tennis {
     }
 
     private boolean inBeginningOfGame() {
-        return playerAScore.playerABalls + playerBBalls.playerABalls < 6;
+        return playerAScore.getWonBalls() + playerBScore.getWonBalls() < 6;
     }
 
 }
