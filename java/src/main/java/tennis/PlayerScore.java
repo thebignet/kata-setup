@@ -30,8 +30,6 @@ public class PlayerScore {
     }
 
     String pronounceScore(PlayerScore playerBScore) {
-        if (getWonBalls() == 4)
-            return "game-A";
         if (playerBScore.getWonBalls() == 4)
             return "game-B";
         return format() + "-" + playerBScore.format();

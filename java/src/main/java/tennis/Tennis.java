@@ -53,12 +53,28 @@ public class Tennis {
         String format() { return "forty"; }
         PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
             wonBalls++;
-            return new PlayerScore(4);
+            return new Game("A");
         }
 
         @Override
         public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-            return new TieBreakScore();
+            if (enteringTieBreak(otherPlayerScore))
+                return new TieBreakScore();
+            return this;
+        }
+
+    }
+    private static class Game extends PlayerScore {
+        private String playerLetter;
+
+        public Game(String playerLetter) {
+            super(4);
+            this.playerLetter = playerLetter;
+        }
+
+        @Override
+        String pronounceScore(PlayerScore playerBScore) {
+            return "game-" + playerLetter;
         }
     }
 
