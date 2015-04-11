@@ -8,49 +8,30 @@ public class Tennis {
     }
 
     void playerBScores() {
-        playerBScore = playerBScore.playerScores();
+        playerBScore = playerBScore.winsOneBallOver(playerAScore);
     }
 
     void playerAScores() {
-        playerAScore = playerAScore.playerScores();
+        playerAScore = playerAScore.winsOneBallOver(playerBScore);
     }
 
     String score() {
-        if (playerAScore.inTieBreak(playerBScore)) {
-            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == -2)
-                return "game-B";
-            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == -1)
-                return "advantage-B";
-            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == 1)
-                return "advantage-A";
-            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == 0)
-                return "deuce";
-            if (playerAScore.getWonBalls() - playerBScore.getWonBalls() == 2)
-                return "game-A";
-            else
-                throw new RuntimeException("cant happen");
-        } else {
-            if (playerAScore.getWonBalls() == 4)
-                return "game-A";
-            if (playerBScore.getWonBalls() == 4)
-                return "game-B";
-            return playerAScore.format() + "-" + playerBScore.format();
-        }
+        return playerAScore.pronounceScore(playerBScore);
 
     }
 
     private static class Love extends PlayerScore {
         String format() { return "love"; }
-        PlayerScore playerScores() { return new Fifteen(); }
+        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Fifteen(); }
     }
 
     private static class Fifteen extends PlayerScore {
         String format() { return "fifteen"; }
-        PlayerScore playerScores() { return new Thirty(); }
+        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(); }
     }
     private static class Thirty extends PlayerScore {
         String format() { return "thirty"; }
-        PlayerScore playerScores() { return new PlayerScore(3); }
+        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new PlayerScore(3); }
     }
 
 }
