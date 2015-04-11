@@ -12,7 +12,7 @@ public class PlayerScore {
 
     PlayerScore winsOneBallOver(PlayerScore otherScore) {
         wonBalls++;
-        if (inTieBreak(otherScore))
+        if (enteringTieBreak(otherScore))
             return new TieBreakScore();
         return this;
     }
@@ -25,7 +25,7 @@ public class PlayerScore {
         return wonBalls;
     }
 
-    boolean inTieBreak(PlayerScore otherScore) {
+    boolean enteringTieBreak(PlayerScore otherScore) {
         return getWonBalls() + otherScore.getWonBalls() >= 6;
     }
 
@@ -38,7 +38,7 @@ public class PlayerScore {
     }
 
     public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-        if (otherPlayerScore.inTieBreak(this))
+        if (otherPlayerScore.enteringTieBreak(this))
             return new TieBreakScore();
         return this;
 

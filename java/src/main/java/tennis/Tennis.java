@@ -32,16 +32,17 @@ public class Tennis {
         PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(); }
     }
     private static class Thirty extends PlayerScore {
+        public Thirty() {
+            super(2);
+        }
+
         String format() { return "thirty"; }
         PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
-            if (inTieBreak(otherPlayerScore))
+            wonBalls++;
+            if (enteringTieBreak(otherPlayerScore))
                 return new TieBreakScore();
             return new PlayerScore(3); }
 
-        @Override
-        boolean inTieBreak(PlayerScore otherScore) {
-            return otherScore.wonBalls == 3;
-        }
     }
 
 }
