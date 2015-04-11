@@ -53,7 +53,7 @@ public class PlayerScore {
         @Override
         String format() {
             // should not have this method, missing type in hierarchy
-            return super.format();
+            throw new RuntimeException("todo make this impossible");
         }
 
         @Override

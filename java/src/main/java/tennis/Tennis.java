@@ -41,8 +41,25 @@ public class Tennis {
             wonBalls++;
             if (enteringTieBreak(otherPlayerScore))
                 return new TieBreakScore();
-            return new PlayerScore(3); }
+            return new Forty();
+        }
 
+    }
+    private static class Forty extends PlayerScore {
+        public Forty() {
+            super(3);
+        }
+
+        String format() { return "forty"; }
+        PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
+            wonBalls++;
+            return new PlayerScore(4);
+        }
+
+        @Override
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
+            return new TieBreakScore();
+        }
     }
 
 }
