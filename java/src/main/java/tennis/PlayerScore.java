@@ -1,7 +1,7 @@
 package tennis;
 
 public class PlayerScore {
-    private int wonBalls;
+    protected int wonBalls;
 
     public PlayerScore(int wonBalls) {
         this.wonBalls = wonBalls;
@@ -13,7 +13,7 @@ public class PlayerScore {
     PlayerScore winsOneBallOver(PlayerScore otherScore) {
         wonBalls++;
         if (inTieBreak(otherScore))
-            ;
+            return new TieBreakScore();
         return this;
     }
 
@@ -21,7 +21,7 @@ public class PlayerScore {
         return "forty";
     }
 
-    public int getWonBalls() {
+    protected int getWonBalls() {
         return wonBalls;
     }
 
@@ -49,6 +49,41 @@ public class PlayerScore {
             if (playerBScore.getWonBalls() == 4)
                 return "game-B";
             return format() + "-" + playerBScore.format();
+        }
+    }
+
+    private static class TieBreakScore extends PlayerScore {
+
+        public TieBreakScore() {
+            super(4);
+        }
+
+        @Override
+        String format() {
+            // should not have this method, missing type in hierarchy
+            return super.format();
+        }
+
+        @Override
+        PlayerScore winsOneBallOver(PlayerScore otherScore) {
+            wonBalls++;
+            return this;
+        }
+
+        @Override
+        String pronounceScore(PlayerScore playerBScore) {
+            if (getWonBalls() - playerBScore.getWonBalls() == -2)
+                return "game-B";
+            if (getWonBalls() - playerBScore.getWonBalls() == -1)
+                return "advantage-B";
+            if (getWonBalls() - playerBScore.getWonBalls() == 1)
+                return "advantage-A";
+            if (getWonBalls() - playerBScore.getWonBalls() == 0)
+                return "deuce";
+            if (getWonBalls() - playerBScore.getWonBalls() == 2)
+                return "game-A";
+            else
+                throw new RuntimeException("cant happen");
         }
     }
 }
