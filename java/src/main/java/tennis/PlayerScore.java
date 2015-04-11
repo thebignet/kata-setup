@@ -2,12 +2,22 @@ package tennis;
 
 public class PlayerScore {
     protected int wonBalls;
+    protected String name;
+
+    public PlayerScore() {
+    }
 
     public PlayerScore(int wonBalls) {
         this.wonBalls = wonBalls;
     }
 
-    public PlayerScore() {
+    public PlayerScore(String name) {
+        this.name = name;
+    }
+
+    public PlayerScore(int wonBalls, String name) {
+        this.wonBalls = wonBalls;
+        this.name = name;
     }
 
     PlayerScore winsOneBallOver(PlayerScore otherScore) {

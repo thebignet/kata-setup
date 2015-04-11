@@ -1,8 +1,8 @@
 package tennis;
 
 public class Tennis {
-    private PlayerScore playerAScore = new Love();
-    private PlayerScore playerBScore = new Love();
+    private PlayerScore playerAScore = new Love("A");
+    private PlayerScore playerBScore = new Love("B");
 
     public Tennis() {
     }
@@ -23,17 +23,25 @@ public class Tennis {
     }
 
     private static class Love extends PlayerScore {
+        public Love(String name) {
+            super(name);
+        }
+
         String format() { return "love"; }
-        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Fifteen(); }
+        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Fifteen(name); }
     }
 
     private static class Fifteen extends PlayerScore {
+        public Fifteen(String name) {
+            super(name);
+        }
+
         String format() { return "fifteen"; }
-        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(); }
+        PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(name); }
     }
     private static class Thirty extends PlayerScore {
-        public Thirty() {
-            super(2);
+        public Thirty(String name) {
+            super(2, name);
         }
 
         String format() { return "thirty"; }
@@ -41,19 +49,19 @@ public class Tennis {
             wonBalls++;
             if (enteringTieBreak(otherPlayerScore))
                 return new TieBreakScore();
-            return new Forty();
+            return new Forty(name);
         }
 
     }
     private static class Forty extends PlayerScore {
-        public Forty() {
-            super(3);
+        public Forty(String name) {
+            super(3, name);
         }
 
         String format() { return "forty"; }
         PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
             wonBalls++;
-            return new Game("A");
+            return new Game(name);
         }
 
         @Override
@@ -65,16 +73,14 @@ public class Tennis {
 
     }
     private static class Game extends PlayerScore {
-        private String playerLetter;
 
-        public Game(String playerLetter) {
-            super(4);
-            this.playerLetter = playerLetter;
+        public Game(String name) {
+            super(4, name);
         }
 
         @Override
         String pronounceScore(PlayerScore playerBScore) {
-            return "game-" + playerLetter;
+            return "game-" + name;
         }
     }
 
