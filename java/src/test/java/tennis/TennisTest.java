@@ -151,11 +151,11 @@ public class TennisTest {
 
 
     private void playerAScores() {
-        tennis = tennis.playerAScores();
+        tennis.playerAScores();
     }
 
     private void playerBScores() {
-        tennis = tennis.playerBScores();
+        tennis.playerBScores();
     }
 
     private void assertScoreIs(String expectedScore) {
