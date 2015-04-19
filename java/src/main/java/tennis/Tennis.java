@@ -7,17 +7,17 @@ public class Tennis {
     public Tennis() {
     }
 
-    void playerBScores() {
+    public void playerBScores() {
         playerBScore = playerBScore.winsOneBallOver(playerAScore);
         playerAScore = playerAScore.losesOneBallTo(playerBScore);
     }
 
-    void playerAScores() {
+    public void playerAScores() {
         playerAScore = playerAScore.winsOneBallOver(playerBScore);
         playerBScore = playerBScore.losesOneBallTo(playerAScore);
     }
 
-    String score() {
+    public String score() {
         return playerAScore.pronounceScore(playerBScore);
 
     }
@@ -71,22 +71,6 @@ public class Tennis {
             return this;
         }
 
-    }
-    private static class Game extends PlayerScore {
-
-        public Game(String name) {
-            super(name);
-        }
-
-        @Override
-        String pronounceScore(PlayerScore playerBScore) {
-            return "game-" + name;
-        }
-
-        @Override
-        String pronounceScoreGivenFirstPlayersScoreIs(String format) {
-            return "game-" + name;
-        }
     }
 
 }

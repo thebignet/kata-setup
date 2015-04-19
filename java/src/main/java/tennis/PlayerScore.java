@@ -1,6 +1,6 @@
 package tennis;
 
-public class PlayerScore {
+public abstract class PlayerScore {
     protected int wonBalls;
     protected String name;
 
@@ -27,9 +27,8 @@ public class PlayerScore {
         return this;
     }
 
-    String format() {
-        return "forty";
-    }
+    // needed only for the beginning
+    abstract String format();
 
     protected int getWonBalls() {
         return wonBalls;
@@ -58,6 +57,10 @@ public class PlayerScore {
 
         public TieBreakScore(String name) {
             super(3, name);
+        }
+
+        protected TieBreakScore() {
+
         }
 
         @Override
@@ -91,6 +94,28 @@ public class PlayerScore {
                 return "game-A";
             else
                 throw new RuntimeException("cant happen");
+        }
+    }
+    public static class Advantage extends TieBreakScore {
+
+        public Advantage(String name) {
+            super();
+            this.name = name;
+        }
+
+        @Override
+        PlayerScore winsOneBallOver(PlayerScore otherScore) {
+            return new Game(name);
+        }
+
+        @Override
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
+            return super.losesOneBallTo(otherPlayerScore);
+        }
+
+        @Override
+        String format() {
+            return "advantage-" + name;
         }
     }
 }
