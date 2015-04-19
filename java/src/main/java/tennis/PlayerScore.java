@@ -56,11 +56,8 @@ public abstract class PlayerScore {
     public static class Deuce extends PlayerScore {
 
         public Deuce(String name) {
-            super(3, name);
-        }
-
-        protected Deuce() {
-
+            super(3, name); // the 3 is needed because one player goes in to deuce before the other so
+            // the enteringTieBreak function wont work
         }
 
         @Override
@@ -72,14 +69,11 @@ public abstract class PlayerScore {
         @Override
         PlayerScore winsOneBallOver(PlayerScore otherScore) {
             return new Advantage(name);
-//            wonBalls++;
-//            return this;
         }
 
         @Override
         public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
             return new NonAdvantage(name);
-//            return this;
         }
 
         @Override
@@ -90,8 +84,7 @@ public abstract class PlayerScore {
     public static class Advantage extends Deuce {
 
         public Advantage(String name) {
-            super();
-            this.name = name;
+            super(name);
         }
 
         @Override
@@ -112,8 +105,7 @@ public abstract class PlayerScore {
     public static class NonAdvantage extends Deuce {
 
         public NonAdvantage(String name) {
-            super();
-            this.name = name;
+            super(name);
         }
 
         @Override
