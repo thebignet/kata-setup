@@ -23,7 +23,7 @@ public abstract class PlayerScore {
     PlayerScore winsOneBallOver(PlayerScore otherScore) {
         wonBalls++;
         if (enteringTieBreak(otherScore))
-            return new TieBreakScore(name);
+            return new Deuce(name);
         return this;
     }
 
@@ -48,18 +48,18 @@ public abstract class PlayerScore {
 
     public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
         if (otherPlayerScore.enteringTieBreak(this))
-            return new TieBreakScore(name);
+            return new Deuce(name);
         return this;
 
     }
 
-    public static class TieBreakScore extends PlayerScore {
+    public static class Deuce extends PlayerScore {
 
-        public TieBreakScore(String name) {
+        public Deuce(String name) {
             super(3, name);
         }
 
-        protected TieBreakScore() {
+        protected Deuce() {
 
         }
 
@@ -96,7 +96,7 @@ public abstract class PlayerScore {
                 throw new RuntimeException("cant happen");
         }
     }
-    public static class Advantage extends TieBreakScore {
+    public static class Advantage extends Deuce {
 
         public Advantage(String name) {
             super();
@@ -110,7 +110,7 @@ public abstract class PlayerScore {
 
         @Override
         public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-            return new TieBreakScore(name); // should be deuce
+            return new Deuce(name); 
         }
 
         @Override
