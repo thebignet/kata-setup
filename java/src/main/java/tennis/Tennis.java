@@ -1,8 +1,8 @@
 package tennis;
 
 public class Tennis {
-    private BeforeTiebreakScore playerAScore = new Love("A");
-    private BeforeTiebreakScore playerBScore = new Love("B");
+    private PlayerScore playerAScore = new Love("A");
+    private PlayerScore playerBScore = new Love("B");
 
     public Tennis() {
     }
@@ -22,30 +22,30 @@ public class Tennis {
 
     }
 
-    private static class Love extends BeforeTiebreakScore {
+    private static class Love extends PlayerScore {
         public Love(String name) {
             super(name);
         }
 
         String format() { return "love"; }
-        public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore playerAScore) { return new Fifteen(name); }
+        public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Fifteen(name); }
     }
 
-    private static class Fifteen extends BeforeTiebreakScore {
+    private static class Fifteen extends PlayerScore {
         public Fifteen(String name) {
             super(name);
         }
 
         String format() { return "fifteen"; }
-        public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore playerAScore) { return new Thirty(name); }
+        public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(name); }
     }
-    private static class Thirty extends BeforeTiebreakScore {
+    private static class Thirty extends PlayerScore {
         public Thirty(String name) {
             super(2, name);
         }
 
         String format() { return "thirty"; }
-        public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore otherPlayerScore) {
+        public PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
             wonBalls++;
             if (enteringTieBreak(otherPlayerScore))
                 return new Deuce(name);
@@ -53,19 +53,19 @@ public class Tennis {
         }
 
     }
-    private static class Forty extends BeforeTiebreakScore {
+    private static class Forty extends PlayerScore {
         public Forty(String name) {
             super(3, name);
         }
 
         String format() { return "forty"; }
-        public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore otherPlayerScore) {
+        public PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
             wonBalls++;
             return new Game(name);
         }
 
         @Override
-        public BeforeTiebreakScore losesOneBallTo(BeforeTiebreakScore otherPlayerScore) {
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
             if (enteringTieBreak(otherPlayerScore))
                 return new Deuce(name);
             return this;

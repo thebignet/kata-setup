@@ -3,7 +3,7 @@ package tennis;
 /**
 * Created by johan on 19/04/15.
 */
-public class Game extends BeforeTiebreakScore {
+public class Game extends PlayerScore {
 
     public Game(String name) {
         super(name);
@@ -15,7 +15,7 @@ public class Game extends BeforeTiebreakScore {
     }
 
     @Override
-    public String pronounceScore(BeforeTiebreakScore playerBScore) {
+    public String pronounceScore(PlayerScore playerBScore) {
         return "game-" + name;
     }
 

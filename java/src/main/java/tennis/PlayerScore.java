@@ -1,40 +1,40 @@
 package tennis;
 
-public abstract class BeforeTiebreakScore {
+public abstract class PlayerScore {
     protected int wonBalls;
     protected String name;
 
-    public BeforeTiebreakScore() {
+    public PlayerScore() {
     }
 
-    public BeforeTiebreakScore(int wonBalls) {
+    public PlayerScore(int wonBalls) {
         this.wonBalls = wonBalls;
     }
 
-    public BeforeTiebreakScore(String name) {
+    public PlayerScore(String name) {
         this.name = name;
     }
 
-    public BeforeTiebreakScore(int wonBalls, String name) {
+    public PlayerScore(int wonBalls, String name) {
         this.wonBalls = wonBalls;
         this.name = name;
     }
 
-    public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore otherScore) {
+    public PlayerScore winsOneBallOver(PlayerScore otherScore) {
         wonBalls++;
         if (enteringTieBreak(otherScore))
             return new Deuce(name);
         return this;
     }
 
-    public BeforeTiebreakScore losesOneBallTo(BeforeTiebreakScore otherPlayerScore) {
+    public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
         if (otherPlayerScore.enteringTieBreak(this))
             return new Deuce(name);
         return this;
 
     }
 
-    public String pronounceScore(BeforeTiebreakScore playerBScore) {
+    public String pronounceScore(PlayerScore playerBScore) {
         return playerBScore.pronounceScoreGivenFirstPlayersScoreIs(format());
     }
 
@@ -45,7 +45,7 @@ public abstract class BeforeTiebreakScore {
         return wonBalls;
     }
 
-    boolean enteringTieBreak(BeforeTiebreakScore otherScore) {
+    boolean enteringTieBreak(PlayerScore otherScore) {
         return getWonBalls() + otherScore.getWonBalls() >= 6;
     }
 
@@ -53,7 +53,7 @@ public abstract class BeforeTiebreakScore {
         return format + "-" + format();
     }
 
-    public static class Deuce extends BeforeTiebreakScore {
+    public static class Deuce extends PlayerScore {
 
         public Deuce(String name) {
             super(3, name); // the 3 is needed because one player goes in to deuce before the other so
@@ -67,17 +67,17 @@ public abstract class BeforeTiebreakScore {
         }
 
         @Override
-        public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore otherScore) {
+        public PlayerScore winsOneBallOver(PlayerScore otherScore) {
             return new Advantage(name);
         }
 
         @Override
-        public BeforeTiebreakScore losesOneBallTo(BeforeTiebreakScore otherPlayerScore) {
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
             return new NonAdvantage(name);
         }
 
         @Override
-        public String pronounceScore(BeforeTiebreakScore playerBScore) {
+        public String pronounceScore(PlayerScore playerBScore) {
             return "deuce";
         }
     }
@@ -88,17 +88,17 @@ public abstract class BeforeTiebreakScore {
         }
 
         @Override
-        public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore otherScore) {
+        public PlayerScore winsOneBallOver(PlayerScore otherScore) {
             return new Game(name);
         }
 
         @Override
-        public BeforeTiebreakScore losesOneBallTo(BeforeTiebreakScore otherPlayerScore) {
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
             return new Deuce(name);
         }
 
         @Override
-        public String pronounceScore(BeforeTiebreakScore playerBScore) {
+        public String pronounceScore(PlayerScore playerBScore) {
             return "advantage-" + name;
         }
     }
@@ -109,17 +109,17 @@ public abstract class BeforeTiebreakScore {
         }
 
         @Override
-        public BeforeTiebreakScore winsOneBallOver(BeforeTiebreakScore otherScore) {
+        public PlayerScore winsOneBallOver(PlayerScore otherScore) {
             return new Deuce(name);
         }
 
         @Override
-        public BeforeTiebreakScore losesOneBallTo(BeforeTiebreakScore otherPlayerScore) {
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
             return new Game(otherPlayerScore.name);
         }
 
         @Override
-        public String pronounceScore(BeforeTiebreakScore playerBScore) {
+        public String pronounceScore(PlayerScore playerBScore) {
             return "advantage-" + playerBScore.name;
         }
     }
