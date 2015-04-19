@@ -20,12 +20,7 @@ public abstract class PlayerScore {
         this.name = name;
     }
 
-    public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
-        wonBalls++;
-        if (enteringTieBreak(opponentScore))
-            return new Deuce(name);
-        return this;
-    }
+    public abstract PlayerScore winsOneBallOver(PlayerScore opponentScore);
 
     public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
         if (opponentScore.enteringTieBreak(this))
@@ -53,7 +48,7 @@ public abstract class PlayerScore {
         return format + "-" + format();
     }
 
-    public abstract PlayerScore otherPlayerShouldEnterFortyOrDeuce(Tennis.Thirty thirty);
+    public abstract PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty);
 
     public static class Deuce extends PlayerScore {
 
@@ -69,7 +64,7 @@ public abstract class PlayerScore {
         }
 
         @Override
-        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Tennis.Thirty thirty) {
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
             throw new RuntimeException("can't happen");
         }
 
@@ -129,5 +124,79 @@ public abstract class PlayerScore {
         public String pronounceScore(PlayerScore playerBScore) {
             return "advantage-" + playerBScore.name;
         }
+    }
+
+    static class Forty extends PlayerScore {
+        public Forty(String name) {
+            super(3, name);
+        }
+
+        String format() { return "forty"; }
+        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
+            wonBalls++;
+            return new Game(name);
+        }
+
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Deuce(thirty.name);
+        }
+
+        @Override
+        public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
+            if (enteringTieBreak(opponentScore))
+                return new Deuce(name);
+            return this;
+        }
+
+    }
+
+    public static class Thirty extends PlayerScore {
+        public Thirty(String name) {
+            super(2, name);
+        }
+
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Forty(thirty.name);
+        }
+
+        String format() { return "thirty"; }
+        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
+            wonBalls++;
+            return opponentScore.otherPlayerShouldEnterFortyOrDeuce(this);
+        }
+
+    }
+
+    static class Fifteen extends PlayerScore {
+        public Fifteen(String name) {
+            super(name);
+        }
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Forty(thirty.name);
+        }
+
+        String format() { return "fifteen"; }
+        public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(name); }
+    }
+
+    static class Love extends PlayerScore {
+        public Love(String name) {
+            super(name);
+        }
+
+        String format() { return "love"; }
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Forty(thirty.name);
+        }
+
+        public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Fifteen(name); }
     }
 }

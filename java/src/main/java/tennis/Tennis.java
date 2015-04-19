@@ -1,8 +1,8 @@
 package tennis;
 
 public class Tennis {
-    private PlayerScore playerAScore = new Love("A");
-    private PlayerScore playerBScore = new Love("B");
+    private PlayerScore playerAScore = new PlayerScore.Love("A");
+    private PlayerScore playerBScore = new PlayerScore.Love("B");
 
     public Tennis() {
     }
@@ -19,78 +19,6 @@ public class Tennis {
 
     public String score() {
         return playerAScore.pronounceScore(playerBScore);
-
-    }
-
-    private static class Love extends PlayerScore {
-        public Love(String name) {
-            super(name);
-        }
-
-        String format() { return "love"; }
-
-        @Override
-        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
-            return new Forty(thirty.name);
-        }
-
-        public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Fifteen(name); }
-    }
-
-    private static class Fifteen extends PlayerScore {
-        public Fifteen(String name) {
-            super(name);
-        }
-
-        @Override
-        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
-            return new Forty(thirty.name);
-        }
-
-        String format() { return "fifteen"; }
-        public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(name); }
-    }
-    public static class Thirty extends PlayerScore {
-        public Thirty(String name) {
-            super(2, name);
-        }
-
-
-        @Override
-        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
-            return new Forty(thirty.name);
-        }
-
-        String format() { return "thirty"; }
-        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
-            wonBalls++;
-            return opponentScore.otherPlayerShouldEnterFortyOrDeuce(this);
-        }
-
-    }
-    private static class Forty extends PlayerScore {
-        public Forty(String name) {
-            super(3, name);
-        }
-
-        String format() { return "forty"; }
-        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
-            wonBalls++;
-            return new Game(name);
-        }
-
-
-        @Override
-        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
-            return new Deuce(thirty.name);
-        }
-
-        @Override
-        public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
-            if (enteringTieBreak(opponentScore))
-                return new Deuce(name);
-            return this;
-        }
 
     }
 

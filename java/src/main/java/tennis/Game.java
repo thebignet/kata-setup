@@ -3,7 +3,7 @@ package tennis;
 /**
 * Created by johan on 19/04/15.
 */
-public class Game extends PlayerScore {
+public class Game extends PlayerScore.Deuce {
 
     public Game(String name) {
         super(name);
@@ -22,11 +22,6 @@ public class Game extends PlayerScore {
     @Override
     String pronounceScoreGivenFirstPlayersScoreIs(String format) {
         return "game-" + name;
-    }
-
-    @Override
-    public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Tennis.Thirty thirty) {
-        throw new RuntimeException("can't happen");
     }
 
 
