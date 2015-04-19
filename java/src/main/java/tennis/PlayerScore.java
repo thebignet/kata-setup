@@ -110,7 +110,7 @@ public abstract class PlayerScore {
 
         @Override
         public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-            return super.losesOneBallTo(otherPlayerScore);
+            return new TieBreakScore(name); // should be deuce
         }
 
         @Override
