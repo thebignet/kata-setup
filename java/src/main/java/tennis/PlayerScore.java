@@ -20,15 +20,15 @@ public abstract class PlayerScore {
         this.name = name;
     }
 
-    public PlayerScore winsOneBallOver(PlayerScore otherScore) {
+    public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
         wonBalls++;
-        if (enteringTieBreak(otherScore))
+        if (enteringTieBreak(opponentScore))
             return new Deuce(name);
         return this;
     }
 
-    public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-        if (otherPlayerScore.enteringTieBreak(this))
+    public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
+        if (opponentScore.enteringTieBreak(this))
             return new Deuce(name);
         return this;
 
@@ -45,8 +45,8 @@ public abstract class PlayerScore {
         return wonBalls;
     }
 
-    boolean enteringTieBreak(PlayerScore otherScore) {
-        return getWonBalls() + otherScore.getWonBalls() >= 6;
+    boolean enteringTieBreak(PlayerScore opponentScore) {
+        return getWonBalls() + opponentScore.getWonBalls() >= 6;
     }
 
     String pronounceScoreGivenFirstPlayersScoreIs(String format) {
@@ -67,12 +67,12 @@ public abstract class PlayerScore {
         }
 
         @Override
-        public PlayerScore winsOneBallOver(PlayerScore otherScore) {
+        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
             return new Advantage(name);
         }
 
         @Override
-        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
+        public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
             return new NonAdvantage(name);
         }
 
@@ -88,12 +88,12 @@ public abstract class PlayerScore {
         }
 
         @Override
-        public PlayerScore winsOneBallOver(PlayerScore otherScore) {
+        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
             return new Game(name);
         }
 
         @Override
-        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
+        public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
             return new Deuce(name);
         }
 
@@ -109,13 +109,13 @@ public abstract class PlayerScore {
         }
 
         @Override
-        public PlayerScore winsOneBallOver(PlayerScore otherScore) {
+        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
             return new Deuce(name);
         }
 
         @Override
-        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-            return new Game(otherPlayerScore.name);
+        public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
+            return new Game(opponentScore.name);
         }
 
         @Override

@@ -45,9 +45,9 @@ public class Tennis {
         }
 
         String format() { return "thirty"; }
-        public PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
+        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
             wonBalls++;
-            if (enteringTieBreak(otherPlayerScore))
+            if (enteringTieBreak(opponentScore))
                 return new Deuce(name);
             return new Forty(name);
         }
@@ -59,14 +59,14 @@ public class Tennis {
         }
 
         String format() { return "forty"; }
-        public PlayerScore winsOneBallOver(PlayerScore otherPlayerScore) {
+        public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
             wonBalls++;
             return new Game(name);
         }
 
         @Override
-        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-            if (enteringTieBreak(otherPlayerScore))
+        public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
+            if (enteringTieBreak(opponentScore))
                 return new Deuce(name);
             return this;
         }
