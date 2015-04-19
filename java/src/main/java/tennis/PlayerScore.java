@@ -71,29 +71,20 @@ public abstract class PlayerScore {
 
         @Override
         PlayerScore winsOneBallOver(PlayerScore otherScore) {
-            wonBalls++;
-            return this;
+            return new Advantage(name);
+//            wonBalls++;
+//            return this;
         }
 
         @Override
         public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-            return this;
+            return new NonAdvantage(name);
+//            return this;
         }
 
         @Override
         String pronounceScore(PlayerScore playerBScore) {
-            if (getWonBalls() - playerBScore.getWonBalls() == -2)
-                return "game-B";
-            if (getWonBalls() - playerBScore.getWonBalls() == -1)
-                return "advantage-B";
-            if (getWonBalls() - playerBScore.getWonBalls() == 1)
-                return "advantage-A";
-            if (getWonBalls() - playerBScore.getWonBalls() == 0)
-                return "deuce";
-            if (getWonBalls() - playerBScore.getWonBalls() == 2)
-                return "game-A";
-            else
-                throw new RuntimeException("cant happen");
+            return "deuce";
         }
     }
     public static class Advantage extends Deuce {
@@ -110,12 +101,34 @@ public abstract class PlayerScore {
 
         @Override
         public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
-            return new Deuce(name); 
+            return new Deuce(name);
         }
 
         @Override
-        String format() {
+        String pronounceScore(PlayerScore playerBScore) {
             return "advantage-" + name;
+        }
+    }
+    public static class NonAdvantage extends Deuce {
+
+        public NonAdvantage(String name) {
+            super();
+            this.name = name;
+        }
+
+        @Override
+        PlayerScore winsOneBallOver(PlayerScore otherScore) {
+            return new Deuce(name);
+        }
+
+        @Override
+        public PlayerScore losesOneBallTo(PlayerScore otherPlayerScore) {
+            return new Game(otherPlayerScore.name);
+        }
+
+        @Override
+        String pronounceScore(PlayerScore playerBScore) {
+            return "advantage-" + playerBScore.name;
         }
     }
 }
