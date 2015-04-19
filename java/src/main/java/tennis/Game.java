@@ -23,4 +23,11 @@ public class Game extends PlayerScore {
     String pronounceScoreGivenFirstPlayersScoreIs(String format) {
         return "game-" + name;
     }
+
+    @Override
+    public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Tennis.Thirty thirty) {
+        throw new RuntimeException("can't happen");
+    }
+
+
 }

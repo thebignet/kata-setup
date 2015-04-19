@@ -53,6 +53,8 @@ public abstract class PlayerScore {
         return format + "-" + format();
     }
 
+    public abstract PlayerScore otherPlayerShouldEnterFortyOrDeuce(Tennis.Thirty thirty);
+
     public static class Deuce extends PlayerScore {
 
         public Deuce(String name) {
@@ -64,6 +66,11 @@ public abstract class PlayerScore {
         String format() {
             // should not have this method, missing type in hierarchy
             throw new RuntimeException("todo make this impossible");
+        }
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Tennis.Thirty thirty) {
+            throw new RuntimeException("can't happen");
         }
 
         @Override

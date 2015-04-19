@@ -28,6 +28,12 @@ public class Tennis {
         }
 
         String format() { return "love"; }
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Forty(thirty.name);
+        }
+
         public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Fifteen(name); }
     }
 
@@ -36,20 +42,29 @@ public class Tennis {
             super(name);
         }
 
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Forty(thirty.name);
+        }
+
         String format() { return "fifteen"; }
         public PlayerScore winsOneBallOver(PlayerScore playerAScore) { return new Thirty(name); }
     }
-    private static class Thirty extends PlayerScore {
+    public static class Thirty extends PlayerScore {
         public Thirty(String name) {
             super(2, name);
+        }
+
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Forty(thirty.name);
         }
 
         String format() { return "thirty"; }
         public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
             wonBalls++;
-            if (enteringTieBreak(opponentScore))
-                return new Deuce(name);
-            return new Forty(name);
+            return opponentScore.otherPlayerShouldEnterFortyOrDeuce(this);
         }
 
     }
@@ -62,6 +77,12 @@ public class Tennis {
         public PlayerScore winsOneBallOver(PlayerScore opponentScore) {
             wonBalls++;
             return new Game(name);
+        }
+
+
+        @Override
+        public PlayerScore otherPlayerShouldEnterFortyOrDeuce(Thirty thirty) {
+            return new Deuce(thirty.name);
         }
 
         @Override
