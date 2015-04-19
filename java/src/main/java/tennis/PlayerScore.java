@@ -23,10 +23,7 @@ public abstract class PlayerScore {
     public abstract PlayerScore winsOneBallOver(PlayerScore opponentScore);
 
     public PlayerScore losesOneBallTo(PlayerScore opponentScore) {
-        if (opponentScore.enteringTieBreak(this))
-            return new Deuce(name);
         return this;
-
     }
 
     public String pronounceScore(PlayerScore playerBScore) {
