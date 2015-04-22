@@ -4,13 +4,6 @@ public abstract class PlayerScore {
     protected int wonBalls;
     protected String name;
 
-    public PlayerScore() {
-    }
-
-    public PlayerScore(int wonBalls) {
-        this.wonBalls = wonBalls;
-    }
-
     public PlayerScore(String name) {
         this.name = name;
     }
