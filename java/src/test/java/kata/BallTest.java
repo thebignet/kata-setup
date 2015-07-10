@@ -7,7 +7,6 @@ import org.junit.Test;
 
 
 public class BallTest {
-
     
     @Test public void 
     itRollsForAGivenAmountOfTime() throws Exception {
