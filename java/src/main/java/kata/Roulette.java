@@ -23,30 +23,33 @@ public class Roulette {
 	}
 
 	
-	private String result;
-	private int intResult;
+	private final String number;
+	private final Color color;
 
 	public Result(int intResult) {
-	    this.intResult = intResult;
-	    String numberResult;
-	    if (intResult == 37) 
-		numberResult = "00";
-	    else 
-		numberResult = intResult + "";
-
-	    this.result = numberResult;
+	    this.color = calculateColor(intResult);
+	    this.number = calculateNumber(intResult);
 	}
 
-	public String getNumber() {
-	    return result;
+	private String calculateNumber(int intResult) {
+	    return intResult == 37 ? "00" : intResult + "";
 	}
 
-	public Color getColor() {
+	private Color calculateColor(int intResult) {
 	    if (intResult == 0 || intResult == 37)
 		return Color.GREEN;
 	    return intResult % 2 == 0 ? Color.BLACK : Color.RED;
+	}
+
+	public String getNumber() {
+	    return number;
+	}
+
+	public Color getColor() {
+	    return this.color;
 
 	}
+
 
     }
 

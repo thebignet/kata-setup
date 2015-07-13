@@ -10,8 +10,8 @@ import kata.Roulette.Result.Color;
 import org.junit.Test;
 
 public class RouletteTest {
-    Randomizer randomizer = mock(Randomizer.class);
-    Ball ball = mock(Ball.class);
+    private Randomizer randomizer = mock(Randomizer.class);
+    private Ball ball = mock(Ball.class);
 
     @Test
     public void itWaitsForTheBallToStop() {
@@ -20,15 +20,14 @@ public class RouletteTest {
         roulette.playGame();
         
         verify(ball).roll();
-       
     }
     
     @Test() public void 
     theResultIsAlwaysBetween00and36() throws Exception {
-	assertRouletteResult(0, "0");
-	assertRouletteResult(12, "12");
-	assertRouletteResult(36, "36");
-	assertRouletteResult(37, "00");
+	assertNumberResult(0, "0");
+	assertNumberResult(12, "12");
+	assertNumberResult(36, "36");
+	assertNumberResult(37, "00");
     }
     
     @Test public void 
@@ -50,6 +49,8 @@ public class RouletteTest {
 	assertCorlorResult(7, Color.RED);
 	assertCorlorResult(35, Color.RED);
     }
+    
+    
 
     private void assertCorlorResult(int randomizerValue, Color expectedColor) {	
 	Randomizer randomizer = mock(Randomizer.class);
@@ -62,7 +63,7 @@ public class RouletteTest {
 	
     }
 
-    private void assertRouletteResult(int randomizerValue, String expectedNumber) {
+    private void assertNumberResult(int randomizerValue, String expectedNumber) {
 	Randomizer randomizer = mock(Randomizer.class);
 	when(randomizer.getRouletteResult()).thenReturn(randomizerValue);
 	Roulette roulette = new Roulette(ball, randomizer);
