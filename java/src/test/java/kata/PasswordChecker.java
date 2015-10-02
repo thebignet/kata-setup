@@ -21,14 +21,15 @@ public class PasswordChecker {
     return validate(password, validators);
   }
 
+  private List<Validator> adminValidators = asList(
+      new LengthValidator(10), 
+      new DigitValidator(), 
+      new LetterValidator(),
+      new SpecialCharValidator());
+  
   public List<String> checkAdmin(String password) {
-    List<Validator> validators = asList(
-        new LengthValidator(10), 
-        new DigitValidator(), 
-        new LetterValidator(),
-        new SpecialCharValidator());
 
-    return validate(password, validators);
+    return validate(password, adminValidators);
   }
 
   protected List<String> validate(String password, List<Validator> validators) {
