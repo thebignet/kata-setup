@@ -12,11 +12,9 @@ public class PasswordTest {
 
     @Test public void 
     must_have_7_atleast_chars() {
-        assertFalse(check("h"));
         assertFalse(check("helpme"));
         assertThat(errorsFor("helpme")).contains("Password needs to be 7 chars long");
         assertTrue(check("helpme7"));
-        assertTrue(check("helpme88"));
     }
 
 
@@ -29,6 +27,7 @@ public class PasswordTest {
     @Test public void 
     must_contain_atleast_one_character() throws Exception {
         assertFalse(check("1234567"));
+        assertThat(errorsFor("1234567")).contains("Password must contain a letter");
     }
     
     @Test public void 
@@ -40,6 +39,7 @@ public class PasswordTest {
     @Test public void 
     admins_must_have_atleast_10_chars() throws Exception {
         assertFalse(checkAdmin("helpme7"));
+        assertThat(errorsForAdmin("1234567")).contains("Password needs to be 10 chars long");
         assertTrue(checkAdmin("10helpme.."));
     }
     
@@ -57,8 +57,8 @@ public class PasswordTest {
     admins_must_contain_atleast_one_special_char() throws Exception {
         assertFalse(checkAdmin("heyYouWom4n"));
         assertTrue(checkAdmin(".heyYouWom4n"));
-        assertTrue(checkAdmin("hey!YouWom4n"));
-        assertTrue(checkAdmin("hey?YouWom4n"));
+        assertThat(errorsForAdmin("heyYouWom4n")).contains("Password needs to contain atleast one special character");
+
     }
     
     private boolean checkAdmin(String password) {
@@ -71,6 +71,10 @@ public class PasswordTest {
     
     private List<String> errorsFor(String password) {
         return checker.check(password);
+    }
+    
+    private List<String> errorsForAdmin(String password) {
+      return checker.checkAdmin(password);
     }
 
 }

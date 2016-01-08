@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import kata.Validator.LengthValidator;
 import kata.Validator.LetterValidator;
+import kata.Validator.SpecialCharValidator;
 
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
@@ -40,6 +41,22 @@ public class ValidatorTest  {
     Validator lengthValidator = new Validator.LengthValidator(3);
     lengthValidator.validate("12", errorList);
     assertThat(errorList).contains("Password needs to be 3 chars long");
+  }
+  
+
+  @Test public void 
+  specialCharacterValidatorAddsErrorWhenThereIsNoSpecialCharacter() throws Exception {  
+    Validator validator = new Validator.SpecialCharValidator();
+    validator.validate("a", errorList);
+    assertThat(errorList).contains("Password needs to contain atleast one special character");
+  }
+  
+
+  @Test public void 
+  specialCharacterValidatorPassesWhenThereIsAtleastOneSpecialCharacter() throws Exception {  
+    Validator validator = new Validator.SpecialCharValidator();
+    validator.validate("a!", errorList);
+    assertThat(errorList).isEmpty();;
   }
 
 }
