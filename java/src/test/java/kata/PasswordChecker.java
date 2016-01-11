@@ -43,7 +43,6 @@ public class PasswordChecker {
 
     protected List<String> validate(String password, List<Validator> validators) {
 
-
         List<String> errors = emptyList();
         for (Validator v : validators) {
             errors.add(v.validate(password));
