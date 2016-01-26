@@ -4,10 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import kata.Roulette.Result.Color;
-import kata.Roulette.RouletteException;
 
 import org.junit.Test;
+
+import kata.Result.Color;
 
 public class RouletteTest {
   private Randomizer randomizer = mock(Randomizer.class);
@@ -78,7 +78,7 @@ public class RouletteTest {
     when(randomizer.getRouletteResult()).thenReturn(randomizerValue);
     Roulette roulette = new Roulette(ball, randomizer);
 
-    Roulette.Result actualResult = roulette.playGame();
+    Result actualResult = roulette.playGame();
 
     assertEquals(expectedColor, actualResult.getColor());
 
@@ -89,7 +89,7 @@ public class RouletteTest {
     when(randomizer.getRouletteResult()).thenReturn(randomizerValue);
     Roulette roulette = new Roulette(ball, randomizer);
 
-    Roulette.Result actualResult = roulette.playGame();
+    Result actualResult = roulette.playGame();
 
     assertEquals(expectedNumber, actualResult.getNumber());
   }
