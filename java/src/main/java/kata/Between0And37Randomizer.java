@@ -2,7 +2,7 @@ package kata;
 
 import java.util.Random;
 
-public final class JavaRandomizer implements Randomizer {
+public final class Between0And37Randomizer implements Randomizer {
 	public static final int UPPERLIMIT_FOR_RANDOM_36 = 38;
 	private Random random = new Random();
 	
