@@ -35,11 +35,6 @@ public class PasswordChecker {
             new LetterValidator(),
             new SpecialCharValidator());
 
-//    protected List<String> validateF(String password, Stream<Function<String, Optional<String>>> validators) {
-//        return validators.map((Function<String, Optional<String>> v) -> v.apply(password));
-//
-//    }
-
 
     protected List<String> validate(String password, List<Validator> validators) {
 
