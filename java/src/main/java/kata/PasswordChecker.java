@@ -4,9 +4,6 @@ import static java.util.Arrays.asList;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 import kata.Validator.DigitValidator;
 import kata.Validator.LengthValidator;

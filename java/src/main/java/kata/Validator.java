@@ -77,7 +77,7 @@ interface Validator {
 
         @Override
         public String validate(String password) {
-            return password.length() < length ? "Password needs to be " + length + " chars long" : "";
+            return password.length() >= length ? "" : "Password needs to be " + length + " chars long";
         }
     }
 }
