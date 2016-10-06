@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class Betwen0And37RandomizerTest {
+public class Betwen0And37RandomizerIT {
 
 	@Test
 	public void randomizerGeneratesRandomNumbersBetween0And37() throws Exception {
