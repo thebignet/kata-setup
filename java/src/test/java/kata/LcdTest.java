@@ -12,7 +12,7 @@ public class LcdTest {
     @Test
     public void for_one() {
         Lcd lcd = new Lcd();
-        String result = lcd.display(1);
+        String result = lcd.displayDigitList(1);
         Assertions.assertThat(result).isEqualTo(
         		"   \n" +
         		"  |\n" +
@@ -22,7 +22,7 @@ public class LcdTest {
     @Test
     public void for_7() {
         Lcd lcd = new Lcd();
-        String result = lcd.display(7);
+        String result = lcd.displayDigitList(7);
         Assertions.assertThat(result).isEqualTo(
             " _ " + NL +
             "  |" + NL +
@@ -32,7 +32,7 @@ public class LcdTest {
     @Test
     public void for_2() {
         Lcd lcd = new Lcd();
-        String result = lcd.display(22);
+        String result = lcd.displayDigitList(22);
         Assertions.assertThat(result).isEqualTo(
             " _ " + " _ " + NL +
             " _|" + " _|" + NL +
@@ -42,7 +42,7 @@ public class LcdTest {
     @Test
     public void for_77() {
         Lcd lcd = new Lcd();
-        String result = lcd.display(77);
+        String result = lcd.displayDigitList(77);
         Assertions.assertThat(result).isEqualTo(
             " _ " + " _ " + NL +
             "  |" + "  |" + NL +
@@ -52,7 +52,7 @@ public class LcdTest {
     @Test
     public void for_172() {
         Lcd lcd = new Lcd();
-        String result = lcd.display(172);
+        String result = lcd.displayDigitList(172);
         Assertions.assertThat(result).isEqualTo(
             "   " + " _ " + " _ " + NL +
             "  |" + "  |" + " _|" + NL +

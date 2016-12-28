@@ -4,20 +4,8 @@ import java.util.*;
 
 public class Lcd {
 
-    private class Digit {
-        private List<String> lines;
-
-        public Digit(String line0, String line1, String line2) {
-            this.lines = Arrays.asList(line0, line1, line2);
-        }
-
-        public String forLine(int lineNumber) {
-            return lines.get(lineNumber);
-        }
-    }
-
     @SuppressWarnings("serial")
-    private Map<Character, Digit> cases = new HashMap<Character, Digit>() {{
+    private Map<Character, Digit> possibleDigits = new HashMap<Character, Digit>() {{
         put('1', new Digit("   ", "  |", "  |"));
         put('2', new Digit(" _ ", " _|", "|_ "));
         put('7', new Digit(" _ ", "  |", "  |"));
@@ -26,21 +14,27 @@ public class Lcd {
     private static final Integer[] lineNumbers = {0, 1, 2};
     private static final String NL = "\n";
 
-    public String display(int number) {
+    /**
+     * Accept only and integer, so we're sure that from here we have only valid input
+     */
+    public String displayDigitList(int number) {
         char[] inputChars = String.valueOf(number).toCharArray();
         List<Digit> digits = getDigitsFormChars(inputChars);
-        return display(digits);
+        return displayDigitList(digits);
     }
 
+    /**
+     * switch to domain objects (instead of primitives ASAP
+     */
     private List<Digit> getDigitsFormChars(char[] inputChars) {
         List<Digit> digits = new ArrayList<>();
-        for (char digit : inputChars) {
-            digits.add(cases.get(digit));
+        for (char charDigit : inputChars) {
+            digits.add(possibleDigits.get(charDigit));
         }
         return digits;
     }
 
-    private String display(List<Digit> digitDigits) {
+    private String displayDigitList(List<Digit> digitDigits) {
         StringBuilder s = new StringBuilder();
         for (int lineNumber : lineNumbers) {
             for (Digit digit : digitDigits) {
