@@ -1,23 +1,21 @@
 package kata;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Lcd {
 
     private class Digit {
         private List<String> lines;
 
-        public Digit(String...lines) {
-            this.lines = Arrays.asList(lines);
+        public Digit(String line0, String line1, String line2) {
+            this.lines = Arrays.asList(line0, line1, line2);
         }
 
         public String forLine(int lineNumber) {
             return lines.get(lineNumber);
         }
     }
+
     @SuppressWarnings("serial")
     private Map<Character, Digit> cases = new HashMap<Character, Digit>() {{
         put('1', new Digit("   ", "  |", "  |"));
@@ -28,27 +26,30 @@ public class Lcd {
     private static final Integer[] lineNumbers = {0, 1, 2};
     private static final String NL = "\n";
 
-    public String display(int i) {
-        return display(String.valueOf(i));
+    public String display(int number) {
+        char[] inputChars = String.valueOf(number).toCharArray();
+        List<Digit> digits = getDigitsFormChars(inputChars);
+        return display(digits);
     }
 
-    protected String display(String number) {
-        return display(number.toCharArray());
+    private List<Digit> getDigitsFormChars(char[] inputChars) {
+        List<Digit> digits = new ArrayList<>();
+        for (char digit : inputChars) {
+            digits.add(cases.get(digit));
+        }
+        return digits;
     }
 
-    protected String display(char[] digits) {
+    private String display(List<Digit> digitDigits) {
         StringBuilder s = new StringBuilder();
         for (int lineNumber : lineNumbers) {
-            for (char digit : digits) {
-                s.append(lcdDigit(digit, lineNumber));
+            for (Digit digit : digitDigits) {
+                s.append(digit.forLine(lineNumber));
             }
             s.append(NL);
         }
         return s.toString();
     }
 
-    protected String lcdDigit(char digit, int line) {
-        return cases.get(digit).forLine(line);
-    }
 
 }
