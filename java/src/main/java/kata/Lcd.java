@@ -15,7 +15,6 @@ public class Lcd {
         put('7', new Digit(" _ ", "  |", "  |"));
     }};
 
-    private static final Integer[] lineNumbers = {0, 1, 2};
     private static final String NL = "\n";
 
     /**
