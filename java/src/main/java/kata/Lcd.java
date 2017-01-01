@@ -1,6 +1,8 @@
 package kata;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static kata.LineNumber.One;
 import static kata.LineNumber.Three;
@@ -45,12 +47,11 @@ public class Lcd {
     }
 
     private String getLine(List<Digit> digits, LineNumber lineNumber) {
-        StringBuilder lineSb = new StringBuilder();
-        for (Digit digit : digits) {
-            lineSb.append(digit.forLine(lineNumber));
-        }
-        lineSb.append(NL);
-        return lineSb.toString();
+        return digits.stream()
+                .map(digit -> digit.forLine(lineNumber))
+                .collect(Collectors.joining())
+                + NL;
+
     }
 
 
