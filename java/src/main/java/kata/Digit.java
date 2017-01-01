@@ -14,9 +14,6 @@ class Digit {
         this.lines = Arrays.asList(line0, line1, line2);
     }
 
-    public String forLine(int lineNumber) {
-        return lines.get(lineNumber);
-    }
     public String forLine(LineNumber lineNumber) {
         return lines.get(lineNumber.ordinal());
     }
