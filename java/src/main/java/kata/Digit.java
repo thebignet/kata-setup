@@ -17,4 +17,8 @@ class Digit {
     public String forLine(int lineNumber) {
         return lines.get(lineNumber);
     }
+    public String forLine(LineNumber lineNumber) {
+        return lines.get(lineNumber.ordinal());
+    }
+
 }

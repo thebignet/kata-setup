@@ -40,7 +40,7 @@ public class Lcd {
         s.append(getLine(digitDigits, 0));
         s.append(getLine(digitDigits, 1));
         s.append(getLine(digitDigits, 2));
-        
+
         return s.toString();
     }
 
