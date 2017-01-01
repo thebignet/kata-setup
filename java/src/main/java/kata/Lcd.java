@@ -2,6 +2,10 @@ package kata;
 
 import java.util.*;
 
+import static kata.LineNumber.One;
+import static kata.LineNumber.Three;
+import static kata.LineNumber.Two;
+
 public class Lcd {
 
     @SuppressWarnings("serial")
@@ -34,19 +38,16 @@ public class Lcd {
         return digits;
     }
 
-    private String displayDigitList(List<Digit> digitDigits) {
-        StringBuilder s = new StringBuilder();
+    private String displayDigitList(List<Digit> digits) {
+        return getLine(digits, One)
+                + getLine(digits, Two)
+                + getLine(digits, Three);
 
-        s.append(getLine(digitDigits, 0));
-        s.append(getLine(digitDigits, 1));
-        s.append(getLine(digitDigits, 2));
-
-        return s.toString();
     }
 
-    private String getLine(List<Digit> digitDigits, int lineNumber) {
+    private String getLine(List<Digit> digits, LineNumber lineNumber) {
         StringBuilder lineSb = new StringBuilder();
-        for (Digit digit : digitDigits) {
+        for (Digit digit : digits) {
             lineSb.append(digit.forLine(lineNumber));
         }
         lineSb.append(NL);
