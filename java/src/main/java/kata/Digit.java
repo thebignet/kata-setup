@@ -1,21 +1,25 @@
 package kata;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 class Digit {
-    private List<String> lines;
+    private Map<LineNumber, String> lines;
 
     /**
-     * Enumerating line0, 1 and 2 instead of accepting an array/list
+     * Enumerating lines instead of accepting an array/list
      * ensures we have three and only three lines
      */
-    public Digit(String line0, String line1, String line2) {
-        this.lines = Arrays.asList(line0, line1, line2);
+    public Digit(final String firstLine, final String secondLine, final String thirdLine) {
+        this.lines = new HashMap<LineNumber, String>() {{
+            put(LineNumber.One, firstLine);
+            put(LineNumber.Two, secondLine);
+            put(LineNumber.Three, thirdLine);
+        }};
     }
 
     public String forLine(LineNumber lineNumber) {
-        return lines.get(lineNumber.ordinal());
+        return lines.get(lineNumber);
     }
 
 }
