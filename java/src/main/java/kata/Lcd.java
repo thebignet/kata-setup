@@ -36,13 +36,21 @@ public class Lcd {
 
     private String displayDigitList(List<Digit> digitDigits) {
         StringBuilder s = new StringBuilder();
-        for (int lineNumber : lineNumbers) {
-            for (Digit digit : digitDigits) {
-                s.append(digit.forLine(lineNumber));
-            }
-            s.append(NL);
-        }
+
+        s.append(getLine(digitDigits, 0));
+        s.append(getLine(digitDigits, 1));
+        s.append(getLine(digitDigits, 2));
+        
         return s.toString();
+    }
+
+    private String getLine(List<Digit> digitDigits, int lineNumber) {
+        StringBuilder lineSb = new StringBuilder();
+        for (Digit digit : digitDigits) {
+            lineSb.append(digit.forLine(lineNumber));
+        }
+        lineSb.append(NL);
+        return lineSb.toString();
     }
 
 
