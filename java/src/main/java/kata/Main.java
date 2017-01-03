@@ -7,7 +7,8 @@ public class Main {
     public static void main(String[] args) {
         String input = new Scanner(System.in).nextLine();
         int number = validateInputIsNumber(input);
-        new Lcd().displayDigitList(number);
+        String displayString = new Lcd().getDisplayString(number);
+        System.out.print(displayString);
     }
 
     private static Integer validateInputIsNumber(String input) {

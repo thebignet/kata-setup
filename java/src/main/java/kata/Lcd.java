@@ -2,7 +2,6 @@ package kata;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static kata.LineNumber.One;
 import static kata.LineNumber.Three;
@@ -22,10 +21,10 @@ public class Lcd {
     /**
      * Accept only and integer, so we're sure that from here we have only valid input
      */
-    public String displayDigitList(int number) {
+    public String getDisplayString(int number) {
         char[] inputChars = String.valueOf(number).toCharArray();
         List<Digit> digits = getDigitsFormChars(inputChars);
-        return displayDigitList(digits);
+        return getDisplayString(digits);
     }
 
     /**
@@ -39,16 +38,16 @@ public class Lcd {
         return digits;
     }
 
-    private String displayDigitList(List<Digit> digits) {
-        return getLine(digits, One)
-                + getLine(digits, Two)
-                + getLine(digits, Three);
+    private String getDisplayString(List<Digit> digits) {
+        return getDisplayLine(digits, One)
+                + getDisplayLine(digits, Two)
+                + getDisplayLine(digits, Three);
 
     }
 
-    private String getLine(List<Digit> digits, LineNumber lineNumber) {
+    private String getDisplayLine(List<Digit> digits, LineNumber currentLine) {
         return digits.stream()
-                .map(digit -> digit.forLine(lineNumber))
+                .map(digit -> digit.forLine(currentLine))
                 .collect(Collectors.joining())
                 + NL;
 

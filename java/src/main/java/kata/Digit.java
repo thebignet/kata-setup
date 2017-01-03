@@ -11,6 +11,7 @@ class Digit {
      * ensures we have three and only three lines
      */
     public Digit(final String firstLine, final String secondLine, final String thirdLine) {
+
         this.lines = new HashMap<LineNumber, String>() {{
             put(LineNumber.One, firstLine);
             put(LineNumber.Two, secondLine);
