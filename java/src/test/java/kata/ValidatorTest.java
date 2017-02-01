@@ -51,6 +51,8 @@ public class ValidatorTest  {
   specialCharacterValidatorPassesWhenThereIsAtleastOneSpecialCharacter() throws Exception {  
     Validator validator = new Validator.SpecialCharValidator();
     assertThat(validator.validate("a!")).isEmpty();
+    assertThat(validator.validate("a.")).isEmpty();
+    assertThat(validator.validate("a?")).isEmpty();
   }
 
 }

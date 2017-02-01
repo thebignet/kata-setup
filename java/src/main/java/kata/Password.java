@@ -10,7 +10,7 @@ import kata.Validator.LengthValidator;
 import kata.Validator.LetterValidator;
 import kata.Validator.SpecialCharValidator;
 
-public class PasswordChecker {
+public class Password {
     private List<Validator> userValidators = asList(
             new LengthValidator(7),
             new DigitValidator(),

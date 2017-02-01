@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class PasswordTest {
-    private PasswordChecker checker = new PasswordChecker();
+    private Password checker = new Password();
 
     @Test public void 
     must_have_7_atleast_chars() {
