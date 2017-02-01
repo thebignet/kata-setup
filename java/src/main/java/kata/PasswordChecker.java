@@ -11,20 +11,10 @@ import kata.Validator.LetterValidator;
 import kata.Validator.SpecialCharValidator;
 
 public class PasswordChecker {
-
-    public List<String> check(String password) {
-        List<Validator> validators = asList(
-                new LengthValidator(7),
-                new DigitValidator(),
-                new LetterValidator());
-
-        return validate(password, validators);
-    }
-
-    public List<String> checkAdmin(String password) {
-
-        return validate(password, adminValidators);
-    }
+    private List<Validator> userValidators = asList(
+            new LengthValidator(7),
+            new DigitValidator(),
+            new LetterValidator());
 
     private List<Validator> adminValidators = asList(
             new LengthValidator(10),
@@ -32,15 +22,22 @@ public class PasswordChecker {
             new LetterValidator(),
             new SpecialCharValidator());
 
+    public List<String> check(String password) {
+        return validate(password, userValidators);
+    }
 
-    protected List<String> validate(String password, List<Validator> validators) {
+    public List<String> checkAdmin(String password) {
+        return validate(password, adminValidators);
+    }
 
+    private List<String> validate(String password, List<Validator> validators) {
         List<String> errors = emptyList();
         for (Validator v : validators) {
             errors.add(v.validate(password));
         }
         return errors;
     }
+
 
     private ArrayList<String> emptyList() {
         return new ArrayList<String>() {
