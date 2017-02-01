@@ -14,49 +14,43 @@ import org.junit.Test;
 
 public class ValidatorTest  {
   
-  Validator letterValidator = new Validator.LetterValidator();
-  ArrayList<String> errorList = new ArrayList<>();
-   
-  @Test public void 
+
+  @Test public void
   letterValidatorPassesWhenThereIsALetter() throws Exception {
-    letterValidator.validate("q", errorList);
-    assertThat(errorList).isEmpty();
+    Validator letterValidator = new Validator.LetterValidator();
+    assertThat(letterValidator.validate("q")).isEmpty();
   }
-  
-  @Test public void 
-  letterValidatorAddsErrorWhenThereIsNoletter() throws Exception {    
-    letterValidator.validate("6", errorList);
-    assertThat(errorList).contains("Password must contain a letter");
+
+  @Test public void
+  letterValidatorAddsErrorWhenThereIsNoletter() throws Exception {
+    Validator letterValidator = new Validator.LetterValidator();
+    assertThat(letterValidator.validate("6")).contains("Password must contain a letter");
   }
   
   @Test public void 
   lenghtValidatorPassesWhenStringIsEqualOrLongerThanLength() throws Exception {
     Validator lengthValidator = new Validator.LengthValidator(3);
-    lengthValidator.validate("123", errorList);
-    assertThat(errorList).isEmpty();
+    assertThat(lengthValidator.validate("123")).isEmpty();
   }
   
   @Test public void 
   lenghtValidatorAddsErrorWhenTheStringIsShorterThanLength() throws Exception {
     Validator lengthValidator = new Validator.LengthValidator(3);
-    lengthValidator.validate("12", errorList);
-    assertThat(errorList).contains("Password needs to be 3 chars long");
+    assertThat(lengthValidator.validate("12")).contains("Password needs to be 3 chars long");
   }
   
 
   @Test public void 
   specialCharacterValidatorAddsErrorWhenThereIsNoSpecialCharacter() throws Exception {  
     Validator validator = new Validator.SpecialCharValidator();
-    validator.validate("a", errorList);
-    assertThat(errorList).contains("Password needs to contain atleast one special character");
+    assertThat(validator.validate("a")).contains("Password needs to contain atleast one special character");
   }
   
 
   @Test public void 
   specialCharacterValidatorPassesWhenThereIsAtleastOneSpecialCharacter() throws Exception {  
     Validator validator = new Validator.SpecialCharValidator();
-    validator.validate("a!", errorList);
-    assertThat(errorList).isEmpty();;
+    assertThat(validator.validate("a!")).isEmpty();
   }
 
 }
