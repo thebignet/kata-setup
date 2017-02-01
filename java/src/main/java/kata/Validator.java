@@ -38,7 +38,8 @@ interface Validator {
         }
 
         private boolean containsSpecialCharacter(String password) {
-            return password.matches(".*[\\.!?].*");
+            String nonWordCharacter = "\\W";
+            return password.matches(".*" + nonWordCharacter + ".*");
         }
 
 

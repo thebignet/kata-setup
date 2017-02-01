@@ -31,7 +31,7 @@ public class Password {
     }
 
     private List<String> validate(String password, List<Validator> validators) {
-        List<String> errors = emptyList();
+        List<String> errors = listThatRetainsOnlyActualErrors();
         for (Validator v : validators) {
             errors.add(v.validate(password));
         }
@@ -39,13 +39,11 @@ public class Password {
     }
 
 
-    private ArrayList<String> emptyList() {
+    private ArrayList<String> listThatRetainsOnlyActualErrors() {
         return new ArrayList<String>() {
             @Override
             public boolean add(String s) {
-                if (s.isEmpty())
-                    return false;
-                else return super.add(s);
+                return s.isEmpty() ? false : super.add(s);
             }
         };
     }
