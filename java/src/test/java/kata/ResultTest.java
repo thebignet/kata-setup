@@ -42,12 +42,14 @@ public class ResultTest {
         assertCorlorResult(35, Result.Color.RED);
     }
 
-    @Test(expected = RouletteException.class)
+    @Test
     public void itThrowsExceptionWhenTheRandomizerIsGreaterThan37()
             throws Exception {
 
+        expect.expect(RouletteException.class);
+        expect.expectMessage("Result can't be 38");
+
         new Result(38);
-        // then exception
     }
 
     // JUNIT rule
