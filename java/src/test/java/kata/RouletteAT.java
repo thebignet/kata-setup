@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import kata.Result.Color;
 
-public class RouletteTest {
+public class RouletteAT {
   private Randomizer randomizer = mock(Randomizer.class);
   private Ball ball = mock(Ball.class);
 
