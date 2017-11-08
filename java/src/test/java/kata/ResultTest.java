@@ -52,7 +52,6 @@ public class ResultTest {
         new Result(38);
     }
 
-    // JUNIT rule
     @Test
     public void itThrowsExceptionWhenTheRandomizerIsLesserThan0()
             throws Exception {
