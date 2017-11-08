@@ -1,6 +1,8 @@
 package kata;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -8,6 +10,9 @@ import static org.mockito.Mockito.when;
 
 public class ResultTest {
 
+
+    @Rule
+    public ExpectedException expect = ExpectedException.none();
 
     @Test()
     public void theResultIsAlwaysBetween00and36() throws Exception {
@@ -44,12 +49,17 @@ public class ResultTest {
         new Result(38);
         // then exception
     }
-    @Test(expected = RouletteException.class)
+
+    // JUNIT rule
+    @Test
     public void itThrowsExceptionWhenTheRandomizerIsLesserThan0()
             throws Exception {
 
+        expect.expect(RouletteException.class);
+        expect.expectMessage("Result can't be -1");
+
         new Result(-1);
-        // then exception
+
     }
 
     private void assertCorlorResult(int randomizerValue, Result.Color expectedColor) {
