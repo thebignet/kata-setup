@@ -1,5 +1,5 @@
 
-import * as chai from "chai";
+import * as chai from 'chai';
 
 const expect = chai.expect;
 
@@ -18,8 +18,8 @@ class Account {
   }
 }
 
-describe("account", () => {
-  it.skip("does something", () => {
+describe('account', () => {
+  it.skip('does something', () => {
     const account = new Account();
     account.deposit(500);
     account.withdraw(100);
@@ -31,6 +31,4 @@ Date        Amount  Balance
     `);
   });
 
-
 });
-
