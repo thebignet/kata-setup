@@ -6,15 +6,15 @@ const expect = chai.expect;
 class Account {
 
   public printStatement() {
-
+    return;
   }
 
   public deposit(amount: number) {
-
+    return;
   }
 
   public withdraw(amount: number) {
-
+    return;
   }
 }
 
