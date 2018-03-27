@@ -1,19 +1,24 @@
 public enum Ingredient {
-    FROMAGE(true),
-    TOMATE(true),
-    OIGNON(true),
-    AGNEAU(false),
-    POISSON(false),
-    SALADE(true),
-    VEAU(false);
+    PAIN(Category.vegetable),
+    FROMAGE(Category.vegetable),
+    TOMATE(Category.vegetable),
+    OIGNON(Category.vegetable),
+    AGNEAU(Category.meat),
+    POISSON(Category.fish),
+    SALADE(Category.vegetable),
+    VEAU(Category.meat);
 
-    private boolean isVegetarian;
+    private Category category;
 
-    Ingredient(boolean isVegetarian){
-        this.isVegetarian = isVegetarian;
+    Ingredient(Category category){
+        this.category = category;
     }
 
     public boolean vegetarian(){
-        return isVegetarian;
+        return category == Category.vegetable;
+    }
+
+    public boolean pescoVeggie() {
+        return vegetarian() || category == Category.fish;
     }
 }
