@@ -1,14 +1,13 @@
 package kata;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-public class KataShould {
+class KataShould {
 
     @Test
-    public void startWithAFailingTest() {
-        Assert.fail("start by implementing a test");
+    void startWithAFailingTest() {
+        var message = "start by implementing a test";
+        assertThat(message).isBlank();
     }
 }
