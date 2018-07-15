@@ -48,5 +48,12 @@ class BankOCR {
 
   val numbers = Seq(one,two,three,four,five,six,seven,eight,nine)
 
-  def ocrSingle(input: String): String = String.valueOf(numbers.indexOf(input)+1)
+  def ocrSingle(input: String): String = {
+    val index = numbers.indexOf(input)
+    if(index>=0) {
+      String.valueOf(index+1)
+    } else {
+      "?"
+    }
+  }
 }

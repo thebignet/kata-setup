@@ -42,4 +42,14 @@ class ExampleSpec extends FlatSpec with Matchers {
     result should be("3")
   }
 
+  it should "read an unknown digit" in {
+    val kata = new BankOCR
+    val input =""" _  
+                 # _ 
+                 # _ 
+                 #   """.stripMargin('#')
+    val result = kata.ocrSingle(input)
+    result should be("?")
+  }
+
 }
