@@ -2,25 +2,24 @@ import org.scalatest._
 
 class ExampleSpec extends FlatSpec with Matchers {
 
-  "Kata" should "convert string of 1 to number 1" in {
-    val kata = new Kata
-    val result = kata.method("1")
-    result should be(1)
+  "Bank OCR" should "read 123456789" in {
+    val kata = new BankOCR
+    val input ="""    _  _     _  _  _  _  _ 
+                 #  | _| _||_||_ |_   ||_||_|
+                 #  ||_  _|  | _||_|  ||_| _|
+                 #                            """.stripMargin('#')
+    val result = kata.ocr(input)
+    result should be("123456789")
   }
 
-  it should "throw NumberFormatException if input is not a number" in {
-    val kata = new Kata
-    a[NumberFormatException] should be thrownBy {
-      kata.method("a")
-    }
-  }
-
-  it should "start with a failing test" in {
-    fail
-  }
-
-  ignore should "show how to ignore a test" in {
-    succeed
+  it should "read a 1 digit" in {
+    val kata = new BankOCR
+    val input ="""    
+                 #  |
+                 #  |
+                 #   """.stripMargin('#')
+    val result = kata.ocrSingle(input)
+    result should be("1")
   }
 
 }
