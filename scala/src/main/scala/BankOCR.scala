@@ -1,15 +1,15 @@
 class BankOCR {
   def ocr(input: String): String = "123456789"
 
-  val one = """    
+  val one = """   
               #  |
               #  |
               #   """.stripMargin('#')
 
-  val two = """ _  
-               # _|
-               #|_ 
-               #   """.stripMargin('#')
+  val two = """ _ 
+              # _|
+              #|_ 
+              #   """.stripMargin('#')
 
   val three = """ _  
                 # _|

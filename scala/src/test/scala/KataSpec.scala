@@ -14,7 +14,7 @@ class ExampleSpec extends FlatSpec with Matchers {
 
   it should "read a 1 digit" in {
     val kata = new BankOCR
-    val input ="""    
+    val input ="""   
                  #  |
                  #  |
                  #   """.stripMargin('#')
@@ -24,7 +24,7 @@ class ExampleSpec extends FlatSpec with Matchers {
 
   it should "read a 2 digit" in {
     val kata = new BankOCR
-    val input =""" _  
+    val input =""" _ 
                  # _|
                  #|_ 
                  #   """.stripMargin('#')
