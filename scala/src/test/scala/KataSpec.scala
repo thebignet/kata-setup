@@ -22,4 +22,24 @@ class ExampleSpec extends FlatSpec with Matchers {
     result should be("1")
   }
 
+  it should "read a 2 digit" in {
+    val kata = new BankOCR
+    val input =""" _  
+                 # _|
+                 #|_ 
+                 #   """.stripMargin('#')
+    val result = kata.ocrSingle(input)
+    result should be("2")
+  }
+
+  it should "read a 3 digit" in {
+    val kata = new BankOCR
+    val input =""" _  
+                 # _|
+                 # _|
+                 #   """.stripMargin('#')
+    val result = kata.ocrSingle(input)
+    result should be("3")
+  }
+
 }
