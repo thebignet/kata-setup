@@ -1,1 +1,3 @@
-.ensime
+.ensime*
+ensime-langserver.log
+pc.stdout.log
