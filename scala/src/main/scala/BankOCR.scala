@@ -1,5 +1,16 @@
 class BankOCR {
-  def ocr(input: String): String = "123456789"
+  val width = 3
+  def ocr(input: String): String = {
+    val size = input.indexOf('\n') / width
+    (0 until size).map(token => input
+      .split('\n')
+      .toSeq
+      .map(_.substring(width * token, width * token + width))
+      .sliding(4)
+      .map(s => println(s+"$"))
+    )
+    return "123456789"
+  }
 
   val one = """   
               #  |
