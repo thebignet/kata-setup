@@ -6,10 +6,11 @@ class BankOCR {
       .split('\n')
       .toSeq
       .map(_.substring(width * token, width * token + width))
-      .sliding(4)
-      .map(s => println(s+"$"))
-    )
-    return "123456789"
+      .sliding(4,4).toSeq
+      .map(_.mkString("\n"))
+      .map(ocrSingle)
+      .head
+    ).mkString("")
   }
 
   val one = """   
@@ -22,37 +23,37 @@ class BankOCR {
               #|_ 
               #   """.stripMargin('#')
 
-  val three = """ _  
+  val three = """ _ 
                 # _|
                 # _|
                 #   """.stripMargin('#')
 
-  val four = """    
+  val four = """   
                #|_|
                #  |
                #   """.stripMargin('#')
 
-  val five = """ _  
+  val five = """ _ 
                #|_ 
                # _|
                #   """.stripMargin('#')
 
-  val six = """ _  
+  val six = """ _ 
               #|_ 
               #|_|
               #   """.stripMargin('#')
 
-  val seven = """ _  
+  val seven = """ _ 
                 #  |
                 #  |
                 #   """.stripMargin('#')
 
-  val eight = """ _  
+  val eight = """ _ 
                 #|_|
                 #|_|
                 #   """.stripMargin('#')
 
-  val nine = """ _  
+  val nine = """ _ 
                #|_|
                # _|
                #   """.stripMargin('#')
