@@ -1,6 +1,10 @@
 class BankOCR {
+  def ocr(input: String): Seq[String] = {
+    input.
+  }
+
   val width = 3
-  def ocr(input: String): String = {
+  def ocrLine(input: String): String = {
     val size = input.indexOf('\n') / width
     (0 until size).map(token => input
       .split('\n')

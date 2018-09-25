@@ -8,7 +8,7 @@ class ExampleSpec extends FlatSpec with Matchers {
                  #  | _| _||_||_ |_   ||_||_|
                  #  ||_  _|  | _||_|  ||_| _|
                  #                           """.stripMargin('#')
-    val result = kata.ocr(input)
+    val result = kata.ocrLine(input)
     result should be("123456789")
   }
 
@@ -50,6 +50,20 @@ class ExampleSpec extends FlatSpec with Matchers {
                  #   """.stripMargin('#')
     val result = kata.ocrSingle(input)
     result should be("?")
+  }
+
+  "Bank OCR" should "read 123456789" in {
+    val kata = new BankOCR
+    val input ="""    _  _     _  _  _  _  _ 
+                 #  | _| _||_||_ |_   ||_||_|
+                 #  ||_  _|  | _||_|  ||_| _|
+                 #                           
+                 #    _  _     _  _  _  _  _ 
+                 #  | _| _||_||_ |_   ||_||_|
+                 #  ||_  _|  | _||_|  ||_| _|
+                 #                           """.stripMargin('#')
+    val result = kata.ocr(input)
+    result should be(Seq("123456789","123456789"))
   }
 
 }
