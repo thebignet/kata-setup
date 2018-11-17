@@ -2,7 +2,7 @@ import org.scalatest._
 
 class ExampleSpec extends FlatSpec with Matchers {
 
-  "Kata" should "convert string of 1 to number 1" in {
+  /*"Kata" should "convert string of 1 to number 1" in {
     val kata = new Kata
     val result = kata.method("1")
     result should be(1)
@@ -13,14 +13,22 @@ class ExampleSpec extends FlatSpec with Matchers {
     a[NumberFormatException] should be thrownBy {
       kata.method("a")
     }
+  }*/
+
+  "two card with same value" should "be a pair" in {
+    val hand = Hand(Card(Ace),Card(Ace))
+    hand.result match {
+      case Pair => succeed
+      case _ => fail
+    }
   }
 
-  it should "start with a failing test" in {
-    fail
-  }
-
-  ignore should "show how to ignore a test" in {
-    succeed
+  "two card with different value" should "be a high card" in {
+    val hand = Hand(Card(Ace),Card(Two))
+    hand.result match {
+      case HighCard => succeed
+      case _ => fail
+    }
   }
 
 }
