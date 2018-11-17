@@ -18,17 +18,17 @@ class ExampleSpec extends FlatSpec with Matchers {
     isPair(Ace(), King()) should be(false)
   }
 
-  def getHighcard(card1: Card, card2: Card) = List(card1, card2).maxBy(_.value).value
+  def getHighcard(card1: Card, card2: Card) = List(card1, card2).max
 
   it should "get high card" in {
-    getHighcard(King(), Ace()) should be(Ace().value)
-    getHighcard(Ace(), King()) should be(Ace().value)
+    getHighcard(King(), Ace()) should be(Ace())
+    getHighcard(Ace(), King()) should be(Ace())
   }
 
   def getWinner(card1Player1: Card, card2Player1: Card, card1Player2: Card, card2Player2: Card) =
     if(isPair(card1Player1,card2Player1)) Player1
     else if (isPair(card1Player2, card2Player2)) Player2
-    else if(getHighcard(card1Player1, card2Player1) > getHighcard(card1Player2, card2Player2)) Player1
+    else if(getHighcard(card1Player1, card2Player1).compareTo(getHighcard(card1Player2, card2Player2)) > 0) Player1
     else Player2
 
   it should "get player when player has pair" in {
