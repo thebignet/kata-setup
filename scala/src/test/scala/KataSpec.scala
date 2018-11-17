@@ -2,7 +2,9 @@ import org.scalatest._
 
 class ExampleSpec extends FlatSpec with Matchers {
 
-  abstract class Card(val value: Int)
+  abstract class Card(val value: Int) extends Comparable[Card] {
+    override def compareTo(o: Card): Int = value.compareTo(o.value)
+  }
   case class Ace() extends Card(2)
   case class King() extends Card(1)
   case class Queen() extends Card(0)
