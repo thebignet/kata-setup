@@ -22,13 +22,15 @@ class ExampleSpec extends FlatSpec with Matchers {
   }
 
   case class Round(hand1: Hand, hand2: Hand) {
-    def winner: Hand = (hand1.figure, hand2.figure) match {
-      case (PokerPair(card1), PokerPair(card2)) if card1 >= card2 => hand1
-      case (PokerPair(card1), PokerPair(card2)) if card1 < card2 => hand2
-      case (PokerPair(_), _) => hand1
-      case (_, PokerPair(_)) => hand2
-      case (HighCard(card1), HighCard(card2)) if card1 >= card2 => hand1
-      case (HighCard(card1), HighCard(card2)) if card1 < card2 => hand2
+    def winner = (hand1.figure, hand2.figure) match {
+      case (PokerPair(card1), PokerPair(card2)) if card1 > card2 => Some(hand1)
+      case (PokerPair(card1), PokerPair(card2)) if card1 == card2 => None
+      case (PokerPair(card1), PokerPair(card2)) if card1 < card2 => Some(hand2)
+      case (PokerPair(_), _) => Some(hand1)
+      case (_, PokerPair(_)) => Some(hand2)
+      case (HighCard(card1), HighCard(card2)) if card1 > card2 => Some(hand1)
+      case (HighCard(card1), HighCard(card2)) if card1 == card2 => None
+      case (HighCard(card1), HighCard(card2)) if card1 < card2 => Some(hand2)
     }
   }
 
@@ -41,18 +43,23 @@ class ExampleSpec extends FlatSpec with Matchers {
   }
 
   "better figure" should "win" in {
-    Round(Hand(King, King), Hand(Ace, King)).winner should be(Hand(King, King))
-    Round(Hand(Ace, King), Hand(King, King)).winner should be(Hand(King, King))
+    Round(Hand(King, King), Hand(Ace, King)).winner should be(Some(Hand(King, King)))
+    Round(Hand(Ace, King), Hand(King, King)).winner should be(Some(Hand(King, King)))
   }
 
   "better pair" should "win" in {
-    Round(Hand(King, King), Hand(Ace, Ace)).winner should be(Hand(Ace, Ace))
-    Round(Hand(Ace, Ace), Hand(King, King)).winner should be(Hand(Ace, Ace))
+    Round(Hand(King, King), Hand(Ace, Ace)).winner should be(Some(Hand(Ace, Ace)))
+    Round(Hand(Ace, Ace), Hand(King, King)).winner should be(Some(Hand(Ace, Ace)))
   }
 
   "better high card" should "win" in {
-    Round(Hand(King, Ace), Hand(Queen, King)).winner should be(Hand(King, Ace))
-    Round(Hand(Queen, King), Hand(King, Ace)).winner should be(Hand(King, Ace))
+    Round(Hand(King, Ace), Hand(Queen, King)).winner should be(Some(Hand(King, Ace)))
+    Round(Hand(Queen, King), Hand(King, Ace)).winner should be(Some(Hand(King, Ace)))
+  }
+
+  "draws" should "have no winner" in {
+    Round(Hand(King, Ace), Hand(King, Ace)).winner should be(None)
+    Round(Hand(Queen, Queen), Hand(Queen, Queen)).winner should be(None)
   }
 
 }
