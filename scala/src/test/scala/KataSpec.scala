@@ -22,7 +22,7 @@ class ExampleSpec extends FlatSpec with Matchers {
     getHighcard(List(Ace(), King())) should be(Ace())
   }
 
-  def getWinner(cards: List[Card with Product with Serializable], cards1: List[Card with Product with Serializable]) = "player1"
+  def getWinner(cards: List[Card], cards1: List[Card]) = "player1"
 
   it should "get player 1 when player 1 has pair" in {
     getWinner(List(King(), Ace()), List(King(), Ace())) should be("player1")
