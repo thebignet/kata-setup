@@ -2,25 +2,57 @@ import org.scalatest._
 
 class ExampleSpec extends FlatSpec with Matchers {
 
-  "Kata" should "convert string of 1 to number 1" in {
-    val kata = new Kata
-    val result = kata.method("1")
-    result should be(1)
+  abstract class Card(val valeur: Int) extends Ordered[Card] {
+    def compare(that: Card) = this.valeur - that.valeur
   }
 
-  it should "throw NumberFormatException if input is not a number" in {
-    val kata = new Kata
-    a[NumberFormatException] should be thrownBy {
-      kata.method("a")
+  object Ace extends Card(14)
+  object King extends Card(13)
+  object Queen extends Card(12)
+
+  sealed trait Figure
+  case class PokerPair(card: Card) extends Figure
+  case class HighCard(card: Card) extends Figure
+
+  case class Hand(card1: Card, card2: Card) {
+    def figure: Figure = (card1, card2) match {
+      case (first, second) if first == second => PokerPair(first)
+      case _ => HighCard(card1)
     }
   }
 
-  it should "start with a failing test" in {
-    fail
+  case class Round(hand1: Hand, hand2: Hand) {
+    def winner: Hand = (hand1.figure, hand2.figure) match {
+      case (PokerPair(card1), PokerPair(card2)) if card1 >= card2 => hand1
+      case (PokerPair(card1), PokerPair(card2)) if card1 < card2 => hand2
+      case (PokerPair(_), _) => hand1
+      case (_, PokerPair(_)) => hand2
+      case (HighCard(card1), HighCard(card2)) if card1 >= card2 => hand1
+      case (HighCard(card1), HighCard(card2)) if card1 < card2 => hand2
+    }
   }
 
-  ignore should "show how to ignore a test" in {
-    succeed
+  it should "be a pair when two similar cards" in {
+    Hand(Ace, Ace).figure should be(PokerPair(Ace))
+  }
+
+  it should "be a high card when two different cards" in {
+    Hand(Ace, King).figure should be(HighCard(Ace))
+  }
+
+  "better figure" should "win" in {
+    Round(Hand(King, King), Hand(Ace, King)).winner should be(Hand(King, King))
+    Round(Hand(Ace, King), Hand(King, King)).winner should be(Hand(King, King))
+  }
+
+  "better pair" should "win" in {
+    Round(Hand(King, King), Hand(Ace, Ace)).winner should be(Hand(Ace, Ace))
+    Round(Hand(Ace, Ace), Hand(King, King)).winner should be(Hand(Ace, Ace))
+  }
+
+  "better high card" should "win" in {
+    Round(Hand(King, Ace), Hand(Queen, King)).winner should be(Hand(King, Ace))
+    Round(Hand(Queen, King), Hand(King, Ace)).winner should be(Hand(King, Ace))
   }
 
 }
