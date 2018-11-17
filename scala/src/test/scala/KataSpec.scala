@@ -15,4 +15,10 @@ class ExampleSpec extends FlatSpec with Matchers {
     isPair(Ace(), King()) should be(false)
   }
 
+  def getHighcard(cards: List[Card with Product with Serializable]) = cards.head
+
+  it should "get high card" in {
+    getHighcard(List(Ace(), King())) should be(Ace())
+  }
+
 }
