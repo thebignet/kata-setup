@@ -25,7 +25,7 @@ class ExampleSpec extends FlatSpec with Matchers {
   def getWinner(cards: List[Card], cards1: List[Card]) = "player1"
 
   it should "get player 1 when player 1 has pair" in {
-    getWinner(List(King(), Ace()), List(King(), Ace())) should be("player1")
+    getWinner(List(King(), King()), List(King(), Ace())) should be("player1")
   }
 
 
